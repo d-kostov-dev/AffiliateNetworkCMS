@@ -8,121 +8,116 @@ using System.Web;
 using System.Web.Mvc;
 using AffiliateNetwork.Data;
 using AffiliateNetwork.Models;
+using AffiliateNetwork.Contracts;
 
 namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {
-    public class CategoriesController : Controller
+    public class CategoriesController : BaseController
     {
-        private AffiliateNetworkDbContext db = new AffiliateNetworkDbContext();
-
-        // GET: Administration/Categories
-        public ActionResult Index()
+        public CategoriesController(IDataProvider provider)
+            : base(provider)
         {
-            return View(db.Categories.ToList());
         }
 
-        // GET: Administration/Categories/Details/5
+        public ActionResult Index()
+        {
+            return View(this.Data.Categories.All().ToList());
+        }
+
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+
+            Category category = this.Data.Categories.Find(id);
+
             if (category == null)
             {
                 return HttpNotFound();
             }
+
             return View(category);
         }
 
-        // GET: Administration/Categories/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Administration/Categories/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
+                this.Data.Categories.Add(category);
+                this.Data.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(category);
         }
 
-        // GET: Administration/Categories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+
+            Category category = this.Data.Categories.Find(id);
+
             if (category == null)
             {
                 return HttpNotFound();
             }
+
             return View(category);
         }
 
-        // POST: Administration/Categories/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
-                db.SaveChanges();
+                this.Data.Categories.Update(category);
+                this.Data.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(category);
         }
 
-        // GET: Administration/Categories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+
+            Category category = this.Data.Categories.Find(id);
+
             if (category == null)
             {
                 return HttpNotFound();
             }
+
             return View(category);
         }
 
-        // POST: Administration/Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            Category category = this.Data.Categories.Find(id);
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            this.Data.Categories.Delete(category);
+            this.Data.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
