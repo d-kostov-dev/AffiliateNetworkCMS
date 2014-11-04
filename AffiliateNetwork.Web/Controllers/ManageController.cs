@@ -24,6 +24,7 @@ namespace AffiliateNetwork.Web.Controllers
         }
 
         private ApplicationUserManager _userManager;
+
         public ApplicationUserManager UserManager
         {
             get

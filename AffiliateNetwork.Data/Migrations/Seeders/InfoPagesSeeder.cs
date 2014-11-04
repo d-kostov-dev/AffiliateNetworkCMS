@@ -19,7 +19,8 @@
                     SeoUrl = "AboutUs",
                     Title = "About Us",
                     Content = @"<p></p>",
-                    IsVisible = YesNo.True
+                    IsVisible = YesNo.True,
+                    Order = 1,
                 },
                 new InfoPage()
                 {
@@ -27,7 +28,8 @@
                     SeoUrl = "FAQ",
                     Title = "FAQ",
                     Content = @"<p></p>",
-                    IsVisible = YesNo.True
+                    IsVisible = YesNo.True,
+                    Order = 2,
                 },
                 new InfoPage()
                 {
@@ -35,7 +37,8 @@
                     SeoUrl = "Contacts",
                     Title = "Contact Us",
                     Content = @"<p></p>",
-                    IsVisible = YesNo.True
+                    IsVisible = YesNo.True,
+                    Order = 3,
                 },
             };
 
