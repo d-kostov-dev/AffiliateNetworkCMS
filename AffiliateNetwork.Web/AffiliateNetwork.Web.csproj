@@ -105,13 +105,13 @@
     <Reference Include="WebActivatorEx">
       <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
-    <Reference Include="WebGrease">
-      <Private>True</Private>
-      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
-    </Reference>
     <Reference Include="Antlr3.Runtime">
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +172,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -187,16 +188,58 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Areas\Administration\Content\css\bootstrap.css" />
+    <Content Include="Areas\Administration\Content\css\dataTables.bootstrap.css" />
+    <Content Include="Areas\Administration\Content\css\metisMenu.css" />
+    <Content Include="Areas\Administration\Content\css\morris.css" />
+    <Content Include="Areas\Administration\Content\css\social-buttons.css" />
+    <Content Include="Areas\Administration\Content\css\timeline.css" />
+    <Content Include="Areas\Administration\Content\css\sb-admin-2.css" />
+    <Content Include="Areas\Administration\Content\css\font-awesome.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\Administration\Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\Administration\Content\scripts\bootstrap.js" />
+    <Content Include="Areas\Administration\Content\scripts\bootstrap.min.js" />
+    <Content Include="Areas\Administration\Content\scripts\jquery.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\dataTables\dataTables.bootstrap.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\dataTables\jquery.dataTables.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\flot\excanvas.min.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\flot\flot-data.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\flot\jquery.flot.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\flot\jquery.flot.pie.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\metisMenu\metisMenu.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\metisMenu\metisMenu.min.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\morris\morris-data.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\morris\morris.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\morris\morris.min.js" />
+    <Content Include="Areas\Administration\Content\scripts\plugins\morris\raphael.min.js" />
+    <Content Include="Areas\Administration\Content\scripts\sb-admin-2.js" />
+    <Content Include="Content\Home\bootstrap.css" />
+    <Content Include="Content\Home\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Home\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\ControlPanel\Views\web.config" />
+    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Index.cshtml" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Administration\Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Administration\Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\Administration\Content\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -250,18 +293,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Controllers\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\ControlPanel\Controllers\" />
     <Folder Include="Areas\ControlPanel\Models\" />
     <Folder Include="Areas\ControlPanel\Views\Shared\" />
+    <Folder Include="Content\ControlPanel\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
