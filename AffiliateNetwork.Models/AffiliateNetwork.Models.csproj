@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Banner.cs" />
     <Compile Include="Campaign.cs" />
+    <Compile Include="Category.cs" />
     <Compile Include="Click.cs" />
     <Compile Include="Conversion.cs" />
     <Compile Include="InfoPage.cs" />

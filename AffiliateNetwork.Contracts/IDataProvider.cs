@@ -18,6 +18,8 @@
 
         IRepository<Click> Clicks { get; }
 
+        IRepository<Category> Categories { get; }
+
         int SaveChanges();
     }
 }

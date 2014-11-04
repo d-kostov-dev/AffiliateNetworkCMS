@@ -11,12 +11,14 @@
         private ICollection<Click> clicks;
         private ICollection<Conversion> conversions;
         private ICollection<Banner> banners;
+        private ICollection<User> affiliates;
 
         public Campaign()
         {
             this.clicks = new HashSet<Click>();
             this.conversions = new HashSet<Conversion>();
             this.banners = new HashSet<Banner>();
+            this.affiliates = new HashSet<User>();
         }
 
         [Key]
@@ -31,6 +33,9 @@
         [MinLength(50)]
         public string Description { get; set; }
 
+        [Required]
+        public virtual Category Category { get; set; }
+
         public virtual CampaignType Type { get; set; }
 
         [Required]
@@ -40,7 +45,20 @@
         public decimal Payout { get; set; }
 
         [Required]
-        public virtual User User { get; set; }
+        public virtual User Owner { get; set; }
+
+        public virtual ICollection<User> Affiliates
+        {
+            get
+            {
+                return this.affiliates;
+            }
+
+            set
+            {
+                this.affiliates = value;
+            }
+        }
 
         public virtual DateTime DateCreated { get; set; }
 

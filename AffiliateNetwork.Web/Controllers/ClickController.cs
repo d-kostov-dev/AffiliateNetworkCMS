@@ -7,13 +7,11 @@
     using AffiliateNetwork.Models;
     using AffiliateNetwork.Web.Filters;
 
-    public class ClickController : Controller
+    public class ClickController : BaseController
     {
-        private IDataProvider data;
-
-        public ClickController(IDataProvider data)
+        public ClickController(IDataProvider provider)
+            :base(provider)
         {
-            this.data = data;
         }
 
         [AllowCors]

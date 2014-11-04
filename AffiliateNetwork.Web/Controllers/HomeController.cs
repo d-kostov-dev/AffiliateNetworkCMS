@@ -5,13 +5,11 @@
 
     using AffiliateNetwork.Contracts;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private IDataProvider data;
-
-        public HomeController(IDataProvider data)
+        public HomeController(IDataProvider provider)
+            : base(provider)
         {
-            this.data = data;
         }
 
         public ActionResult Index()

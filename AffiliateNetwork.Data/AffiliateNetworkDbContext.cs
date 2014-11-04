@@ -28,6 +28,8 @@
 
         public virtual IDbSet<Click> Clicks { get; set; }
 
+        public virtual IDbSet<Category> Categories { get; set; }
+
         public static AffiliateNetworkDbContext Create()
         {
             return new AffiliateNetworkDbContext();

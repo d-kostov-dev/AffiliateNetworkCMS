@@ -16,6 +16,7 @@
                 new InfoPage()
                 {
                     Id = 1,
+                    SeoUrl = "AboutUs",
                     Title = "About Us",
                     Content = @"<p></p>",
                     IsVisible = YesNo.True
@@ -23,6 +24,7 @@
                 new InfoPage()
                 {
                     Id = 2,
+                    SeoUrl = "FAQ",
                     Title = "FAQ",
                     Content = @"<p></p>",
                     IsVisible = YesNo.True
@@ -30,6 +32,7 @@
                 new InfoPage()
                 {
                     Id = 3,
+                    SeoUrl = "Contacts",
                     Title = "Contact Us",
                     Content = @"<p></p>",
                     IsVisible = YesNo.True

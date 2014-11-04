@@ -53,6 +53,11 @@
             get { return this.GetRepository<Click>(); }
         }
 
+        public IRepository<Category> Categories
+        {
+            get { return this.GetRepository<Category>(); }
+        }
+
         public int SaveChanges()
         {
             return this.databaseContext.SaveChanges();

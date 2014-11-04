@@ -11,7 +11,6 @@
         [Required]
         public virtual User Affiliate { get; set; }
 
-        [Required]
         public virtual Campaign Campaign { get; set; }
 
         public virtual DateTime DateMade { get; set; }
