@@ -24,20 +24,18 @@
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            // Administration Styles
-            bundles.Add(new StyleBundle("~/Content/Administration/styles").Include(
-                      "~/Areas/Administration/Content/css/bootstrap.css",
-                      "~/Areas/Administration/Content/css/sb-admin-2.css",
-                      "~/Areas/Administration/Content/css/metisMenu.css",
-                      "~/Areas/Administration/Content/css/font-awesome.css"
+            bundles.Add(new StyleBundle("~/Content/Manager/styles").Include(
+                      "~/Content/Manager/css/bootstrap.css",
+                      "~/Content/Manager/css/sb-admin-2.css",
+                      "~/Content/Manager/css/metisMenu.css",
+                      "~/Content/Manager/css/font-awesome.css"
                       ));
 
-            // Administration Scripts
-            bundles.Add(new ScriptBundle("~/Content/Administration/js").Include(
-                     "~/Areas/Administration/Content/scripts/jquery.js",
-                     "~/Areas/Administration/Content/scripts/bootstrap.js",
-                     "~/Areas/Administration/Content/scripts/plugins/metisMenu/metisMenu.min.js",
-                     "~/Areas/Administration/Content/scripts/sb-admin-2.js"
+            bundles.Add(new ScriptBundle("~/Content/Manager/js").Include(
+                     "~/Content/Manager/scripts/jquery.js",
+                     "~/Content/Manager/scripts/bootstrap.js",
+                     "~/Content/Manager/scripts/plugins/metisMenu/metisMenu.min.js",
+                     "~/Content/Manager/scripts/sb-admin-2.js"
                      ));
 
             BundleTable.EnableOptimizations = true;
