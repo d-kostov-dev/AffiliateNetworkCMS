@@ -19,7 +19,7 @@
 
         public ActionResult About()
         {
-            return this.Content(string.Join(", ", this.data.InfoPages.All().Select(x => x.Title).ToList()));
+            return this.Content(string.Join(", ", this.Data.InfoPages.All().Select(x => x.Title).ToList()));
         }
 
         public ActionResult Contact()

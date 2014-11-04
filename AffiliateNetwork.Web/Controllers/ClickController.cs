@@ -17,8 +17,8 @@
         [AllowCors]
         public void RegisterClick(string affId)
         {
-            this.data.Clicks.Add(new Click() { Affiliate = this.data.Users.Find(affId), DateMade = DateTime.Now});
-            this.data.SaveChanges();
+            this.Data.Clicks.Add(new Click() { Affiliate = this.Data.Users.Find(affId), DateMade = DateTime.Now });
+            this.Data.SaveChanges();
         }
     }
 }
