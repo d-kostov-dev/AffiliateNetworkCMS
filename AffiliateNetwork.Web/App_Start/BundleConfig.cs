@@ -21,8 +21,8 @@
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site/css/bootstrap.css",
+                      "~/Content/Site/css/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/Manager/styles").Include(
                       "~/Content/Manager/css/bootstrap.css",

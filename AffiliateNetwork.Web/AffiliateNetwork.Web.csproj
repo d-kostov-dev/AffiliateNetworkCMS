@@ -171,6 +171,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
@@ -216,11 +217,11 @@
     <Content Include="Content\Manager\scripts\plugins\morris\morris.min.js" />
     <Content Include="Content\Manager\scripts\plugins\morris\raphael.min.js" />
     <Content Include="Content\Manager\scripts\sb-admin-2.js" />
-    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\Site\css\bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Site\css\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Administration\Views\web.config" />
@@ -239,6 +240,8 @@
     <Content Include="Content\Manager\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Manager\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Manager\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\ControlPanel\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\ControlPanel\Views\Shared\_Layout.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -295,7 +298,6 @@
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\ControlPanel\Controllers\" />
     <Folder Include="Areas\ControlPanel\Models\" />
-    <Folder Include="Areas\ControlPanel\Views\Shared\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
