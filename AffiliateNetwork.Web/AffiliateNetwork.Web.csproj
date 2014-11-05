@@ -52,6 +52,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.3\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -174,6 +177,7 @@
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Administration\Models\CategoryViewModels.cs" />
     <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Infrastructure\BaseController.cs" />
@@ -183,6 +187,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Filters\AllowCors.cs" />
+    <Compile Include="Infrastructure\Filters\SortAndPage.cs" />
+    <Compile Include="Infrastructure\Helpers\DataGridHelper.cs" />
+    <Compile Include="Infrastructure\Helpers\PaginationHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -230,7 +237,6 @@
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Create.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\Categories\Details.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Index.cshtml" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
@@ -242,6 +248,7 @@
     <Content Include="Content\Manager\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Areas\ControlPanel\Views\_ViewStart.cshtml" />
     <Content Include="Areas\ControlPanel\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\IndexNew.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -295,7 +302,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\ControlPanel\Controllers\" />
     <Folder Include="Areas\ControlPanel\Models\" />
     <Folder Include="Views\Base\" />

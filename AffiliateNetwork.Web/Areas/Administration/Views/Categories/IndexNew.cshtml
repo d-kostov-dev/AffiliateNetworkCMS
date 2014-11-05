@@ -1,0 +1,36 @@
+﻿@using AffiliateNetwork.Web.Areas.Administration.Models
+
+@{
+    ViewBag.Title = "Categories List";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h1>@ViewBag.Title</h1>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                @ViewBag.Title
+            </div>
+            <div class="panel-body">
+                @(Html.DataGrid<ListCategoryViewModel>())
+            </div>
+        </div>
+        <div>
+            @*@Html.PageLink((int)ViewData["CurrentPage"],
+                (int)ViewData["TotalPages"],
+                p => Url.Action("IndexNew",
+                new
+                {
+                    page = p,
+                    sort = (string)ViewData["SortItem"]
+                })
+                )*@
+        </div>
+    </div>
+</div>

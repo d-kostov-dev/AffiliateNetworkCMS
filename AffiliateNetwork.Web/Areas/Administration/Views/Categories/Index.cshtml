@@ -14,6 +14,14 @@
 
 <div class="row">
     <div class="col-lg-12">
+        @using (Html.BeginForm("Index", "Categories", FormMethod.Get))
+        {
+            <p>
+                Search: @Html.TextBox("SearchString")
+                <input type="submit" value="Search" class="btn btn-primary btn-sm" />
+            </p>
+        }
+
         <div class="panel panel-primary">
             <div class="panel-heading">
                 @ViewBag.Title
@@ -23,9 +31,9 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>@Html.DisplayNameFor(model => model.Id)</th>
-                                <th>@Html.DisplayNameFor(model => model.Name)</th>
-                                <th>Campaigns Count</th>
+                                <th>@Html.ActionLink("Id", "Index", new { sortBy = "Id", sortDirection = ViewBag.SortDirection })</th>
+                                <th>@Html.ActionLink("Name", "Index", new { sortBy = "Name", sortDirection = ViewBag.SortDirection })</th>
+                                <th>@Html.ActionLink("Campaigns Count", "Index", new { sortBy = "CampaignsCount", sortDirection = ViewBag.SortDirection })</th>
                                 <th>-</th>
                                 <th>-</th>
                             </tr>
@@ -47,7 +55,7 @@
                                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger"})
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
                                     </td>
                                 </tr>
                             }
@@ -56,5 +64,6 @@
                 </div>
             </div>
         </div>
+        @Html.PageLink((int)ViewBag.CurrentPage, (int)ViewBag.TotalPages, p => Url.Action("Index", new { page = p, sortBy = ViewBag.CurrentSort, sortDirection = ViewBag.SortDirection}))
     </div>
 </div>
