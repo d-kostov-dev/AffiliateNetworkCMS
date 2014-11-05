@@ -1,4 +1,9 @@
-﻿@model IEnumerable<AffiliateNetwork.Models.Category>
+﻿@model PagedList.IPagedList<AffiliateNetwork.Web.Areas.Administration.Models.ListCategoryViewModel>
+
+@using PagedList
+@using PagedList.Mvc
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Categories List";
@@ -17,8 +22,9 @@
         @using (Html.BeginForm("Index", "Categories", FormMethod.Get))
         {
             <p>
-                Search: @Html.TextBox("SearchString")
+                Search: @Html.TextBox("SearchFilter", ViewBag.SearchFilter as string)
                 <input type="submit" value="Search" class="btn btn-primary btn-sm" />
+                @Html.ActionLink("Clear", "Index", null, new { @class = "btn btn-default btn-sm" })
             </p>
         }
 
@@ -31,9 +37,15 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>@Html.ActionLink("Id", "Index", new { sortBy = "Id", sortDirection = ViewBag.SortDirection })</th>
-                                <th>@Html.ActionLink("Name", "Index", new { sortBy = "Name", sortDirection = ViewBag.SortDirection })</th>
-                                <th>@Html.ActionLink("Campaigns Count", "Index", new { sortBy = "CampaignsCount", sortDirection = ViewBag.SortDirection })</th>
+                                <th>
+                                    @Html.ActionLink("Id", "Index", new { sorting = ViewBag.IdSort, searchKeyword = ViewBag.SearchFilter })
+                                </th>
+                                <th>
+                                    @Html.ActionLink("Name", "Index", new { sorting = ViewBag.NameSort, searchKeyword = ViewBag.SearchFilter })
+                                </th>
+                                <th>
+                                    @Html.ActionLink("Campaigns Count", "Index", new { sorting = ViewBag.CountSort, searchKeyword = ViewBag.SearchFilter })
+                                </th>
                                 <th>-</th>
                                 <th>-</th>
                             </tr>
@@ -49,7 +61,7 @@
                                         @Html.DisplayFor(modelItem => item.Name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Campaigns.Count)
+                                        @Html.DisplayFor(modelItem => item.CampaignsCount)
                                     </td>
                                     <td>
                                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
@@ -64,6 +76,10 @@
                 </div>
             </div>
         </div>
-        @Html.PageLink((int)ViewBag.CurrentPage, (int)ViewBag.TotalPages, p => Url.Action("Index", new { page = p, sortBy = ViewBag.CurrentSort, sortDirection = ViewBag.SortDirection}))
+        <br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sorting = ViewBag.CurrentSort, currentFilter = ViewBag.SearchFilter }))
     </div>
 </div>

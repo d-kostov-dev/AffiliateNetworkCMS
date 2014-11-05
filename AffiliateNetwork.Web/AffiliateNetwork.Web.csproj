@@ -49,6 +49,12 @@
     <Reference Include="Ninject.Web.Mvc">
       <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -187,9 +193,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Filters\AllowCors.cs" />
-    <Compile Include="Infrastructure\Filters\SortAndPage.cs" />
-    <Compile Include="Infrastructure\Helpers\DataGridHelper.cs" />
-    <Compile Include="Infrastructure\Helpers\PaginationHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -224,6 +227,7 @@
     <Content Include="Content\Manager\scripts\plugins\morris\morris.min.js" />
     <Content Include="Content\Manager\scripts\plugins\morris\raphael.min.js" />
     <Content Include="Content\Manager\scripts\sb-admin-2.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site\css\bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -248,7 +252,6 @@
     <Content Include="Content\Manager\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Areas\ControlPanel\Views\_ViewStart.cshtml" />
     <Content Include="Areas\ControlPanel\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Administration\Views\Categories\IndexNew.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -304,6 +307,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ControlPanel\Controllers\" />
     <Folder Include="Areas\ControlPanel\Models\" />
+    <Folder Include="Infrastructure\Helpers\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

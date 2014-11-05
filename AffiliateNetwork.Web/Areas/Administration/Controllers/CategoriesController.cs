@@ -1,17 +1,16 @@
 ﻿namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {
-    using System.Linq;
-    using System.Net;
-    using System.Web.Mvc;
-    using System;
-    using System.Linq.Dynamic;
-
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Models;
+    using System;
+    using System.Linq;
+    using System.Linq.Dynamic;
+    using System.Net;
+    using System.Web.Mvc;
     using AffiliateNetwork.Web.Areas.Administration.Models;
-    using AffiliateNetwork.Web.Infrastructure.Filters;
-    
-    
+    using PagedList;
+
+
     public class CategoriesController : BaseController
     {
         private const int defaultPageSize =1;
@@ -21,57 +20,41 @@
         {
         }
 
-        public ActionResult IndexNew(string sortDirection = "ASC", int? page = 1, string sort = "Id")
+        public ActionResult Index(string searchFilter, int? page, string currentFilter, string sorting = "Id")
         {
-            // string sort = "Id", string sortDirection, int? page
-            //var currentPage = page ?? 1;
-            //ViewData["SortItem"] = sort;
-            //sort = sort ?? "Id";
-            //ViewData["CurrentPage"] = currentPage;
-            //ViewData["TotalPages"] = (int)Math.Ceiling((float)this.Data.Categories.All().Count() / _pageSize);
+            ViewBag.CurrentSort = sorting;
 
-            //var products = this.Data.Categories.All().Select(ListCategoryViewModel.ViewModel);
+            ViewBag.IdSort = sorting == "Id" ? "Id descending" : "Id";
+            ViewBag.NameSort = sorting == "Name" ? "Name descending" : "Name";
+            ViewBag.CountSort = sorting == "CampaignsCount" ? "CampaignsCount descending" : "CampaignsCount";
 
-            //var sortedProducts = products
-            //    .OrderBy(sort)
-            //    .Skip((currentPage - 1) * _pageSize)
-            //    .Take(_pageSize);
-
-            var products = this.Data.Categories.All().Select(ListCategoryViewModel.ViewModel);
-            return View(products);
-        }
-
-        public ActionResult Index(string sortBy, string sortDirection, string searchString, int? page)
-        {
-            sortBy = string.IsNullOrEmpty(sortBy) ? "Id" : sortBy;
-            ViewBag.SortDirection = sortDirection == "ASC" ? "DESC" : "ASC";
-            var currentPage = page ?? 1;
-            ViewBag.CurrentPage = currentPage;
-            ViewBag.TotalPages= (int)Math.Ceiling((float)this.Data.Categories.All().Count() / defaultPageSize);
-            ViewBag.CurrentSort = sortBy;
-
-            var selectedItems = this.Data.Categories.All();
-
-            if (!String.IsNullOrEmpty(ViewBag.SearchString))
+            if (searchFilter != null)
             {
-                string searchVar = ViewBag.SearchString;
-                selectedItems = selectedItems.Where(x => x.Name.ToLower().Contains(searchVar.ToLower()));
-            }
-
-            if (ViewBag.SortDirection == "DESC")
-            {
-                selectedItems = selectedItems.OrderBy(sortBy + " " + "descending");
+                page = 1;
             }
             else
             {
-                selectedItems = selectedItems.OrderBy(sortBy);
+                searchFilter = currentFilter;
             }
 
-            selectedItems = selectedItems
-                .Skip((currentPage - 1) * defaultPageSize)
-                .Take(defaultPageSize);
+            ViewBag.SearchFilter = searchFilter;
 
-            return View(selectedItems.ToList());
+            var selectedItems = this.Data.Categories.All();
+
+            if (!String.IsNullOrEmpty(searchFilter))
+            {
+                selectedItems = selectedItems
+                    .Where(x => x.Name.ToLower().Contains(searchFilter.ToLower()));
+            }
+
+            var sortedItems = selectedItems
+                .Select(ListCategoryViewModel.ViewModel)
+                .OrderBy(sorting);
+
+            int pageSize = 1;
+            int pageNumber = (page ?? 1);
+
+            return View(sortedItems.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult Create()
