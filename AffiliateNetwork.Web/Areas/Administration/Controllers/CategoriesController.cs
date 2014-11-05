@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using AffiliateNetwork.Data;
-using AffiliateNetwork.Models;
-using AffiliateNetwork.Contracts;
-
-namespace AffiliateNetwork.Web.Areas.Administration.Controllers
+﻿namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {
+    using System.Linq;
+    using System.Net;
+    using System.Web.Mvc;
+
+    using AffiliateNetwork.Contracts;
+    using AffiliateNetwork.Models;
+    
     public class CategoriesController : BaseController
     {
         public CategoriesController(IDataProvider provider)
@@ -22,23 +17,6 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
         public ActionResult Index()
         {
             return View(this.Data.Categories.All().ToList());
-        }
-
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            Category category = this.Data.Categories.Find(id);
-
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(category);
         }
 
         public ActionResult Create()
