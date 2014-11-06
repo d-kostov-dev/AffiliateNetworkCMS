@@ -20,7 +20,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
         public ActionResult Index()
         {
-            return View(this.Data.InfoPages.All().Select(ListInfoPageViewModel.ViewModel));
+            return View(this.Data.InfoPages.All().Select(ListInfoPageViewModel.ViewModel).OrderBy(x => x.Id));
         }
 
         public ActionResult Details(int? id)

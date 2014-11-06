@@ -17,6 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffiliateNetwork.Common", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "A To Do List", "A To Do List", "{FB40A320-99C9-4D23-A044-818629C405D4}"
 	ProjectSection(SolutionItems) = preProject
+		CopyPaste.txt = CopyPaste.txt
 		ToDoList.txt = ToDoList.txt
 	EndProjectSection
 EndProject
