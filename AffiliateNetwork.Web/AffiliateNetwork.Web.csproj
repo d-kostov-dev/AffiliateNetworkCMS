@@ -183,7 +183,10 @@
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\InfoPagesController.cs" />
     <Compile Include="Areas\Administration\Models\CategoryViewModels.cs" />
+    <Compile Include="Areas\Administration\Models\GridOptionsInputModel.cs" />
+    <Compile Include="Areas\Administration\Models\InfoPageViewModels.cs" />
     <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Infrastructure\BaseController.cs" />
@@ -193,6 +196,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Filters\AllowCors.cs" />
+    <Compile Include="Infrastructure\Helpers\PerPageHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -252,6 +256,11 @@
     <Content Include="Content\Manager\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Areas\ControlPanel\Views\_ViewStart.cshtml" />
     <Content Include="Areas\ControlPanel\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Administration\Views\InfoPages\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\InfoPages\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\InfoPages\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\InfoPages\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\InfoPages\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -307,7 +316,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ControlPanel\Controllers\" />
     <Folder Include="Areas\ControlPanel\Models\" />
-    <Folder Include="Infrastructure\Helpers\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

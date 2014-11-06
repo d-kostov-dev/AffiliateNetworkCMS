@@ -2,6 +2,7 @@
 
 @using PagedList
 @using PagedList.Mvc
+@using AffiliateNetwork.Web.Infrastructure.Helpers
 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -22,7 +23,8 @@
         @using (Html.BeginForm("Index", "Categories", FormMethod.Get))
         {
             <p>
-                Search: @Html.TextBox("SearchFilter", ViewBag.SearchFilter as string)
+                Search: @Html.TextBox("SearchFilter", ViewBag.CurrentFilter as string)
+                Per Page: @Html.PerPageDropDown(ViewBag.PerPage as int?)
                 <input type="submit" value="Search" class="btn btn-primary btn-sm" />
                 @Html.ActionLink("Clear", "Index", null, new { @class = "btn btn-default btn-sm" })
             </p>
@@ -38,14 +40,37 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.ActionLink("Id", "Index", new { sorting = ViewBag.IdSort, searchKeyword = ViewBag.SearchFilter })
+                                    @Html.ActionLink("Id", "Index",
+                                    new
+                                    {
+                                        sorting = ViewBag.IdSort,
+                                        currentFilter = ViewBag.CurrentFilter,
+                                        perPage = ViewBag.PerPage,
+                                        page = ViewBag.CurrentPage
+                                    })
                                 </th>
                                 <th>
-                                    @Html.ActionLink("Name", "Index", new { sorting = ViewBag.NameSort, searchKeyword = ViewBag.SearchFilter })
+                                    @Html.ActionLink("Name", "Index",
+                                    new
+                                    {
+                                        sorting = ViewBag.NameSort,
+                                        currentFilter = ViewBag.CurrentFilter,
+                                        perPage = ViewBag.PerPage,
+                                        page = ViewBag.CurrentPage
+                                    })
                                 </th>
+
                                 <th>
-                                    @Html.ActionLink("Campaigns Count", "Index", new { sorting = ViewBag.CountSort, searchKeyword = ViewBag.SearchFilter })
+                                    @Html.ActionLink("Campaigns Count", "Index",
+                                    new
+                                    {
+                                        sorting = ViewBag.CountSort,
+                                        currentFilter = ViewBag.CurrentFilter,
+                                        perPage = ViewBag.PerPage,
+                                        page = ViewBag.CurrentPage
+                                    })
                                 </th>
+
                                 <th>-</th>
                                 <th>-</th>
                             </tr>
@@ -76,10 +101,13 @@
                 </div>
             </div>
         </div>
-        <br />
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
         @Html.PagedListPager(Model, page => Url.Action("Index",
-            new { page, sorting = ViewBag.CurrentSort, currentFilter = ViewBag.SearchFilter }))
+                             new
+                             {
+                                 page,
+                                 sorting = ViewBag.CurrentSort,
+                                 currentFilter = ViewBag.CurrentFilter,
+                                 perPage = ViewBag.PerPage
+                             }))
     </div>
 </div>

@@ -13,46 +13,49 @@
 
     public class CategoriesController : BaseController
     {
-        private const int defaultPageSize =1;
+        private const int defaultPageSize = 1;
 
         public CategoriesController(IDataProvider provider)
             : base(provider)
         {
         }
 
-        public ActionResult Index(string searchFilter, int? page, string currentFilter, string sorting = "Id")
+        public ActionResult Index(GridOptionsInputModel filter)
         {
-            ViewBag.CurrentSort = sorting;
+            ViewBag.PerPage = filter.PerPage;
+            ViewBag.CurrentSort = filter.Sorting;
+            ViewBag.CurrentPage = filter.Page;
 
-            ViewBag.IdSort = sorting == "Id" ? "Id descending" : "Id";
-            ViewBag.NameSort = sorting == "Name" ? "Name descending" : "Name";
-            ViewBag.CountSort = sorting == "CampaignsCount" ? "CampaignsCount descending" : "CampaignsCount";
+            ViewBag.IdSort = filter.Sorting == "Id" ? "Id descending" : "Id";
+            ViewBag.NameSort = filter.Sorting == "Name" ? "Name descending" : "Name";
+            ViewBag.CountSort = filter.Sorting == "CampaignsCount" ? "CampaignsCount descending" : "CampaignsCount";
 
-            if (searchFilter != null)
+            if (filter.SearchFilter != null)
             {
-                page = 1;
+                filter.Page = 1;
             }
             else
             {
-                searchFilter = currentFilter;
+                filter.SearchFilter = filter.CurrentFilter;
             }
 
-            ViewBag.SearchFilter = searchFilter;
+            ViewBag.CurrentFilter = filter.SearchFilter;
 
+            // Actual work
             var selectedItems = this.Data.Categories.All();
 
-            if (!String.IsNullOrEmpty(searchFilter))
+            if (!String.IsNullOrEmpty(filter.SearchFilter))
             {
                 selectedItems = selectedItems
-                    .Where(x => x.Name.ToLower().Contains(searchFilter.ToLower()));
+                    .Where(x => x.Name.ToLower().Contains(filter.SearchFilter.ToLower()));
             }
 
             var sortedItems = selectedItems
                 .Select(ListCategoryViewModel.ViewModel)
-                .OrderBy(sorting);
+                .OrderBy(filter.Sorting);
 
-            int pageSize = 1;
-            int pageNumber = (page ?? 1);
+            int pageSize = filter.PerPage;
+            int pageNumber = filter.Page;
 
             return View(sortedItems.ToPagedList(pageNumber, pageSize));
         }
