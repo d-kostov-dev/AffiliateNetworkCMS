@@ -8,3 +8,13 @@ try implementing page sizer in the _Grid.html
 grid.mvc stuff to bundles
 apply audit info
 http://www.mikesdotnetting.com/article/128/get-the-drop-on-asp-net-mvc-dropdownlists
+
+http://ayende.com/blog
+
+http://ayende.com/blog/4784/architecting-in-the-pit-of-doom-the-evils-of-the-repository-abstraction-layer
+
+http://tech.pro/blog/1191/say-no-to-the-repository-pattern-in-your-dal
+
+http://rob.conery.io/2014/03/04/repositories-and-unitofwork-are-not-a-good-idea/
+
+http://programmers.stackexchange.com/questions/180851/why-shouldnt-i-use-the-repository-pattern-with-entity-framework
