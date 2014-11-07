@@ -1,6 +1,4 @@
 Global variables
-Multilanguage
-Different user information
 info pages section
 view models folder
 input models folder
