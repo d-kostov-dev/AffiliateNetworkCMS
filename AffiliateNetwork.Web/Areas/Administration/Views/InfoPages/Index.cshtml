@@ -6,22 +6,7 @@
     ViewBag.Title = "List Information Pages";
 }
 
-@section Styles{
-    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
-}
-
-<div class="row">
-    <div class="col-md-12">
-        <h1>@ViewBag.Title</h1>
-        @Html.CreateButton()
-        <hr />
-    </div>
-</div>
-
-@using (Html.BeginForm("Index", "InfoPages", FormMethod.Get))
-{
-    @:Page Size: @Html.PerPageDropDown(ViewBag.PageSize as int?)
-}
+@Html.Partial("_PageHeadingPartial")
 
 @Html.Grid(Model).Columns(columns =>
 {
@@ -47,19 +32,19 @@
     
     columns.Add()
         .Titled("Active")
-        .RenderValueAs(x => @Html.DisplayFor(s => x.IsVisible))
+        .RenderValueAs(x => Html.DisplayFor(s => x.IsVisible))
         .Encoded(false)
         .Sanitized(false)
         .SetWidth(50);
     
     columns.Add()
-        .RenderValueAs(x => @Html.EditButton(x.Id))
+        .RenderValueAs(x => Html.EditButton(x.Id))
         .Encoded(false)
         .Sanitized(false)
         .SetWidth(50);
     
     columns.Add()
-        .RenderValueAs(x => @Html.DeleteButton(x.Id))
+        .RenderValueAs(x => Html.DeleteButton(x.Id))
         .Encoded(false)
         .Sanitized(false)
         .SetWidth(50);
@@ -69,4 +54,8 @@
 @section Scripts{
     <script src="@Url.Content("~/Scripts/jquery.min.js")" type="text/javascript"> </script>
     <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+}
+
+@section Styles{
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
 }

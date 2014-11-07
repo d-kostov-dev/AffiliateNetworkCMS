@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AffiliateNetwork.Models.SiteSetting>
+
+@using GridMvc.Html
+
+@{
+    ViewBag.Title = "Site Settings";
+}
+
+@Html.Partial("_PageHeadingPartial")
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(x => x.Id)
+        .SetWidth(50)
+        .Sortable(true);
+
+    columns.Add(x => x.Name)
+        .SetWidth(100)
+        .Sortable(true);
+
+    columns.Add(x => x.Value)
+        .SetWidth(100)
+        .Sortable(true)
+        .Filterable(true);
+
+    columns.Add(x => x.Description)
+        .Filterable(true);
+
+    columns.Add()
+        .RenderValueAs(x => Html.EditButton(x.Id))
+        .Encoded(false)
+        .Sanitized(false)
+        .SetWidth(50);
+
+    columns.Add()
+        .RenderValueAs(x => Html.DeleteButton(x.Id))
+        .Encoded(false)
+        .Sanitized(false)
+        .SetWidth(50);
+
+}).WithPaging(ViewBag.PageSize)

@@ -186,12 +186,13 @@
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminBaseController.cs" />
+    <Compile Include="Areas\Administration\Controllers\CampaignsController.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Administration\Controllers\InfoPagesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\SiteSettingsController.cs" />
     <Compile Include="Areas\Administration\Models\CategoryViewModels.cs" />
     <Compile Include="Areas\Administration\Models\GridOptionsInputModel.cs" />
     <Compile Include="Areas\Administration\Models\InfoPageViewModels.cs" />
-    <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -249,7 +250,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Administration\Views\web.config" />
-    <Content Include="Areas\ControlPanel\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Create.cshtml" />
@@ -263,8 +263,6 @@
     <Content Include="Content\Manager\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Manager\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Manager\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Areas\ControlPanel\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\ControlPanel\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administration\Views\InfoPages\Create.cshtml" />
     <Content Include="Areas\Administration\Views\InfoPages\Delete.cshtml" />
     <Content Include="Areas\Administration\Views\InfoPages\Details.cshtml" />
@@ -275,6 +273,16 @@
     <Content Include="Areas\Administration\Views\Shared\_GridPager.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\YesNo.cshtml" />
     <Content Include="Areas\Administration\Views\InfoPages\_DetailsPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\SiteSettings\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\SiteSettings\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\SiteSettings\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\SiteSettings\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_PageHeadingPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Campaigns\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Campaigns\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\Campaigns\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\Campaigns\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Campaigns\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
@@ -333,8 +341,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\ControlPanel\Controllers\" />
-    <Folder Include="Areas\ControlPanel\Models\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

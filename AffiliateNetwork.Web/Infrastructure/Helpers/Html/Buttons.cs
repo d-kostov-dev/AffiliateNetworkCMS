@@ -14,7 +14,7 @@ namespace AffiliateNetwork.Web.Infrastructure.Helpers.Html
         {
             if(String.IsNullOrEmpty(text))
             {
-                text = "Create";
+                text = "Create New";
             }
 
             return PrimaryButton(htmlHelper, text, "Create");

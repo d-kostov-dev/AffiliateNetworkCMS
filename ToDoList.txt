@@ -2,5 +2,8 @@ Global variables
 Multilanguage
 Different user information
 info pages section
+base controller -> inherited by admin controller
+pagesize in index action -> admin controller function
+pagesize dropdowns -> to partial
 
 http://www.mikesdotnetting.com/article/128/get-the-drop-on-asp-net-mvc-dropdownlists

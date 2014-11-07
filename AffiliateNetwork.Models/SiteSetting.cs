@@ -19,6 +19,7 @@
 
         [Required]
         [MinLength(3)]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
     }
 }

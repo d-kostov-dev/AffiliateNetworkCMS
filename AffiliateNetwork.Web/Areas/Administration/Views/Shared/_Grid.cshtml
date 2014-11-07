@@ -9,9 +9,10 @@
 }
 else
 {
+
     <div class="row">
         <div class="col-lg-12">
-
+            @RenderPageSizer()
             <div class="grid-mvc" data-lang="@Model.Language" data-gridname="@Model.RenderOptions.GridName" data-selectable="@Model.RenderOptions.Selectable.ToString().ToLower()" data-multiplefilters="@Model.RenderOptions.AllowMultipleFilters.ToString().ToLower()">
                 <div class="grid-wrap">
                     <table class="table table-striped grid-table">
@@ -70,5 +71,16 @@ else
         <div class="grid-footer">
             @Html.Partial(Model.Pager.TemplateName, Model.Pager)
         </div>
+    }
+}
+
+@helper RenderPageSizer()
+{
+    var callerController = ViewContext.RouteData.GetRequiredString("controller");
+
+    using (Html.BeginForm("Index", callerController, FormMethod.Get))
+    {
+        @:Page Size: 
+        @Html.PerPageDropDown(ViewBag.PageSize as int?)
     }
 }
