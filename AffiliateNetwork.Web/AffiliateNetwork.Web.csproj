@@ -185,6 +185,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdminBaseController.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Administration\Controllers\InfoPagesController.cs" />
     <Compile Include="Areas\Administration\Models\CategoryViewModels.cs" />
@@ -192,14 +193,13 @@
     <Compile Include="Areas\Administration\Models\InfoPageViewModels.cs" />
     <Compile Include="Areas\ControlPanel\ControlPanelAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Infrastructure\BaseController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Filters\AllowCors.cs" />
-    <Compile Include="Infrastructure\Helpers\Html\Bootstrap.cs" />
     <Compile Include="Infrastructure\Helpers\Html\Buttons.cs" />
     <Compile Include="Infrastructure\Helpers\Html\FormGroup.cs" />
     <Compile Include="Infrastructure\Helpers\Html\PerPageSelector.cs" />
@@ -330,8 +330,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_GridPager.cshtml" />
-    <Content Include="Views\Shared\_Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

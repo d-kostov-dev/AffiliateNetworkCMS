@@ -11,7 +11,7 @@
     using PagedList;
 
 
-    public class CategoriesController : BaseController
+    public class CategoriesController : AdminBaseController
     {
         private const int defaultPageSize = 1;
 

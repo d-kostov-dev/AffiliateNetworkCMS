@@ -8,8 +8,8 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Models;
     using AffiliateNetwork.Web.Areas.Administration.Models;
-    
-    public class InfoPagesController : BaseController
+
+    public class InfoPagesController : AdminBaseController
     {
         private const int defaultPageSize = 1;
 
