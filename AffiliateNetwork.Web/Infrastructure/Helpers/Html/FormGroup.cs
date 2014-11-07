@@ -32,6 +32,28 @@ namespace AffiliateNetwork.Web.Infrastructure.Helpers.Html
 
         }
 
+        public static MvcHtmlString EnumFormGroupFor<TModel, TValue>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TValue>> expression,
+            object htmlAttributes = null)
+        {
+            var outerDiv = GenerateOuterDiv();
+            var innerDiv = GenerateInnerDiv();
+
+            innerDiv.InnerHtml +=
+                htmlHelper.EnumDropDownListFor(expression, htmlAttributes: new { @class = "form-control" });
+
+            innerDiv.InnerHtml +=
+                htmlHelper.ValidationMessageFor(expression, "", new { @class = "text-danger" });
+
+            outerDiv.InnerHtml +=
+                htmlHelper.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" });
+            outerDiv.InnerHtml += innerDiv.ToString();
+
+            return new MvcHtmlString(outerDiv.ToString());
+
+        }
+
         private static TagBuilder GenerateOuterDiv()
         {
             var outerDiv = new TagBuilder("div");

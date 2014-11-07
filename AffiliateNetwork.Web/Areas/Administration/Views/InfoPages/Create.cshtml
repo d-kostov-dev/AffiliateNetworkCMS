@@ -1,56 +1,21 @@
 ﻿@model AffiliateNetwork.Models.InfoPage
 
 @{
+    Layout = "../Shared/_AddEditLayout.cshtml";
     ViewBag.Title = "Create New Page";
 }
 
-<div class="row">
-    <div class="col-md-12">
-        <h2>@ViewBag.Title</h2>
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+@Html.FormGroupFor(model => model.SeoUrl)
+@Html.FormGroupFor(model => model.Title)
+@Html.FormGroupFor(model => model.Content)
+@Html.FormGroupFor(model => model.Order)
+@Html.EnumFormGroupFor(model => model.IsVisible)
 
-            <div class="form-horizontal">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        @ViewBag.Title
-                    </div>
-                    <div class="panel-body">
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                        @Html.FormGroupFor(model => model.SeoUrl)
-                        @Html.FormGroupFor(model => model.Title)
-                        @Html.FormGroupFor(model => model.Content)
-                        @Html.FormGroupFor(model => model.Order)
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.IsVisible, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EnumDropDownListFor(model => model.IsVisible, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.IsVisible, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                @Html.SubmitButton("Create")
-                                @Html.SuccessButton("Cancel", "Index")
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        }
-
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        @Html.SubmitButton("Create")
+        @Html.SuccessButton("Cancel", "Index")
     </div>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

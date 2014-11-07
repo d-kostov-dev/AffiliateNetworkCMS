@@ -192,6 +192,7 @@
     <Compile Include="Areas\Administration\Controllers\SiteSettingsController.cs" />
     <Compile Include="Areas\Administration\Models\CategoryViewModels.cs" />
     <Compile Include="Areas\Administration\Models\GridOptionsInputModel.cs" />
+    <Compile Include="Areas\Administration\Models\CampaignViewModel.cs" />
     <Compile Include="Areas\Administration\Models\InfoPageViewModels.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -283,6 +284,7 @@
     <Content Include="Areas\Administration\Views\Campaigns\Details.cshtml" />
     <Content Include="Areas\Administration\Views\Campaigns\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Campaigns\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_AddEditLayout.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />

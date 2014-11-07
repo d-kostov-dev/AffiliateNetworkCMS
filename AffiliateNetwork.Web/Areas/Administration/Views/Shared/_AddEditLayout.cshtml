@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-@(ViewBag.ColSize ?? 12)">
+        <h2>@ViewBag.Title</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        @ViewBag.Title
+                    </div>
+                    <div class="panel-body">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
