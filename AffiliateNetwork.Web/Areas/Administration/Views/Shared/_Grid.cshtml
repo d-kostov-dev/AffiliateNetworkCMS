@@ -75,9 +75,9 @@ else
 }
 
 @helper RenderPageSizer()
-{
-    var callerController = ViewContext.RouteData.GetRequiredString("controller");
-
+{  
+    var callerController = this.ViewContext.RouteData.GetRequiredString("controller");
+    
     using (Html.BeginForm("Index", callerController, FormMethod.Get))
     {
         @:Page Size: 

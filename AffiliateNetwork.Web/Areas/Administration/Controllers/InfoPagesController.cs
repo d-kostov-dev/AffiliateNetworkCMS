@@ -11,8 +11,6 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
     public class InfoPagesController : AdminBaseController
     {
-        private const int defaultPageSize = 1;
-
         public InfoPagesController(IDataProvider provider)
             : base(provider)
         {
@@ -20,14 +18,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
         public ActionResult Index()
         {
-            int pagesize;
-
-            if (!int.TryParse(Request.QueryString["perPage"], out pagesize))
-            {
-                pagesize = defaultPageSize;
-            }
-                
-            ViewBag.PageSize = pagesize;
+            this.ManagePageSizing();
 
             return View(this.Data.InfoPages.All().Select(ListInfoPageViewModel.ViewModel).OrderBy(x => x.Id));
         }

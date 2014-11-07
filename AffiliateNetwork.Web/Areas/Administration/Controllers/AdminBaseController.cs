@@ -9,6 +9,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {
     public class AdminBaseController : Controller
     {
+        private const int defaultPageSize = 1;
 
         public AdminBaseController(IDataProvider provider)
         {
@@ -16,6 +17,18 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
         }
 
         public IDataProvider Data { get; set; }
+
+        protected void ManagePageSizing()
+        {
+            int pagesize;
+
+            if (!int.TryParse(Request.QueryString["perPage"], out pagesize))
+            {
+                pagesize = defaultPageSize;
+            }
+
+            ViewBag.PageSize = pagesize;
+        }
     }
 
 }

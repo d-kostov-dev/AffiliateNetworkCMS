@@ -8,5 +8,6 @@ pagesize dropdowns -> to partial
 view models folder
 input models folder
 try implementing page sizer in the _Grid.html
+grid.mvc stuff to bundles
 
 http://www.mikesdotnetting.com/article/128/get-the-drop-on-asp-net-mvc-dropdownlists

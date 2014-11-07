@@ -23,14 +23,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
         public ActionResult Index()
         {
-            int pagesize;
-
-            if (!int.TryParse(Request.QueryString["perPage"], out pagesize))
-            {
-                pagesize = defaultPageSize;
-            }
-
-            ViewBag.PageSize = pagesize;
+            this.ManagePageSizing();
 
             return View(this.Data.SiteSettings.All().OrderBy(x => x.Id).ToList());
         }
