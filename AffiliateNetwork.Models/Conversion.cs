@@ -1,9 +1,10 @@
 ﻿namespace AffiliateNetwork.Models
 {
+    using AffiliateNetwork.Models.Base;
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Conversion
+    public class Conversion : AuditInfo
     {
         [Key]
         public int Id { get; set; }
@@ -12,8 +13,5 @@
         public virtual User Affiliate { get; set; }
 
         public virtual Campaign Campaign { get; set; }
-
-        [Display(Name = "Date")]
-        public virtual DateTime DateCreated { get; set; }
     }
 }

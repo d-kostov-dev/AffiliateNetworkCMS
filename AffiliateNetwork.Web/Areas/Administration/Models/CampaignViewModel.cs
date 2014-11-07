@@ -21,7 +21,6 @@ namespace AffiliateNetwork.Web.Areas.Administration.Models
                     Title = x.Title,
                     Content = x.Content.Substring(0, 50),
                     Order = x.Order,
-                    IsVisible = x.IsVisible
                 };
             }
         }
@@ -35,7 +34,5 @@ namespace AffiliateNetwork.Web.Areas.Administration.Models
         public string Content { get; set; }
 
         public int Order { get; set; }
-
-        public YesNo IsVisible { get; set; }
     }
 }

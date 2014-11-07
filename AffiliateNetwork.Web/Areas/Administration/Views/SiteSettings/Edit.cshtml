@@ -8,6 +8,7 @@
 
 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 @Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.CreatedOn)
 
 @Html.FormGroupFor(model => model.Name)
 @Html.FormGroupFor(model => model.Value)

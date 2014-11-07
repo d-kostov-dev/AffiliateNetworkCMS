@@ -26,10 +26,12 @@
         .Sortable(true)
         .Filterable(true);
 
+    columns.Add(x => x.CreatedOn);
+    
     columns.Add(x => x.Order)
         .SetWidth(50)
         .Sortable(true);
-    
+
     columns.Add()
         .Titled("Active")
         .RenderValueAs(x => Html.DisplayFor(s => x.IsVisible))

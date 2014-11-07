@@ -21,7 +21,8 @@ namespace AffiliateNetwork.Web.Areas.Administration.Models
                     Title = x.Title,
                     Content = x.Content.Substring(0, 50),
                     Order = x.Order,
-                    IsVisible = x.IsVisible
+                    IsVisible = x.DeletedOn == null ? true : false,
+                    CreatedOn = x.CreatedOn
                 };
             }
         }
@@ -36,6 +37,8 @@ namespace AffiliateNetwork.Web.Areas.Administration.Models
 
         public int Order { get; set; }
 
-        public YesNo IsVisible { get; set; }
+        public bool IsVisible { get; set; }
+
+        public DateTime CreatedOn { get; set; }
     }
 }

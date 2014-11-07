@@ -6,6 +6,7 @@
     using AffiliateNetwork.Common.Enumerations;
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Models;
+    using System;
 
     public class InfoPagesSeeder
     {
@@ -19,8 +20,8 @@
                     SeoUrl = "AboutUs",
                     Title = "About Us",
                     Content = @"<p></p>",
-                    IsVisible = YesNo.True,
                     Order = 1,
+                    CreatedOn = DateTime.Now
                 },
                 new InfoPage()
                 {
@@ -28,8 +29,8 @@
                     SeoUrl = "FAQ",
                     Title = "FAQ",
                     Content = @"<p></p>",
-                    IsVisible = YesNo.True,
                     Order = 2,
+                    CreatedOn = DateTime.Now
                 },
                 new InfoPage()
                 {
@@ -37,8 +38,8 @@
                     SeoUrl = "Contacts",
                     Title = "Contact Us",
                     Content = @"<p></p>",
-                    IsVisible = YesNo.True,
                     Order = 3,
+                    CreatedOn = DateTime.Now
                 },
             };
 

@@ -5,8 +5,9 @@
     using System.ComponentModel.DataAnnotations;
 
     using AffiliateNetwork.Common.Enumerations;
+    using AffiliateNetwork.Models.Base;
 
-    public class Campaign
+    public class Campaign : AuditInfo
     {
         private ICollection<Click> clicks;
         private ICollection<Conversion> conversions;
@@ -60,8 +61,6 @@
                 this.affiliates = value;
             }
         }
-
-        public virtual DateTime DateCreated { get; set; }
 
         [Required]
         [Display(Name = "Expiration Date")]

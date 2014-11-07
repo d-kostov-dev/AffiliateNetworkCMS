@@ -1,8 +1,9 @@
 ﻿namespace AffiliateNetwork.Models
 {
+    using AffiliateNetwork.Models.Base;
     using System.ComponentModel.DataAnnotations;
 
-    public class Banner
+    public class Banner : AuditInfo
     {
         [Key]
         public int Id { get; set; }

@@ -1,11 +1,10 @@
-﻿namespace AffiliateNetwork.Data.Repository
+﻿namespace AffiliateNetwork.Contracts.Repository
 {
+    using AffiliateNetwork.Models.Base;
     using System.Data.Entity;
     using System.Linq;
 
-    using AffiliateNetwork.Contracts;
-
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class, IAuditInfo
     {
         private IDbContext databaseContext;
         private IDbSet<T> entitiesSet;
@@ -17,6 +16,11 @@
         }
 
         public IQueryable<T> All()
+        {
+            return this.entitiesSet.Where(x => x.DeletedOn == null);
+        }
+
+        public IQueryable<T> AllWithDeleted()
         {
             return this.entitiesSet;
         }

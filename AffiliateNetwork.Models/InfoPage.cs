@@ -3,8 +3,9 @@
     using System.ComponentModel.DataAnnotations;
 
     using AffiliateNetwork.Common.Enumerations;
+    using AffiliateNetwork.Models.Base;
 
-    public class InfoPage
+    public class InfoPage : AuditInfo
     {
         [Key]
         public int Id { get; set; }
@@ -26,7 +27,5 @@
         public string Content { get; set; }
 
         public int Order { get; set; }
-
-        public virtual YesNo IsVisible { get; set; }
     }
 }

@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Banner.cs" />
+    <Compile Include="Base\AuditInfo.cs" />
+    <Compile Include="Base\IAuditInfo.cs" />
     <Compile Include="Campaign.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Click.cs" />

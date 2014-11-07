@@ -20,7 +20,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
         {
             this.ManagePageSizing();
 
-            return View(this.Data.InfoPages.All().Select(ListInfoPageViewModel.ViewModel).OrderBy(x => x.Id));
+            return View(this.Data.InfoPages.AllWithDeleted().Select(ListInfoPageViewModel.ViewModel).OrderBy(x => x.Id));
         }
 
         public ActionResult Details(int? id)
@@ -47,7 +47,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
         [HttpPost, ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,SeoUrl,Title,Content,Order,IsVisible")] InfoPage infoPage)
+        public ActionResult Create(InfoPage infoPage)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
         [HttpPost, ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,SeoUrl,Title,Content,Order,IsVisible")] InfoPage infoPage)
+        public ActionResult Edit(InfoPage infoPage)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            InfoPage infoPage = this.Data.InfoPages.Find(id);
+            var infoPage = this.Data.InfoPages.Find(id);
 
             if (infoPage == null)
             {

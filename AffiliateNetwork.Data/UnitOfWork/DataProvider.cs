@@ -4,8 +4,9 @@
     using System.Collections.Generic;
 
     using AffiliateNetwork.Contracts;
-    using AffiliateNetwork.Data.Repository;
+    using AffiliateNetwork.Contracts.Repository;
     using AffiliateNetwork.Models;
+    using AffiliateNetwork.Models.Base;
 
     public class DataProvider : IDataProvider
     {
@@ -63,7 +64,7 @@
             return this.databaseContext.SaveChanges();
         }
 
-        private IRepository<T> GetRepository<T>() where T : class
+        private IRepository<T> GetRepository<T>() where T : class, IAuditInfo
         {
             var typeOfRepository = typeof(T);
 

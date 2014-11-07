@@ -6,9 +6,18 @@
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    
-    public class User : IdentityUser
+    using AffiliateNetwork.Models.Base;
+    using System;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    public class User : IdentityUser, IAuditInfo
     {
+        public User()
+        {
+            // This will prevent UserManager.CreateAsync from causing exception
+            this.CreatedOn = DateTime.Now;
+        }
+
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
@@ -29,5 +38,14 @@
 
             return userIdentity;
         }
+
+        public DateTime CreatedOn { get; set; }
+
+        public bool PreserveCreatedOn { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
+
+        [Index]
+        public DateTime? DeletedOn { get; set; }
     }
 }

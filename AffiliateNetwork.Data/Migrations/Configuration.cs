@@ -15,7 +15,6 @@ namespace AffiliateNetwork.Data.Migrations
         protected override void Seed(AffiliateNetworkDbContext context)
         {
             InfoPagesSeeder.Seed(context);
-
             context.SaveChanges();
         }
     }

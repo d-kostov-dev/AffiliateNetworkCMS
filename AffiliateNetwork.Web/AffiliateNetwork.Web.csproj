@@ -273,7 +273,6 @@
     <Content Include="Grid.mvc.readme" />
     <Content Include="Areas\Administration\Views\Shared\_Grid.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_GridPager.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\YesNo.cshtml" />
     <Content Include="Areas\Administration\Views\InfoPages\_DetailsPartial.cshtml" />
     <Content Include="Areas\Administration\Views\SiteSettings\Create.cshtml" />
     <Content Include="Areas\Administration\Views\SiteSettings\Delete.cshtml" />
@@ -287,6 +286,7 @@
     <Content Include="Areas\Administration\Views\Campaigns\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_AddEditLayout.cshtml" />
     <Content Include="Areas\Administration\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\Boolean.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
