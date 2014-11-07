@@ -201,6 +201,7 @@
     <Compile Include="Infrastructure\Filters\AllowCors.cs" />
     <Compile Include="Infrastructure\Helpers\Html\Bootstrap.cs" />
     <Compile Include="Infrastructure\Helpers\Html\Buttons.cs" />
+    <Compile Include="Infrastructure\Helpers\Html\FormGroup.cs" />
     <Compile Include="Infrastructure\Helpers\Html\PerPageSelector.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
