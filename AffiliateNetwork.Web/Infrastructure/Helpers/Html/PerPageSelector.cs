@@ -8,6 +8,8 @@
     {
         public static IHtmlString PerPageDropDown(this HtmlHelper Html, int? perPage)
         {
+            //ManagePageSizing(Html);
+
             var perPageOptions = new int[] { 1, 2, 3 };
             var result = new StringBuilder();
 
@@ -29,5 +31,17 @@
 
             return new HtmlString(result.ToString());
         }
+
+        ////private static void ManagePageSizing(HtmlHelper html)
+        ////{
+        ////    int pagesize;
+
+        ////    if (!int.TryParse(html.ViewContext.HttpContext.Request.QueryString["perPage"], out pagesize))
+        ////    {
+        ////        pagesize = 1;
+        ////    }
+
+        ////    html.ViewBag.PageSize = pagesize;
+        ////}
     }
 }
