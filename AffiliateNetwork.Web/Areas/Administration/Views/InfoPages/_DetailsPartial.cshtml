@@ -1,0 +1,55 @@
+﻿@model AffiliateNetwork.Models.InfoPage
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                @ViewBag.Title
+            </div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SeoUrl)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SeoUrl)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Content)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Content)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Order)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Order)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.IsVisible)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.IsVisible)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

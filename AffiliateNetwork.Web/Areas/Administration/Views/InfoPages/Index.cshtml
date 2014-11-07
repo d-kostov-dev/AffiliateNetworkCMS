@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "List Information Pages";
 }
+
 @section Styles{
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
 }
@@ -12,33 +13,58 @@
 <div class="row">
     <div class="col-md-12">
         <h1>@ViewBag.Title</h1>
-        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        @Html.CreateButton()
         <hr />
     </div>
 </div>
 
-@helper EditColumn(int id)
+@using (Html.BeginForm("Index", "InfoPages", FormMethod.Get))
 {
-   @Html.ActionLink("Edit", "Edit", new { id = id }, new { @class = "btn btn-primary" })
+    @:Page Size: @Html.PerPageDropDown(ViewBag.PageSize as int?)
 }
-
-@helper DeleteColumn(int id)
-{
-    @Html.ActionLink("Delete", "Delete", new { id = id }, new { @class = "btn btn-danger" })
-}
-
 
 @Html.Grid(Model).Columns(columns =>
 {
-    columns.Add(x => x.Id).SetWidth(50).Sortable(true);
-    columns.Add(x => x.SeoUrl).SetWidth(100).Sortable(true);
-    columns.Add(x => x.Title).Sortable(true);
-    columns.Add(x => x.Content).Sortable(true);
-    columns.Add(x => x.Order).SetWidth(50).Sortable(true);
-    columns.Add(x => x.IsVisible).SetWidth(50);
-    columns.Add().RenderValueAs(x => EditColumn(x.Id)).Encoded(false).Sanitized(false).SetWidth(50);
-    columns.Add().RenderValueAs(x => DeleteColumn(x.Id)).Encoded(false).Sanitized(false).SetWidth(50);
-}).WithPaging(2)
+    columns.Add(x => x.Id)
+        .SetWidth(50)
+        .Sortable(true);
+    
+    columns.Add(x => x.SeoUrl)
+        .Titled("Seo URL")
+        .SetWidth(100)
+        .Sortable(true);
+
+    columns.Add(x => x.Title)
+        .RenderValueAs(x => Html.ActionLink(x.Title, "Details", new { Id = x.Id }, null).ToHtmlString())
+        .Encoded(false)
+        .Sanitized(false)
+        .Sortable(true)
+        .Filterable(true);
+
+    columns.Add(x => x.Order)
+        .SetWidth(50)
+        .Sortable(true);
+    
+    columns.Add()
+        .Titled("Active")
+        .RenderValueAs(x => @Html.DisplayFor(s => x.IsVisible))
+        .Encoded(false)
+        .Sanitized(false)
+        .SetWidth(50);
+    
+    columns.Add()
+        .RenderValueAs(x => @Html.EditButton(x.Id))
+        .Encoded(false)
+        .Sanitized(false)
+        .SetWidth(50);
+    
+    columns.Add()
+        .RenderValueAs(x => @Html.DeleteButton(x.Id))
+        .Encoded(false)
+        .Sanitized(false)
+        .SetWidth(50);
+
+}).WithPaging(ViewBag.PageSize)
 
 @section Scripts{
     <script src="@Url.Content("~/Scripts/jquery.min.js")" type="text/javascript"> </script>

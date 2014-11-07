@@ -22,8 +22,8 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-danger" />
-                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-success"})
+                @Html.SubmitButton("Delete")
+                @Html.SuccessButton("Cancel", "Index")
             </div>
         }
     </div>

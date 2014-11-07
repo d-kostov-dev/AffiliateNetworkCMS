@@ -13,6 +13,7 @@
 
         public virtual Campaign Campaign { get; set; }
 
+        [Display(Name = "Date")]
         public virtual DateTime DateCreated { get; set; }
     }
 }

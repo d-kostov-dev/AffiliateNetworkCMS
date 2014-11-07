@@ -199,7 +199,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Filters\AllowCors.cs" />
-    <Compile Include="Infrastructure\Helpers\PerPageHelper.cs" />
+    <Compile Include="Infrastructure\Helpers\Html\Bootstrap.cs" />
+    <Compile Include="Infrastructure\Helpers\Html\Buttons.cs" />
+    <Compile Include="Infrastructure\Helpers\Html\PerPageSelector.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -217,6 +219,8 @@
     <Content Include="Content\Manager\css\font-awesome.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Manager\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Manager\imgs\active.png" />
+    <Content Include="Content\Manager\imgs\unactive.png" />
     <Content Include="Content\Manager\scripts\bootstrap.js" />
     <Content Include="Content\Manager\scripts\bootstrap.min.js" />
     <Content Include="Content\Manager\scripts\jquery.js" />
@@ -268,6 +272,8 @@
     <Content Include="Grid.mvc.readme" />
     <Content Include="Areas\Administration\Views\Shared\_Grid.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_GridPager.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\YesNo.cshtml" />
+    <Content Include="Areas\Administration\Views\InfoPages\_DetailsPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />

@@ -2,7 +2,6 @@
 
 @using PagedList
 @using PagedList.Mvc
-@using AffiliateNetwork.Web.Infrastructure.Helpers
 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -12,7 +11,7 @@
 <div class="row">
     <div class="col-md-12">
         <h1>@ViewBag.Title</h1>
-        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        @Html.CreateButton()
         <hr />
     </div>
 
@@ -25,8 +24,8 @@
             <p>
                 Search: @Html.TextBox("SearchFilter", ViewBag.CurrentFilter as string)
                 Per Page: @Html.PerPageDropDown(ViewBag.PerPage as int?)
-                <input type="submit" value="Search" class="btn btn-primary btn-sm" />
-                @Html.ActionLink("Clear", "Index", null, new { @class = "btn btn-default btn-sm" })
+                @Html.SubmitButton("Search")
+                @Html.DefaultButton("Clear", "Index")
             </p>
         }
 

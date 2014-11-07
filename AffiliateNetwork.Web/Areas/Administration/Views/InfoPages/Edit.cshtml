@@ -1,12 +1,12 @@
 ﻿@model AffiliateNetwork.Models.InfoPage
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Info Page";
 }
 
 <div class="row">
-    <div class="col-md-6">
-        <h2>Edit Category</h2>
+    <div class="col-md-12">
+        <h2>@ViewBag.Title</h2>
 
         @using (Html.BeginForm())
         {
@@ -15,7 +15,7 @@
             <div class="form-horizontal">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        Edit Info Page
+                        @ViewBag.Title
                     </div>
                     <div class="panel-body">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -63,8 +63,8 @@
 
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Save" class="btn btn-primary" />
-                                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-success" })
+                                @Html.SubmitButton("Save")
+                                @Html.SuccessButton("Cancel", "Index")
                             </div>
                         </div>
                     </div>

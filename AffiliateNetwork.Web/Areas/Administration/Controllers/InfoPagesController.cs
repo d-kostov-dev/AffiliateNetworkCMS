@@ -20,6 +20,15 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
         public ActionResult Index()
         {
+            int pagesize;
+
+            if (!int.TryParse(Request.QueryString["perPage"], out pagesize))
+            {
+                pagesize = defaultPageSize;
+            }
+                
+            ViewBag.PageSize = pagesize;
+
             return View(this.Data.InfoPages.All().Select(ListInfoPageViewModel.ViewModel).OrderBy(x => x.Id));
         }
 

@@ -39,6 +39,7 @@
         public virtual CampaignType Type { get; set; }
 
         [Required]
+        [Display(Name = "Landing Page")]
         public string LandingPage { get; set; }
 
         [Required]
@@ -63,6 +64,7 @@
         public virtual DateTime DateCreated { get; set; }
 
         [Required]
+        [Display(Name = "Expiration Date")]
         public virtual DateTime ValidTo { get; set; }
 
         public virtual ICollection<Click> Clicks
@@ -104,6 +106,7 @@
             }
         }
 
+        [Display(Name = "Status")]
         public virtual ApprovalStatus ApprovalStatus { get; set; }
 
         public string AdminComment { get; set; }

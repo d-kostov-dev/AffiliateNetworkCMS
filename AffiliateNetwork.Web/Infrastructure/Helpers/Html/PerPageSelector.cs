@@ -1,24 +1,23 @@
-﻿namespace AffiliateNetwork.Web.Infrastructure.Helpers
+﻿namespace AffiliateNetwork.Web.Infrastructure.Helpers.Html
 {
+    using System.Text;
     using System.Web;
     using System.Web.Mvc;
-    using System.Linq;
-    using System.Text;
 
-    public static class HtmlExtensions
+    public static class PerPageSelector
     {
         public static IHtmlString PerPageDropDown(this HtmlHelper Html, int? perPage)
         {
             var perPageOptions = new int[] { 1, 2, 3 };
             var result = new StringBuilder();
 
-            result.AppendLine("<select name='perPage'>");
+            result.AppendLine("<select onchange='submit()' name='perPage'>");
 
             foreach (var item in perPageOptions)
             {
                 result.AppendLine(string.Format("<option value='{0}'", item));
 
-                if(item == perPage)
+                if (item == perPage)
                 {
                     result.AppendLine("selected='selected'");
                 }
