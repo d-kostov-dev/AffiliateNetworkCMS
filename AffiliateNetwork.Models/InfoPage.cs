@@ -22,6 +22,7 @@
 
         [Required]
         [MinLength(3)]
+        [DataType(DataType.MultilineText)]
         public string Content { get; set; }
 
         public int Order { get; set; }

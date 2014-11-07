@@ -18,10 +18,14 @@ namespace AffiliateNetwork.Web.Infrastructure.Helpers.Html
             var outerDiv = GenerateOuterDiv();
             var innerDiv = GenerateInnerDiv();
 
-            innerDiv.InnerHtml += htmlHelper.EditorFor(expression, new { htmlAttributes = new { @class = "form-control" } });
-            innerDiv.InnerHtml += htmlHelper.ValidationMessageFor(expression, "", new { @class = "text-danger" });
+            innerDiv.InnerHtml += 
+                htmlHelper.EditorFor(expression, new { htmlAttributes = new { @class = "form-control" } });
 
-            outerDiv.InnerHtml += htmlHelper.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" });
+            innerDiv.InnerHtml += 
+                htmlHelper.ValidationMessageFor(expression, "", new { @class = "text-danger" });
+
+            outerDiv.InnerHtml += 
+                htmlHelper.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" });
             outerDiv.InnerHtml += innerDiv.ToString();
 
             return new MvcHtmlString(outerDiv.ToString());
