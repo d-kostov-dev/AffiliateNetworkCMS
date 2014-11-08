@@ -185,7 +185,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
-    <Compile Include="Areas\Administration\Controllers\AdminBaseController.cs" />
+    <Compile Include="Areas\Administration\Controllers\Base\AdminBaseController.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Administration\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Administration\Controllers\InfoPagesController.cs" />

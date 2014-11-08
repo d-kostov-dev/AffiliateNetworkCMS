@@ -2,6 +2,7 @@
 {
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Models;
+    using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
     using AffiliateNetwork.Web.Areas.Administration.Models.InputModels;
     using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
     using PagedList;

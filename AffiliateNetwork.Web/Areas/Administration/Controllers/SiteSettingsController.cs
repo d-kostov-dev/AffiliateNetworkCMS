@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using AffiliateNetwork.Data;
 using AffiliateNetwork.Models;
 using AffiliateNetwork.Contracts;
+using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
 
 namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {

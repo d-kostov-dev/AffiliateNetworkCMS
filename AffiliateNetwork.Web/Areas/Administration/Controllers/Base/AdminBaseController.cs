@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AffiliateNetwork.Web.Areas.Administration.Controllers
+namespace AffiliateNetwork.Web.Areas.Administration.Controllers.Base
 {
     public class AdminBaseController : Controller
     {
