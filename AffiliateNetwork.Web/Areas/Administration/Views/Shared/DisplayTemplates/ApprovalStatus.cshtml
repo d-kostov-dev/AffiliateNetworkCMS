@@ -2,13 +2,13 @@
 
 @if (Model == AffiliateNetwork.Common.Enumerations.ApprovalStatus.Approved)
 {
-    <img src="~/Content/Manager/imgs/active.png" />
+    <img src="~/Content/Manager/imgs/active.png" alt="Approved" title="Approved" />
 }
 else if (Model == AffiliateNetwork.Common.Enumerations.ApprovalStatus.Disapproved)
 {
-    <img src="~/Content/Manager/imgs/unactive.png" />
+    <img src="~/Content/Manager/imgs/unactive.png" alt="Disapproved" title="Disapproved" />
 }
 else
 {
-    <img src="~/Content/Manager/imgs/waiting.png" />
+    <img src="~/Content/Manager/imgs/waiting.png" alt="Waiting Approval" title="Waiting Approval" />
 }
