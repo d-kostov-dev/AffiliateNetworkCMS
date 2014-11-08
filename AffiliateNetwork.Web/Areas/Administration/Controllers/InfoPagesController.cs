@@ -7,7 +7,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Models;
-    using AffiliateNetwork.Web.Areas.Administration.Models;
+    using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
 
     public class InfoPagesController : AdminBaseController
     {

@@ -1,8 +1,9 @@
 ﻿namespace AffiliateNetwork.Contracts
 {
+    using AffiliateNetwork.Models.Base;
     using System.Linq;
 
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : class, IAuditInfo
     {
         IQueryable<T> All();
 

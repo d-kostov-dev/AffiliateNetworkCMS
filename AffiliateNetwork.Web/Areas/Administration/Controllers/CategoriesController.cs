@@ -2,13 +2,14 @@
 {
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Models;
+    using AffiliateNetwork.Web.Areas.Administration.Models.InputModels;
+    using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
+    using PagedList;
     using System;
     using System.Linq;
     using System.Linq.Dynamic;
     using System.Net;
     using System.Web.Mvc;
-    using AffiliateNetwork.Web.Areas.Administration.Models;
-    using PagedList;
 
 
     public class CategoriesController : AdminBaseController

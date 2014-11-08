@@ -56,7 +56,7 @@
             var allEntries =
                 this.ChangeTracker
                 .Entries()
-                .Where(e => e.Entity is AuditInfo && (e.State == EntityState.Added) || (e.State == EntityState.Modified));
+                .Where(e => (e.State == EntityState.Added) || (e.State == EntityState.Modified));
 
             foreach (var entry in allEntries)
             {
