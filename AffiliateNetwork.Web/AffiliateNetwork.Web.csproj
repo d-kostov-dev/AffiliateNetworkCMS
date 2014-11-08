@@ -197,8 +197,10 @@
     <Compile Include="Areas\Administration\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Administration\Controllers\InfoPagesController.cs" />
     <Compile Include="Areas\Administration\Controllers\SiteSettingsController.cs" />
+    <Compile Include="Areas\Administration\Models\InputModels\CampaignCreateEditViewModel.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\CategoryViewModels.cs" />
     <Compile Include="Areas\Administration\Models\InputModels\GridOptionsInputModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\CampaignViewModels.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\InfoPageViewModels.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -225,7 +227,10 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Manager\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Manager\imgs\active.png" />
+    <Content Include="Content\Manager\imgs\cpa.png" />
+    <Content Include="Content\Manager\imgs\cpc.png" />
     <Content Include="Content\Manager\imgs\unactive.png" />
+    <Content Include="Content\Manager\imgs\waiting.png" />
     <Content Include="Content\Manager\scripts\bootstrap.js" />
     <Content Include="Content\Manager\scripts\bootstrap.min.js" />
     <Content Include="Content\Manager\scripts\jquery.js" />
@@ -286,6 +291,8 @@
     <Content Include="Areas\Administration\Views\Campaigns\Details.cshtml" />
     <Content Include="Areas\Administration\Views\Campaigns\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Campaigns\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\CampaignType.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\ApprovalStatus.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
@@ -343,7 +350,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

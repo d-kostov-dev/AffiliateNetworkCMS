@@ -10,13 +10,29 @@
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
     
     public class User : IdentityUser, IAuditInfo
     {
+        private ICollection<Campaign> campaigns;
         public User()
         {
             // This will prevent UserManager.CreateAsync from causing exception
             this.CreatedOn = DateTime.Now;
+            this.campaigns = new HashSet<Campaign>();
+        }
+
+        public virtual ICollection<Campaign> Campaings
+        {
+            get
+            {
+                return this.campaigns;
+            }
+
+            set
+            {
+                this.campaigns = value;
+            }
         }
 
         [Display(Name = "First Name")]

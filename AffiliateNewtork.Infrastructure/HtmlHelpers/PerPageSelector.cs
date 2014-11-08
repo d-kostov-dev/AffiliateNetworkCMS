@@ -8,7 +8,8 @@
     {
         public static IHtmlString PerPageDropDown(this HtmlHelper htmlHelper, int? perPage)
         {
-            var perPageOptions = new int[] { 1, 2, 3 };
+            var perPageOptions = new int[] { 1, 5, 10, 30, 50 };
+
             var result = new StringBuilder();
 
             result.AppendLine("<select onchange='submit()' name='perPage'>");

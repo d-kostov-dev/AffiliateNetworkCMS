@@ -15,8 +15,6 @@
 
     public class CategoriesController : AdminBaseController
     {
-        private const int defaultPageSize = 1;
-
         public CategoriesController(IDataProvider provider)
             : base(provider)
         {

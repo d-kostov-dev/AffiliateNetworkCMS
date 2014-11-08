@@ -17,7 +17,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Models.ViewModels
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    CampaignsCount = x.Campaigns.Count(),
+                    CampaignsCount = x.Campaigns.Where(c => c.DeletedOn == null).Count(),
                 };
             }
         }

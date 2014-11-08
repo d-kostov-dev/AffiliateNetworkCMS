@@ -7,9 +7,10 @@ using System.Web.Mvc;
 
 namespace AffiliateNetwork.Web.Areas.Administration.Controllers.Base
 {
+    [Authorize]
     public class AdminBaseController : Controller
     {
-        private const int defaultPageSize = 1;
+        private const int defaultPageSize = 5;
 
         public AdminBaseController(IDataProvider provider)
         {

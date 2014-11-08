@@ -1,93 +1,89 @@
-﻿@model IEnumerable<AffiliateNetwork.Models.Campaign>
+﻿@model IEnumerable<AffiliateNetwork.Web.Areas.Administration.Models.ViewModels.ListCampaignsViewModel>
+
+@using GridMvc.Html
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List Campaigns";
 }
 
-<h2>Index</h2>
+@Html.Partial("_PageHeadingPartial")
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LandingPage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Payout)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValidTo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApprovalStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AdminComment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeletedOn)
-        </th>
-        <th></th>
-    </tr>
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(x => x.Id)
+        .SetWidth(30)
+        .Sortable(true);
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LandingPage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Payout)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValidTo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApprovalStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdminComment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeletedOn)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+    columns.Add(x => x.Title)
+        .SetWidth(120)
+        .RenderValueAs(x => Html.ActionLink(x.Title, "Details", new { Id = x.Id }, null).ToHtmlString())
+        .Encoded(false)
+        .Sanitized(false)
+        .Sortable(true)
+        .Filterable(true);
+
+    columns.Add(x => x.CategoryName)
+        .Titled("Category")
+        .Filterable(true)
+        .Sortable(true);
+
+    columns.Add(x => x.Type)
+        .Sortable(true)
+        .RenderValueAs(x => Html.DisplayFor(c => x.Type).ToHtmlString())
+        .Titled("Type")
+        .Encoded(false)
+        .Sanitized(false);
+
+    columns.Add(x => x.Payout)
+        .SetWidth(30)
+        .Filterable(true)
+        .Sortable(true);
+
+    columns.Add(x => x.Owner.CompanyName)
+        .Titled("Owner")
+        .Filterable(true)
+        .Sortable(true);
+
+    columns.Add(x => x.ClicksCount)
+        .Titled("Clicks")
+        .SetWidth(30)
+        .Sortable(true);
+
+    columns.Add(x => x.AffiliatesCount)
+        .Titled("Affiliates")
+        .SetWidth(30)
+        .Sortable(true);
+    
+    columns.Add(x => x.CreatedOn)
+        .Sortable(true);
+
+    columns.Add()
+        .RenderValueAs(x => Html.DisplayFor(c => x.ApprovalStatus).ToHtmlString())
+        .Titled("Status")
+        .Encoded(false)
+        .Sanitized(false)
+        .Sortable(true);
+    
+    // Buttons
+    columns.Add()
+        .RenderValueAs(x => Html.EditButton(x.Id))
+        .Encoded(false)
+        .Sanitized(false)
+        .SetWidth(50);
+
+    columns.Add()
+        .RenderValueAs(x => Html.DeleteButton(x.Id))
+        .Encoded(false)
+        .Sanitized(false)
+        .SetWidth(50);
+
+}).WithPaging(ViewBag.PageSize)
+
+@section Scripts{
+    <script src="@Url.Content("~/Scripts/jquery.min.js")" type="text/javascript"> </script>
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
 }
 
-</table>
+@section Styles{
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+}

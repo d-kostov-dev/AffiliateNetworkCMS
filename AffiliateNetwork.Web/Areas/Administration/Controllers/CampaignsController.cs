@@ -1,128 +1,159 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using AffiliateNetwork.Data;
-using AffiliateNetwork.Models;
-
-namespace AffiliateNetwork.Web.Areas.Administration.Controllers
+﻿namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {
-    public class CampaignsController : Controller
-    {
-        private AffiliateNetworkDbContext db = new AffiliateNetworkDbContext();
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Mvc;
 
-        // GET: Administration/Campaigns
-        public ActionResult Index()
+    using AffiliateNetwork.Contracts;
+    using AffiliateNetwork.Models;
+    using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
+    using AffiliateNetwork.Web.Areas.Administration.Models.InputModels;
+    using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
+
+    using AutoMapper.QueryableExtensions;
+    using Microsoft.AspNet.Identity;
+
+    public class CampaignsController : AdminBaseController
+    {
+        public CampaignsController(IDataProvider provider)
+            : base(provider)
         {
-            return View(db.Campaigns.ToList());
         }
 
-        // GET: Administration/Campaigns/Details/5
+        public ActionResult Index()
+        {
+            this.ManagePageSizing();
+
+            var campaigns =
+                this.Data.Campaigns
+                .All()
+                .OrderBy(x => x.Id)
+                .Project().To<ListCampaignsViewModel>();
+
+            return View(campaigns);
+        }
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Campaign campaign = db.Campaigns.Find(id);
+
+            Campaign campaign = this.Data.Campaigns.Find(id);
+
             if (campaign == null)
             {
                 return HttpNotFound();
             }
+
             return View(campaign);
         }
 
-        // GET: Administration/Campaigns/Create
         public ActionResult Create()
         {
+            this.SetCategories();
+
             return View();
         }
 
-        // POST: Administration/Campaigns/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,Type,LandingPage,Payout,ValidTo,ApprovalStatus,AdminComment,CreatedOn,ModifiedOn,DeletedOn")] Campaign campaign)
+        public ActionResult Create(CampaignCreateEditViewModel campaign)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Campaigns.Add(campaign);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                this.SetCategories();
+                return View(campaign);
             }
 
-            return View(campaign);
+            var campaignToAdd = new Campaign()
+            {
+                Title = campaign.Title,
+                Description = campaign.Description,
+                Payout = campaign.Payout,
+                LandingPage = campaign.LandingPage,
+                ValidTo = campaign.ValidTo,
+                OwnerId = User.Identity.GetUserId(),
+                CategoryId = campaign.CategoryId,
+                ApprovalStatus = campaign.ApprovalStatus,
+                Type = campaign.Type,
+            };
+
+            this.Data.Campaigns.Add(campaignToAdd);
+            this.Data.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Administration/Campaigns/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Campaign campaign = db.Campaigns.Find(id);
+
+            Campaign campaign = this.Data.Campaigns.Find(id);
+
             if (campaign == null)
             {
                 return HttpNotFound();
             }
+
             return View(campaign);
         }
 
-        // POST: Administration/Campaigns/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,Type,LandingPage,Payout,ValidTo,ApprovalStatus,AdminComment,CreatedOn,ModifiedOn,DeletedOn")] Campaign campaign)
+        public ActionResult Edit(Campaign campaign)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(campaign).State = EntityState.Modified;
-                db.SaveChanges();
+                this.Data.Campaigns.Update(campaign);
+                this.Data.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(campaign);
         }
 
-        // GET: Administration/Campaigns/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Campaign campaign = db.Campaigns.Find(id);
+
+            Campaign campaign = this.Data.Campaigns.Find(id);
+
             if (campaign == null)
             {
                 return HttpNotFound();
             }
+
             return View(campaign);
         }
 
-        // POST: Administration/Campaigns/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Campaign campaign = db.Campaigns.Find(id);
-            db.Campaigns.Remove(campaign);
-            db.SaveChanges();
+            Campaign campaign = this.Data.Campaigns.Find(id);
+
+            this.Data.Campaigns.Delete(campaign);
+            this.Data.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+        private void SetCategories()
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            IEnumerable<SelectListItem> items =
+                this.Data.Categories
+                .All()
+                .Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.Name });
+
+            ViewBag.CategoryId = items;
         }
     }
 }

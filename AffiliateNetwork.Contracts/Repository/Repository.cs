@@ -4,6 +4,7 @@
     using System.Linq;
 
     using AffiliateNetwork.Models.Base;
+    using System;
     
     public class Repository<T> : IRepository<T> where T : class, IAuditInfo
     {
@@ -33,25 +34,26 @@
 
         public void Add(T entity)
         {
+            entity.CreatedOn = DateTime.Now;
             this.ChangeState(entity, EntityState.Added);
         }
 
         public void Update(T entity)
         {
+            entity.ModifiedOn = DateTime.Now;
             this.ChangeState(entity, EntityState.Modified);
         }
 
-        public T Delete(T entity)
+        public void Delete(T entity)
         {
-            this.ChangeState(entity, EntityState.Deleted);
-            return entity;
+            entity.DeletedOn = DateTime.Now;
+            this.ChangeState(entity, EntityState.Modified);
         }
 
-        public T Delete(object id)
+        public void Delete(object id)
         {
             var entity = this.Find(id);
             this.Delete(entity);
-            return entity;
         }
 
         public int SaveChanges()

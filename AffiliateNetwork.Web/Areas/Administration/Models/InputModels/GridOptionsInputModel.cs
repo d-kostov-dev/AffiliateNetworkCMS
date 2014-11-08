@@ -11,7 +11,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Models.InputModels
         public GridOptionsInputModel()
         {
             this.Sorting = "Id";
-            this.PerPage = 1;
+            this.PerPage = 5;
             this.Page = 1;
         }
 

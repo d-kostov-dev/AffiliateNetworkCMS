@@ -6,7 +6,7 @@
 
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Models;
-
+    
     public class InfoPagesSeeder
     {
         public static void Seed(IDbContext databaseContext)

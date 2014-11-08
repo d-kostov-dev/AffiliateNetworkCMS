@@ -1,0 +1,14 @@
+﻿@model AffiliateNetwork.Common.Enumerations.ApprovalStatus
+
+@if (Model == AffiliateNetwork.Common.Enumerations.ApprovalStatus.Approved)
+{
+    <img src="~/Content/Manager/imgs/active.png" />
+}
+else if (Model == AffiliateNetwork.Common.Enumerations.ApprovalStatus.Disapproved)
+{
+    <img src="~/Content/Manager/imgs/unactive.png" />
+}
+else
+{
+    <img src="~/Content/Manager/imgs/waiting.png" />
+}

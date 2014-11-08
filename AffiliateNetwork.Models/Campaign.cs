@@ -32,10 +32,18 @@
 
         [Required]
         [MinLength(50)]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [Required]
+        public int CategoryId { get; set; }
+        
         public virtual Category Category { get; set; }
+
+        [Required]
+        public string OwnerId { get; set; }
+
+        public virtual User Owner { get; set; }
 
         public virtual CampaignType Type { get; set; }
 
@@ -44,10 +52,8 @@
         public string LandingPage { get; set; }
 
         [Required]
+        [DataType(DataType.Currency)]
         public decimal Payout { get; set; }
-
-        [Required]
-        public virtual User Owner { get; set; }
 
         public virtual ICollection<User> Affiliates
         {
@@ -108,6 +114,8 @@
         [Display(Name = "Status")]
         public virtual ApprovalStatus ApprovalStatus { get; set; }
 
+        [Display(Name = "Admin Comment")]
+        [DataType(DataType.MultilineText)]
         public string AdminComment { get; set; }
     }
 }
