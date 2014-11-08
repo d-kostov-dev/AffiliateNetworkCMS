@@ -1,9 +1,10 @@
 ﻿namespace AffiliateNetwork.Models
 {
-    using AffiliateNetwork.Models.Base;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    using AffiliateNetwork.Models.Base;
+    
     public class SiteSetting : AuditInfo
     {
         [Key]

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Mvc.Html;
-
-namespace AffiliateNetwork.Infrastructure.HtmlHelpers
+﻿namespace AffiliateNetwork.Infrastructure.HtmlHelpers
 {
+    using System;
+    using System.Linq.Expressions;
+    using System.Web.Mvc;
+    using System.Web.Mvc.Html;
+
     public static class FormGroup
     {
         public static MvcHtmlString FormGroupFor<TModel, TValue>(
@@ -22,14 +19,13 @@ namespace AffiliateNetwork.Infrastructure.HtmlHelpers
                 htmlHelper.EditorFor(expression, new { htmlAttributes = new { @class = "form-control" } });
 
             innerDiv.InnerHtml += 
-                htmlHelper.ValidationMessageFor(expression, "", new { @class = "text-danger" });
+                htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = "text-danger" });
 
             outerDiv.InnerHtml += 
                 htmlHelper.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" });
             outerDiv.InnerHtml += innerDiv.ToString();
 
             return new MvcHtmlString(outerDiv.ToString());
-
         }
 
         public static MvcHtmlString EnumFormGroupFor<TModel, TValue>(
@@ -44,14 +40,13 @@ namespace AffiliateNetwork.Infrastructure.HtmlHelpers
                 htmlHelper.EnumDropDownListFor(expression, htmlAttributes: new { @class = "form-control" });
 
             innerDiv.InnerHtml +=
-                htmlHelper.ValidationMessageFor(expression, "", new { @class = "text-danger" });
+                htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = "text-danger" });
 
             outerDiv.InnerHtml +=
                 htmlHelper.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" });
             outerDiv.InnerHtml += innerDiv.ToString();
 
             return new MvcHtmlString(outerDiv.ToString());
-
         }
 
         private static TagBuilder GenerateOuterDiv()

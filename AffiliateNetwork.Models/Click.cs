@@ -1,9 +1,10 @@
 ﻿namespace AffiliateNetwork.Models
 {
-    using AffiliateNetwork.Models.Base;
     using System;
     using System.ComponentModel.DataAnnotations;
 
+    using AffiliateNetwork.Models.Base;
+    
     public class Click : AuditInfo
     {
         [Key]

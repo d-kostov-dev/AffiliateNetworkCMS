@@ -1,15 +1,15 @@
 ﻿namespace AffiliateNetwork.Data
 {
+    using System;
     using System.Data.Entity;
+    using System.Linq;
 
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Data.Migrations;
     using AffiliateNetwork.Models;
+    using AffiliateNetwork.Models.Base;
 
     using Microsoft.AspNet.Identity.EntityFramework;
-    using AffiliateNetwork.Models.Base;
-    using System.Linq;
-    using System;
 
     public class AffiliateNetworkDbContext : IdentityDbContext<User>, IDbContext
     {

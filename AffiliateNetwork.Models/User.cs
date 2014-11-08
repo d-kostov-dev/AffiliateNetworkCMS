@@ -1,15 +1,16 @@
 ﻿namespace AffiliateNetwork.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
+    using AffiliateNetwork.Models.Base;
+
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using AffiliateNetwork.Models.Base;
-    using System;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public class User : IdentityUser, IAuditInfo
     {
         public User()
@@ -32,13 +33,6 @@
         [Display(Name = "Contact Phone")]
         public string ContactPhone { get; set; }
 
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
-        {
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-
-            return userIdentity;
-        }
-
         public DateTime CreatedOn { get; set; }
 
         public bool PreserveCreatedOn { get; set; }
@@ -47,5 +41,12 @@
 
         [Index]
         public DateTime? DeletedOn { get; set; }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
+        {
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+
+            return userIdentity;
+        }
     }
 }

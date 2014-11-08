@@ -1,10 +1,11 @@
 ﻿namespace AffiliateNetwork.Models
 {
-    using AffiliateNetwork.Models.Base;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    using AffiliateNetwork.Models.Base;
+    
     public class Category : AuditInfo
     {
         private ICollection<Campaign> campaigns;

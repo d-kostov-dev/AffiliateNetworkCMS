@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Mvc.Html;
-
-namespace AffiliateNetwork.Infrastructure.HtmlHelpers
+﻿namespace AffiliateNetwork.Infrastructure.HtmlHelpers
 {
+    using System;
+    using System.Web.Mvc;
+    using System.Web.Mvc.Html;
+
     public static class Buttons
     {
         public static MvcHtmlString CreateButton(this HtmlHelper htmlHelper, string text = null)
         {
-            if(String.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text))
             {
                 text = "Create New";
             }
@@ -22,17 +18,17 @@ namespace AffiliateNetwork.Infrastructure.HtmlHelpers
 
         public static MvcHtmlString EditButton(this HtmlHelper htmlHelper, int id, string text = null)
         {
-            if (String.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text))
             {
                 text = "Edit";
             }
 
-            return PrimaryButton(htmlHelper, text, "Edit", new { id = id});
+            return PrimaryButton(htmlHelper, text, "Edit", new { id = id });
         }
 
         public static MvcHtmlString DeleteButton(this HtmlHelper htmlHelper, int id, string text = null)
         {
-            if (String.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text))
             {
                 text = "Delete";
             }

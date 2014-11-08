@@ -27,16 +27,17 @@
 
         private static void LoadStandardMappings(IEnumerable<Type> types)
         {
-            var maps = (from t in types
-                        from i in t.GetInterfaces()
-                        where i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>) &&
-                              !t.IsAbstract &&
-                              !t.IsInterface
-                        select new
-                        {
-                            Source = i.GetGenericArguments()[0],
-                            Destination = t
-                        });
+            var maps = from t in types
+                       from i in t.GetInterfaces()
+                       where i.IsGenericType && 
+                             i.GetGenericTypeDefinition() == typeof(IMapFrom<>) &&
+                             !t.IsAbstract &&
+                             !t.IsInterface
+                       select new
+                       {
+                           Source = i.GetGenericArguments()[0],
+                           Destination = t
+                       };
 
             foreach (var map in maps)
             {
@@ -46,12 +47,12 @@
 
         private static void LoadCustomMappings(IEnumerable<Type> types)
         {
-            var maps = (from t in types
-                        from i in t.GetInterfaces()
-                        where typeof(IHaveCustomMappings).IsAssignableFrom(t) &&
-                              !t.IsAbstract &&
-                              !t.IsInterface
-                        select (IHaveCustomMappings)Activator.CreateInstance(t));
+            var maps = from t in types
+                       from i in t.GetInterfaces()
+                       where typeof(IHaveCustomMappings).IsAssignableFrom(t) &&
+                             !t.IsAbstract &&
+                             !t.IsInterface
+                       select (IHaveCustomMappings)Activator.CreateInstance(t);
 
             foreach (var map in maps)
             {

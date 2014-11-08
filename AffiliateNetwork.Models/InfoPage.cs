@@ -13,7 +13,7 @@
         [Required]
         [MinLength(3)]
         [MaxLength(20)]
-        [Display(Name= "Seo URL")]
+        [Display(Name = "Seo URL")]
         public string SeoUrl { get; set; }
 
         [Required]

@@ -1,12 +1,11 @@
 ﻿namespace AffiliateNetwork.Data.Migrations.Seeders
 {
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
 
-    using AffiliateNetwork.Common.Enumerations;
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Models;
-    using System;
 
     public class InfoPagesSeeder
     {
