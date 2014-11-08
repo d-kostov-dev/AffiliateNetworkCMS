@@ -186,6 +186,7 @@
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\Base\AdminBaseController.cs" />
+    <Compile Include="Areas\Administration\Controllers\CampaignsController.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Administration\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Administration\Controllers\InfoPagesController.cs" />
@@ -274,6 +275,11 @@
     <Content Include="Areas\Administration\Views\Shared\_AddEditLayout.cshtml" />
     <Content Include="Areas\Administration\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\Boolean.cshtml" />
+    <Content Include="Areas\Administration\Views\Campaigns\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Campaigns\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\Campaigns\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\Campaigns\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Campaigns\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
