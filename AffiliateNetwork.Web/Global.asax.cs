@@ -1,6 +1,8 @@
-﻿using System;
+﻿using AffiliateNetwork.Infrastructure.Mapping;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -18,6 +20,9 @@ namespace AffiliateNetwork.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ViewEnginesConfig.RegisterViewEngines(ViewEngines.Engines);
+
+            var autoMapperConfig = new AutoMapperConfig(Assembly.GetExecutingAssembly());
+            autoMapperConfig.Execute();
         }
     }
 }
