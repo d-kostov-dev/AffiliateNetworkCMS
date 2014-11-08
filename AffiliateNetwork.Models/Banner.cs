@@ -10,6 +10,8 @@
         public int Id { get; set; }
 
         [Required]
+        public int CampaignId { get; set; }
+
         public virtual Campaign Campaign { get; set; }
 
         [Required]

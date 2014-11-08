@@ -11,7 +11,12 @@
         public int Id { get; set; }
 
         [Required]
+        public string AffiliateId { get; set; }
+
         public virtual User Affiliate { get; set; }
+
+        [Required]
+        public int CampaignId { get; set; }
 
         public virtual Campaign Campaign { get; set; }
     }
