@@ -1,11 +1,11 @@
 ﻿namespace AffiliateNetwork.Contracts.Repository
 {
+    using System;
     using System.Data.Entity;
     using System.Linq;
 
     using AffiliateNetwork.Models.Base;
-    using System;
-    
+
     public class Repository<T> : IRepository<T> where T : class, IAuditInfo
     {
         private IDbContext databaseContext;

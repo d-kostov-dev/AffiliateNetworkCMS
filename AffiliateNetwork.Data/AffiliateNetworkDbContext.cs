@@ -2,6 +2,7 @@
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
     using System.Linq;
 
     using AffiliateNetwork.Contracts;
@@ -44,54 +45,11 @@
             return base.Set<TEntity>();
         }
 
-        //public override int SaveChanges()
-        //{
-        //    this.ApplyAuditInfoRules();
-        //    this.ApplyDeletableEntityRules();
-        //    return base.SaveChanges();
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>(); 
 
-        //private void ApplyAuditInfoRules()
-        //{
-        //    var allEntries =
-        //        this.ChangeTracker
-        //        .Entries()
-        //        .Where(e => (e.State == EntityState.Added) || (e.State == EntityState.Modified));
-
-        //    foreach (var entry in allEntries)
-        //    {
-        //        var entity = (IAuditInfo)entry.Entity;
-
-        //        if (entry.State == EntityState.Added)
-        //        {
-        //            if (!entity.PreserveCreatedOn)
-        //            {
-        //                entity.CreatedOn = DateTime.Now;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            entity.ModifiedOn = DateTime.Now;
-
-        //            // If deleted item is edited it is UnDeleted again
-        //            entity.DeletedOn = null;
-        //        }
-        //    }
-        //}
-
-        //private void ApplyDeletableEntityRules()
-        //{
-        //    var allEntries = this.ChangeTracker
-        //        .Entries()
-        //        .Where(e => e.State == EntityState.Deleted);
-
-        //    foreach (var entry in allEntries)
-        //    {
-        //        var entity = (IAuditInfo)entry.Entity;
-
-        //        entity.DeletedOn = DateTime.Now;
-        //        entry.State = EntityState.Modified;
-        //    }
-        //}
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

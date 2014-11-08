@@ -1,12 +1,12 @@
 ﻿namespace AffiliateNetwork.Data.Migrations.Seeders
 {
+    using System;
     using System.Linq;
 
     using AffiliateNetwork.Models;
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using System;
 
     public class IdentitySeeder
     {

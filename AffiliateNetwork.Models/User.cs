@@ -1,6 +1,7 @@
 ﻿namespace AffiliateNetwork.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
@@ -10,16 +11,18 @@
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-using System.Collections.Generic;
-    
+
     public class User : IdentityUser, IAuditInfo
     {
         private ICollection<Campaign> campaigns;
+        private ICollection<Click> clicks;
+
         public User()
         {
             // This will prevent UserManager.CreateAsync from causing exception
             this.CreatedOn = DateTime.Now;
             this.campaigns = new HashSet<Campaign>();
+            this.clicks = new HashSet<Click>();
         }
 
         public virtual ICollection<Campaign> Campaings
@@ -32,6 +35,19 @@ using System.Collections.Generic;
             set
             {
                 this.campaigns = value;
+            }
+        }
+
+        public virtual ICollection<Click> Clicks
+        {
+            get
+            {
+                return this.clicks;
+            }
+
+            set
+            {
+                this.clicks = value;
             }
         }
 

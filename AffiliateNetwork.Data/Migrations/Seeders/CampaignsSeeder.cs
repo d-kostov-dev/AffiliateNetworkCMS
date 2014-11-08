@@ -1,11 +1,12 @@
 ﻿namespace AffiliateNetwork.Data.Migrations.Seeders
 {
-    using AffiliateNetwork.Common.Enumerations;
-    using AffiliateNetwork.Models;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
     using System.Linq;
+
+    using AffiliateNetwork.Common.Enumerations;
+    using AffiliateNetwork.Models;
 
     public class CampaignsSeeder
     {

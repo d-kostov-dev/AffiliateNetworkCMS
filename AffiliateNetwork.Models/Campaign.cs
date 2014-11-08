@@ -6,7 +6,7 @@
 
     using AffiliateNetwork.Common.Enumerations;
     using AffiliateNetwork.Models.Base;
-
+    
     public class Campaign : AuditInfo
     {
         private ICollection<Click> clicks;
