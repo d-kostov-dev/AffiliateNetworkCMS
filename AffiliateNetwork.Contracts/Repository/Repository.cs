@@ -34,20 +34,20 @@
 
         public void Add(T entity)
         {
-            entity.CreatedOn = DateTime.Now;
             this.ChangeState(entity, EntityState.Added);
+            entity.CreatedOn = DateTime.Now;
         }
 
         public void Update(T entity)
         {
-            entity.ModifiedOn = DateTime.Now;
             this.ChangeState(entity, EntityState.Modified);
+            entity.ModifiedOn = DateTime.Now;
         }
 
         public void Delete(T entity)
         {
-            entity.DeletedOn = DateTime.Now;
             this.ChangeState(entity, EntityState.Modified);
+            entity.DeletedOn = DateTime.Now;
         }
 
         public void Delete(object id)

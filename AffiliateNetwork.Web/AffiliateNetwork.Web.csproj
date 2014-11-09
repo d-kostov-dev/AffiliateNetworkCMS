@@ -293,6 +293,7 @@
     <Content Include="Areas\Administration\Views\Campaigns\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\CampaignType.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\ApprovalStatus.cshtml" />
+    <Content Include="Areas\Administration\Views\Campaigns\_DetailsPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />

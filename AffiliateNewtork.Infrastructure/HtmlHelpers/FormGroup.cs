@@ -24,6 +24,7 @@ using System.Web.Mvc.Html;
 
             outerDiv.InnerHtml += 
                 htmlHelper.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" });
+
             outerDiv.InnerHtml += innerDiv.ToString();
 
             return new MvcHtmlString(outerDiv.ToString());
@@ -45,6 +46,7 @@ using System.Web.Mvc.Html;
 
             outerDiv.InnerHtml +=
                 htmlHelper.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" });
+
             outerDiv.InnerHtml += innerDiv.ToString();
 
             return new MvcHtmlString(outerDiv.ToString());
@@ -67,6 +69,7 @@ using System.Web.Mvc.Html;
 
             outerDiv.InnerHtml +=
                 htmlHelper.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" });
+
             outerDiv.InnerHtml += innerDiv.ToString();
 
             return new MvcHtmlString(outerDiv.ToString());

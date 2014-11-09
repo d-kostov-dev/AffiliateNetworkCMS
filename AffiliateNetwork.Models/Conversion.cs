@@ -2,10 +2,10 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using AffiliateNetwork.Models.Base;
-    using System.ComponentModel.DataAnnotations.Schema;
-    
+
     public class Conversion : AuditInfo
     {
         [Key]

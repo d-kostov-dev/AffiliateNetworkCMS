@@ -18,6 +18,7 @@ namespace AffiliateNetwork.Data.Migrations
             InfoPagesSeeder.Seed(context);
             CategorySeeder.Seed(context);
             CampaignsSeeder.Seed(context);
+            SettingsSeeder.Seed(context);
 
             // Just in case i forget .SaveChanges in any of the seeders
             context.SaveChanges();

@@ -1,34 +1,38 @@
 ﻿namespace AffiliateNetwork.Infrastructure.HtmlHelpers
 {
+    using System.Collections.Generic;
     using System.Text;
     using System.Web;
     using System.Web.Mvc;
+    using System.Web.Mvc.Html;
 
     public static class PerPageSelector
     {
-        public static IHtmlString PerPageDropDown(this HtmlHelper htmlHelper, int? perPage)
+        public static MvcHtmlString PerPageDropDown(this HtmlHelper htmlHelper, int? perPage)
         {
-            var perPageOptions = new int[] { 1, 5, 10, 30, 50 };
+            var defaultPageSize = int.Parse(htmlHelper.ViewContext.Controller.ViewBag.Settings["ItemsPerPage"]);
 
-            var result = new StringBuilder();
+            var perPageOptions = new List<SelectListItem>();
 
-            result.AppendLine("<select onchange='submit()' name='perPage'>");
-
-            foreach (var item in perPageOptions)
+            perPageOptions.Add(new SelectListItem()
             {
-                result.AppendLine(string.Format("<option value='{0}'", item));
+                Value = "1", 
+                Text = "1", 
+                Selected = 
+                perPage == 1 ? true : false
+            });
 
-                if (item == perPage)
+            for (int i = 1; i <= 7; i++)
+			{
+                perPageOptions.Add(new SelectListItem()
                 {
-                    result.AppendLine("selected='selected'");
-                }
+                    Value = (defaultPageSize * i).ToString(),
+                    Text = (defaultPageSize * i).ToString(),
+                    Selected = perPage == defaultPageSize * i ? true : false
+                });
+			}
 
-                result.AppendLine(string.Format(">{0}</option>", item));
-            }
-
-            result.AppendLine("</select>");
-
-            return new HtmlString(result.ToString());
+            return htmlHelper.DropDownList("perPage", perPageOptions, new { onchange = "submit()"});
         }
     }
 }

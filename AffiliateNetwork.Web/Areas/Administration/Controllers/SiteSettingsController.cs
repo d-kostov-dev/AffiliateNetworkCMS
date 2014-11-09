@@ -71,8 +71,13 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                this.Data.SiteSettings.Update(siteSetting);
+                var currentSetting = this.Data.SiteSettings.Find(siteSetting.Id);
+
+                currentSetting.Value = siteSetting.Value;
+                currentSetting.Description = siteSetting.Description;
+
                 this.Data.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 

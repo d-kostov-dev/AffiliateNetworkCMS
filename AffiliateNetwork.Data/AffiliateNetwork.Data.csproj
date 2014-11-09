@@ -57,6 +57,7 @@
     <Compile Include="Migrations\Seeders\CategorySeeder.cs" />
     <Compile Include="Migrations\Seeders\CampaignsSeeder.cs" />
     <Compile Include="Migrations\Seeders\IdentitySeeder.cs" />
+    <Compile Include="Migrations\Seeders\SettingsSeeder.cs" />
     <Compile Include="Migrations\Seeders\InfoPagesSeeder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork\DataProvider.cs" />
