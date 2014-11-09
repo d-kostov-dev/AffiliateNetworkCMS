@@ -100,6 +100,8 @@
                 return HttpNotFound();
             }
 
+            this.SetCategories(campaign.Category.Id);
+
             return View(campaign);
         }
 
@@ -146,14 +148,21 @@
             return RedirectToAction("Index");
         }
 
-        private void SetCategories()
+        private void SetCategories(int? id = null)
         {
-            IEnumerable<SelectListItem> items =
-                this.Data.Categories
-                .All()
-                .Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.Name });
+            //IEnumerable<SelectListItem> items =
+            //    this.Data.Categories
+            //    .All()
+            //    .Select(c => new SelectListItem 
+            //    { 
+            //        Value = c.Id.ToString(), 
+            //        Text = c.Name, 
+            //        Selected = c.Id == id ? true : false 
+            //    });
 
-            ViewBag.CategoryId = items;
+            var items = new SelectList(this.Data.Categories.All().ToList(), "Id", "Name", id.ToString());
+
+            ViewBag.CategoryCollection = items;
         }
     }
 }

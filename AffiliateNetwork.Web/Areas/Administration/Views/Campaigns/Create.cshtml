@@ -15,8 +15,7 @@
 @Html.FormGroupFor(model => model.AdminComment)
 @Html.EnumFormGroupFor(model => model.ApprovalStatus)
 @Html.FormGroupFor(model => model.ValidTo)
-
-@Html.DropDownList("CategoryId")
+@Html.DropdownFormGroupFor(model => model.CategoryId, (IEnumerable<SelectListItem>)ViewBag.CategoryCollection)
 
 <div class="form-group">
     <div class="col-md-offset-2 col-md-10">

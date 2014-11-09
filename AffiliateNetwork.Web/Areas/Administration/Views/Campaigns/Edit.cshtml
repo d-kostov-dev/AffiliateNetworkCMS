@@ -81,7 +81,8 @@
             </div>
         </div>
 
-
+        @Html.DropdownFormGroupFor(model => model.CategoryId, (IEnumerable<SelectListItem>)ViewBag.CategoryCollection)
+        @*@Html.DropdownFormGroupFor("Category", (IEnumerable<SelectListItem>)ViewBag.CategoryId, "CategoryId")*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

@@ -1,9 +1,10 @@
 ﻿namespace AffiliateNetwork.Infrastructure.HtmlHelpers
 {
     using System;
-    using System.Linq.Expressions;
-    using System.Web.Mvc;
-    using System.Web.Mvc.Html;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
 
     public static class FormGroup
     {
@@ -38,6 +39,28 @@
 
             innerDiv.InnerHtml +=
                 htmlHelper.EnumDropDownListFor(expression, htmlAttributes: new { @class = "form-control" });
+
+            innerDiv.InnerHtml +=
+                htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = "text-danger" });
+
+            outerDiv.InnerHtml +=
+                htmlHelper.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" });
+            outerDiv.InnerHtml += innerDiv.ToString();
+
+            return new MvcHtmlString(outerDiv.ToString());
+        }
+
+        public static MvcHtmlString DropdownFormGroupFor<TModel, TValue>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TValue>> expression,
+            IEnumerable<SelectListItem> collection,
+            object htmlAttributes = null)
+        {
+            var outerDiv = GenerateOuterDiv();
+            var innerDiv = GenerateInnerDiv();
+
+            innerDiv.InnerHtml +=
+                htmlHelper.DropDownListFor(expression, collection, "-- Select --", new { @class = "form-control" });
 
             innerDiv.InnerHtml +=
                 htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = "text-danger" });
