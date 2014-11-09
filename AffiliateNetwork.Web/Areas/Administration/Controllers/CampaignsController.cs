@@ -93,30 +93,47 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Campaign campaign = this.Data.Campaigns.Find(id);
+            var campaign =
+                this.Data.Campaigns
+                .All()
+                .Project().To<CampaignCreateEditViewModel>()
+                .Where(x => x.Id == id)
+                .FirstOrDefault();
 
             if (campaign == null)
             {
                 return HttpNotFound();
             }
 
-            this.SetCategories(campaign.Category.Id);
+            this.SetCategories(campaign.CategoryId);
 
             return View(campaign);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Campaign campaign)
+        public ActionResult Edit(CampaignCreateEditViewModel campaign)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                this.Data.Campaigns.Update(campaign);
-                this.Data.SaveChanges();
-                return RedirectToAction("Index");
+                return View(campaign);
             }
 
-            return View(campaign);
+            var campaignToSave = this.Data.Campaigns.Find(campaign.Id);
+
+            campaignToSave.Title = campaign.Title;
+            campaignToSave.Description = campaign.Description;
+            campaignToSave.Payout = campaign.Payout;
+            campaignToSave.LandingPage = campaign.LandingPage;
+            campaignToSave.ValidTo = campaign.ValidTo;
+            campaignToSave.CategoryId = campaign.CategoryId;
+            campaignToSave.ApprovalStatus = campaign.ApprovalStatus;
+            campaignToSave.Type = campaign.Type;
+
+            this.Data.Campaigns.Update(campaignToSave);
+            this.Data.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int? id)
@@ -150,16 +167,6 @@
 
         private void SetCategories(int? id = null)
         {
-            //IEnumerable<SelectListItem> items =
-            //    this.Data.Categories
-            //    .All()
-            //    .Select(c => new SelectListItem 
-            //    { 
-            //        Value = c.Id.ToString(), 
-            //        Text = c.Name, 
-            //        Selected = c.Id == id ? true : false 
-            //    });
-
             var items = new SelectList(this.Data.Categories.All().ToList(), "Id", "Name", id.ToString());
 
             ViewBag.CategoryCollection = items;

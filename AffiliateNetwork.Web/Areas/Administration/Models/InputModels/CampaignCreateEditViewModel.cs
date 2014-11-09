@@ -4,10 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using AffiliateNetwork.Common.Enumerations;
+using AffiliateNetwork.Models;
+using AffiliateNetwork.Infrastructure.Mapping;
 
 namespace AffiliateNetwork.Web.Areas.Administration.Models.InputModels
 {
-    public class CampaignCreateEditViewModel
+    public class CampaignCreateEditViewModel : IMapFrom<Campaign>
     {
         public CampaignCreateEditViewModel()
         {
