@@ -4,11 +4,11 @@
 
     public enum ApprovalStatus
     {
-        [Display(Name = "Waiting Approval")]
-        Waiting,
-
         [Display(Name = "Approved")]
         Approved,
+
+        [Display(Name = "Waiting Approval")]
+        Waiting,
 
         [Display(Name = "Disapproved")]
         Disapproved,

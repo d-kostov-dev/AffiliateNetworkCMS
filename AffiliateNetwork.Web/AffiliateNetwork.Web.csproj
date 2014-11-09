@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\BannersController.cs" />
     <Compile Include="Areas\Administration\Controllers\Base\AdminBaseController.cs" />
     <Compile Include="Areas\Administration\Controllers\CampaignsController.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
@@ -294,6 +295,8 @@
     <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\CampaignType.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\ApprovalStatus.cshtml" />
     <Content Include="Areas\Administration\Views\Campaigns\_DetailsPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Banners\Add.cshtml" />
+    <Content Include="Areas\Administration\Views\Banners\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
@@ -351,6 +354,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\Banners\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

@@ -165,6 +165,11 @@
             return RedirectToAction("Index");
         }
 
+        public ActionResult AddBanner(int id)
+        {
+            return RedirectToAction("Add", "Banners", new { id = id });
+        }
+
         private void SetCategories(int? id = null)
         {
             var items = new SelectList(this.Data.Categories.All().ToList(), "Id", "Name", id.ToString());

@@ -56,6 +56,11 @@
             this.Delete(entity);
         }
 
+        public void TotalDelete(T entity)
+        {
+            this.ChangeState(entity, EntityState.Deleted);
+        }
+
         public int SaveChanges()
         {
             return this.databaseContext.SaveChanges();

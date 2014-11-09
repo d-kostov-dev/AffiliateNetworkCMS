@@ -14,7 +14,6 @@
 
         public virtual Campaign Campaign { get; set; }
 
-        [Required]
         public string Image { get; set; }
     }
 }

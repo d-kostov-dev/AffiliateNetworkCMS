@@ -13,7 +13,6 @@
         {
             if (!databaseContext.Categories.Any())
             {
-
                 var categoriesNames = new string[]
                 {
                     "Sports",

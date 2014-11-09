@@ -16,23 +16,23 @@
 
             perPageOptions.Add(new SelectListItem()
             {
-                Value = "1", 
-                Text = "1", 
-                Selected = 
+                Value = "1",
+                Text = "1",
+                Selected =
                 perPage == 1 ? true : false
             });
 
             for (int i = 1; i <= 7; i++)
-			{
+            {
                 perPageOptions.Add(new SelectListItem()
-                {
-                    Value = (defaultPageSize * i).ToString(),
-                    Text = (defaultPageSize * i).ToString(),
-                    Selected = perPage == defaultPageSize * i ? true : false
-                });
-			}
+                    {
+                        Value = (defaultPageSize * i).ToString(),
+                        Text = (defaultPageSize * i).ToString(),
+                        Selected = perPage == defaultPageSize * i ? true : false
+                    });
+            }
 
-            return htmlHelper.DropDownList("perPage", perPageOptions, new { onchange = "submit()"});
+            return htmlHelper.DropDownList("perPage", perPageOptions, new { onchange = "submit()" });
         }
     }
 }

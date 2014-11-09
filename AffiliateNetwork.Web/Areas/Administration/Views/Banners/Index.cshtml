@@ -1,0 +1,72 @@
+﻿@model IEnumerable<AffiliateNetwork.Models.Banner>
+
+@using GridMvc.Html
+
+@{
+    ViewBag.Title = "List Banners";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>@ViewBag.Title</h1>
+        <hr />
+    </div>
+</div>
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(x => x.Id)
+        .SetWidth(50)
+        .Sortable(true);
+
+    columns.Add(x => x.CampaignId)
+        .Titled("Campaign")
+        .RenderValueAs(x => Html.ActionLink(
+            x.Campaign.Title, 
+            "Details", 
+            "Campaigns", 
+            new { id = x.CampaignId },
+            new { @class = "text-center" }
+            ))
+        .Encoded(false)
+        .Sanitized(false)
+        .SetWidth(120);
+
+    columns.Add(x => x.Image)
+        .Titled("Image")
+        .RenderValueAs(x => ShowImage(x.Image))
+        .Encoded(false)
+        .Sanitized(false);
+
+    columns.Add()
+        .RenderValueAs(x => Html.EditButton(x.Id))
+        .Encoded(false)
+        .Sanitized(false)
+        .SetWidth(50);
+
+    columns.Add()
+        .RenderValueAs(x => 
+            Html.ActionLink(
+            "Delete", 
+            "DeleteConfirmed", 
+            new { id = x.Id}, 
+            new { onclick = "return confirm('Are you sure you wish to delete this Banner?');" , @class = "btn btn-danger"}))
+        .Encoded(false)
+        .Sanitized(false)
+        .SetWidth(50);
+
+}).WithPaging(ViewBag.PageSize)
+
+@helper ShowImage(string name)
+{
+<img src="~/Content/Banners/@name" alt="Banner" />
+}
+
+@section Scripts{
+    <script src="@Url.Content("~/Scripts/jquery.min.js")" type="text/javascript"> </script>
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+}
+
+@section Styles{
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+}

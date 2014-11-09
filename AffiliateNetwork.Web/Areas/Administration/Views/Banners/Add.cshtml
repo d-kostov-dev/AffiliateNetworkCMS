@@ -1,0 +1,41 @@
+﻿@model AffiliateNetwork.Models.Banner
+
+@{
+    ViewBag.Title = "Add Banner";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>@ViewBag.Title</h2>
+
+        @using (Html.BeginForm("Add", "Banners", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        @ViewBag.Title
+                    </div>
+                    <div class="panel-body">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.CampaignId)
+
+                        <input type="file" name="banerUploaded" id="banerUploaded" />
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                @Html.SubmitButton("Save")
+                                @Html.SuccessButton("Cancel", "Index")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</div>

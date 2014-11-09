@@ -44,20 +44,20 @@
         .Filterable(true)
         .Sortable(true);
 
+    columns.Add(x => x.AffiliatesCount)
+        .Titled("Affiliates")
+        .SetWidth(30)
+        .Sortable(true);
+
     columns.Add(x => x.ClicksCount)
         .Titled("Clicks")
         .SetWidth(30)
         .Sortable(true);
 
-    columns.Add(x => x.AffiliatesCount)
-        .Titled("Affiliates")
-        .SetWidth(30)
-        .Sortable(true);
-    
     columns.Add(x => x.CreatedOn)
         .Sortable(true);
 
-    columns.Add()
+    columns.Add(x => x.ApprovalStatus)
         .RenderValueAs(x => Html.DisplayFor(c => x.ApprovalStatus).ToHtmlString())
         .Titled("Status")
         .Encoded(false)

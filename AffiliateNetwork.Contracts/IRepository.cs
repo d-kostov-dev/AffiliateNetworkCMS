@@ -20,6 +20,8 @@
 
         void Delete(object id);
 
+        void TotalDelete(T entity);
+
         int SaveChanges();
     }
 }
