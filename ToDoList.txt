@@ -4,7 +4,9 @@ try implementing page sizer in the _Grid.html
 grid.mvc stuff to bundles
 banner deletable by owner or admin
 campaign deletable by owner or admin
-
+editor for datetime -> date picker
+current user in base controller
+fix bundles configuration file
 
 http://www.mikesdotnetting.com/article/128/get-the-drop-on-asp-net-mvc-dropdownlists
 

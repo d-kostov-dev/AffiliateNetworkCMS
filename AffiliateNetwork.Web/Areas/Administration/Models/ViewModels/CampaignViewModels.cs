@@ -86,16 +86,16 @@
         public virtual User Owner { get; set; }
 
         [Display(Name = "Affiliates")]
-        public int AffiliatesCount { get; set; }
+        public User Affiliates { get; set; }
 
         [Display(Name = "Expires")]
         public DateTime ValidTo { get; set; }
 
         [Display(Name = "Clicks")]
-        public int ClicksCount;
+        public Click Clicks;
 
         [Display(Name = "Conversions")]
-        public int ConversionsCount;
+        public Conversion Conversions;
 
         public ApprovalStatus ApprovalStatus { get; set; }
 
@@ -106,15 +106,6 @@
         {
             configuration.CreateMap<Campaign, ListCampaignsViewModel>()
                 .ForMember(m => m.CategoryName, opt => opt.MapFrom(u => u.Category.Name.ToString()));
-
-            configuration.CreateMap<Campaign, ListCampaignsViewModel>()
-                .ForMember(m => m.AffiliatesCount, opt => opt.MapFrom(u => u.Affiliates.Count));
-
-            configuration.CreateMap<Campaign, ListCampaignsViewModel>()
-                .ForMember(m => m.ClicksCount, opt => opt.MapFrom(u => u.Clicks.Count));
-
-            configuration.CreateMap<Campaign, ListCampaignsViewModel>()
-                .ForMember(m => m.ConversionsCount, opt => opt.MapFrom(u => u.Conversions.Count));
         }
     }
 }
