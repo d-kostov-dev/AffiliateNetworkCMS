@@ -7,14 +7,13 @@
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.IgnoreList.Clear();
+
             bundles.Add(new ScriptBundle("~/bundles/jquery")
                 .Include("~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
@@ -28,14 +27,15 @@
                       "~/Content/Manager/css/bootstrap.css",
                       "~/Content/Manager/css/sb-admin-2.css",
                       "~/Content/Manager/css/metisMenu.css",
-                      "~/Content/Manager/css/font-awesome.css"
-                      //"~/Content/Manager/css/Kendo/kendo.common.min.css",
-                      //"~/Content/Manager/css/Kendo/kendo.bootstrap.min.css",
-                      //"~/Content/Manager/css/Kendo/kendo.default.min.css"
+                      "~/Content/Manager/css/font-awesome.css",
+                      "~/Content/Manager/css/Kendo/kendo.common.min.css",
+                      "~/Content/Manager/css/Kendo/kendo.bootstrap.min.css",
+                      "~/Content/Manager/css/Kendo/kendo.default.min.css"
                       ));
 
             bundles.Add(new ScriptBundle("~/Content/Manager/js").Include(
                      "~/Scripts/Kendo/jquery.min.js",
+                     //"~/Content/Manager/scripts/jquery.js",
                      "~/Content/Manager/scripts/bootstrap.js",
                      "~/Content/Manager/scripts/plugins/metisMenu/metisMenu.min.js",
                      "~/Content/Manager/scripts/sb-admin-2.js",
@@ -43,7 +43,7 @@
                      "~/Scripts/Kendo/kendo.aspnetmvc.min.js"
                      ));
 
-            BundleTable.EnableOptimizations = false;
+            BundleTable.EnableOptimizations = true;
         }
     }
 }
