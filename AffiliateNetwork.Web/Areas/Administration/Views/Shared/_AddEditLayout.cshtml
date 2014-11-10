@@ -6,7 +6,7 @@
     <div class="col-md-@(ViewBag.ColSize ?? 12)">
         <h2>@ViewBag.Title</h2>
 
-        @using (Html.BeginForm("Add", "Banners", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
