@@ -9,6 +9,7 @@
     <title>@ViewBag.Title - Admin Panel</title>
 
     @Styles.Render("~/Content/Manager/styles")
+    @Scripts.Render("~/Content/Manager/js")
     @Scripts.Render("~/bundles/modernizr")
 
     @RenderSection("styles", required: false)
@@ -78,7 +79,6 @@
         </div>
     </div> <!-- /#wrapper -->
 
-    @Scripts.Render("~/Content/Manager/js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

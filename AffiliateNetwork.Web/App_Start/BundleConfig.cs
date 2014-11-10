@@ -7,8 +7,8 @@
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery")
+                .Include("~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -29,16 +29,21 @@
                       "~/Content/Manager/css/sb-admin-2.css",
                       "~/Content/Manager/css/metisMenu.css",
                       "~/Content/Manager/css/font-awesome.css"
+                      //"~/Content/Manager/css/Kendo/kendo.common.min.css",
+                      //"~/Content/Manager/css/Kendo/kendo.bootstrap.min.css",
+                      //"~/Content/Manager/css/Kendo/kendo.default.min.css"
                       ));
 
             bundles.Add(new ScriptBundle("~/Content/Manager/js").Include(
-                     "~/Content/Manager/scripts/jquery.js",
+                     "~/Scripts/Kendo/jquery.min.js",
                      "~/Content/Manager/scripts/bootstrap.js",
                      "~/Content/Manager/scripts/plugins/metisMenu/metisMenu.min.js",
-                     "~/Content/Manager/scripts/sb-admin-2.js"
+                     "~/Content/Manager/scripts/sb-admin-2.js",
+                     "~/Scripts/Kendo/kendo.web.min.js",
+                     "~/Scripts/Kendo/kendo.aspnetmvc.min.js"
                      ));
 
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
