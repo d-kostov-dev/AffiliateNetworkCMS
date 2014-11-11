@@ -1,1 +1,79 @@
 ﻿@model AffiliateNetwork.Web.Areas.Administration.Models.ViewModels.ListCampaignsDetailsViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>@ViewBag.Title</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Campaign Information
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Title: </strong>@Html.DisplayFor(model => model.Title)
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Description: </strong>@Html.DisplayFor(model => model.Description)
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Company: </strong>@Html.DisplayFor(model => model.CompanyName)
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Category: </strong>@Html.DisplayFor(model => model.CategoryName)
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Payout: $</strong>@Html.DisplayFor(model => model.Payout)
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Type: </strong>@Html.DisplayFor(model => model.Type)
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Landing Page: </strong><a href="@Model.LandingPage">@Model.LandingPage</a>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Expiration Date: </strong>@Html.DisplayFor(model => model.ValidTo)
+                    </li>
+                    <li href="#" class="list-group-item">
+                        <strong>Status: </strong>@Html.DisplayFor(model => model.ApprovalStatus)
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-footer">
+                @Html.ActionLink("Add Banners", "Add", "Banners", new { Model.Id }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-tasks fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.Clicks.Count()</div>
+                        <div>Clicks</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-shopping-cart fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.Conversions.Count()</div>
+                        <div>Conversions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

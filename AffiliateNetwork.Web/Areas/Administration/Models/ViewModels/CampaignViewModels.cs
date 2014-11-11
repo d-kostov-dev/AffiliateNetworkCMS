@@ -1,12 +1,15 @@
 ﻿namespace AffiliateNetwork.Web.Areas.Administration.Models.ViewModels
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
 
+    using AffiliateNetwork.Common.Enumerations;
     using AffiliateNetwork.Infrastructure.Mapping;
     using AffiliateNetwork.Models;
+
     using AutoMapper;
-    using System.ComponentModel.DataAnnotations;
-    using AffiliateNetwork.Common.Enumerations;
+    using System.Collections.Generic;
+    
 
     public class ListCampaignsViewModel : IMapFrom<Campaign>, IHaveCustomMappings
     {
@@ -82,20 +85,17 @@
 
         public decimal Payout { get; set; }
 
-        [Display(Name = "Owner")]
-        public virtual User Owner { get; set; }
-
-        [Display(Name = "Affiliates")]
-        public User Affiliates { get; set; }
+        [Display(Name = "Company Name")]
+        public string CompanyName { get; set; }
 
         [Display(Name = "Expires")]
         public DateTime ValidTo { get; set; }
 
         [Display(Name = "Clicks")]
-        public Click Clicks;
+        public ICollection<Click> Clicks;
 
         [Display(Name = "Conversions")]
-        public Conversion Conversions;
+        public ICollection<Conversion> Conversions;
 
         public ApprovalStatus ApprovalStatus { get; set; }
 
@@ -104,8 +104,11 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<Campaign, ListCampaignsViewModel>()
+            configuration.CreateMap<Campaign, ListCampaignsDetailsViewModel>()
                 .ForMember(m => m.CategoryName, opt => opt.MapFrom(u => u.Category.Name.ToString()));
+
+            configuration.CreateMap<Campaign, ListCampaignsDetailsViewModel>()
+                .ForMember(m => m.CompanyName, opt => opt.MapFrom(u => u.Owner.CompanyName));
         }
     }
 }

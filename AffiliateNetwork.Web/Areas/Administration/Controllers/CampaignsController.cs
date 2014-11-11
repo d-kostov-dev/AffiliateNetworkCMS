@@ -40,7 +40,7 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Campaign campaign = this.Data.Campaigns.Find(id);
+            var campaign = this.Data.Campaigns.All().Where(x => x.Id == id).Project().To<ListCampaignsDetailsViewModel>().FirstOrDefault();
 
             if (campaign == null)
             {
