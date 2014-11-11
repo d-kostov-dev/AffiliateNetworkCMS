@@ -8,7 +8,7 @@
     using System.ComponentModel.DataAnnotations;
     using AffiliateNetwork.Common.Enumerations;
 
-    public class ListCampaignsViewModel : IMapFrom<Campaign>
+    public class ListCampaignsViewModel : IMapFrom<Campaign>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -63,7 +63,7 @@
         }
     }
 
-    public class ListCampaignsDetailsViewModel : IMapFrom<Campaign>
+    public class ListCampaignsDetailsViewModel : IMapFrom<Campaign>, IHaveCustomMappings
     {
         public int Id { get; set; }
 

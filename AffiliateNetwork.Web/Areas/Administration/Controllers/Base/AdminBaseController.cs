@@ -1,10 +1,12 @@
 ﻿using AffiliateNetwork.Contracts;
+using AffiliateNetwork.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Microsoft.AspNet.Identity;
 
 namespace AffiliateNetwork.Web.Areas.Administration.Controllers.Base
 {
@@ -13,6 +15,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers.Base
     {
         private const int defaultPageSize = 5;
         private IDictionary<string, string> settings;
+        private User currentUser;
 
         public AdminBaseController(IDataProvider provider)
         {
@@ -21,6 +24,20 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers.Base
         }
 
         public IDataProvider Data { get; set; }
+
+        public User CurrentUser
+        {
+            get
+            {
+                if(this.currentUser == null)
+                {
+                    var currentUserId = User.Identity.GetUserId();
+                    this.currentUser = this.Data.Users.Find(currentUserId);
+                }
+
+                return this.currentUser;
+            }
+        }
 
         public string GetSetting(string key)
         {
@@ -45,13 +62,6 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers.Base
 
             ViewBag.PageSize = pagesize;
         }
-
-        //protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
-        //{
-        //    this.ViewBag.Settings = this.GetSettings();
-        //    this.settings = this.GetSettings();
-        //    return base.BeginExecute(requestContext, callback, state);
-        //}
 
         private IDictionary<string, string> GetSettings()
         {

@@ -74,7 +74,7 @@
                 Payout = campaign.Payout,
                 LandingPage = campaign.LandingPage,
                 ValidTo = campaign.ValidTo,
-                OwnerId = User.Identity.GetUserId(),
+                OwnerId = this.CurrentUser.Id,
                 CategoryId = campaign.CategoryId,
                 ApprovalStatus = campaign.ApprovalStatus,
                 Type = campaign.Type,

@@ -74,6 +74,8 @@
         [Index]
         public DateTime? DeletedOn { get; set; }
 
+        public decimal Credits { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);

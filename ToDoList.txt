@@ -6,6 +6,7 @@ banner deletable by owner or admin
 campaign deletable by owner or admin
 current user in base controller
 fix bundles configuration file
+check if expired campaigns generate credits
 
 http://www.mikesdotnetting.com/article/128/get-the-drop-on-asp-net-mvc-dropdownlists
 

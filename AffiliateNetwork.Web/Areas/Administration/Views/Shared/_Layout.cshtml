@@ -9,6 +9,7 @@
     <title>@ViewBag.Title - Admin Panel</title>
 
     @Styles.Render("~/Content/Manager/styles")
+    @Styles.Render("~/Content/Manager/css/Kendo/Styles")
     @Scripts.Render("~/Content/Manager/js")
 
     @RenderSection("styles", required: false)
@@ -65,6 +66,10 @@
 
                         <li>
                             <a href="/Administration/Banners"><i class="fa fa-th fa-fw"></i> Banners</a>
+                        </li>
+
+                        <li>
+                            <a href="/Administration/Clicks"><i class="fa fa-bar-chart-o fa-fw"></i> Clicks</a>
                         </li>
 
                     </ul>

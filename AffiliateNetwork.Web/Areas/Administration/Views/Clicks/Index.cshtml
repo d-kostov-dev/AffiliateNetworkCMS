@@ -1,0 +1,32 @@
+﻿@model IEnumerable<AffiliateNetwork.Web.Areas.Administration.Models.ViewModels.ClicksListViewModels>
+
+@using Kendo.Mvc.UI;
+
+@{
+    ViewBag.Title = "Clicks List";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>@ViewBag.Title</h1>
+        <hr />
+    </div>
+</div>
+
+@(Html.Kendo().Grid(Model)
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.AffiliateName);
+            columns.Bound(c => c.CampaignName);
+            columns.Bound(c => c.CreatedOn).Format("{0:dd/mm/yyyy}");
+            //columns.Template(x =>
+            //    Html.ActionLink(
+            //    "Delete",
+            //    "Delete",
+            //    new { id = x.Id },
+            //    new { onclick = "return confirm('Are you sure you wish to delete this Click?');", @class = "btn btn-danger" }));
+        })
+        .Sortable()
+        .Pageable(pager => pager.PageSizes(new int[] { 5, 20, 50, 100 }).ButtonCount(20))
+)

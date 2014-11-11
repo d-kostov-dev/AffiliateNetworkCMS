@@ -198,16 +198,19 @@
     <Compile Include="Areas\Administration\Controllers\Base\AdminBaseController.cs" />
     <Compile Include="Areas\Administration\Controllers\CampaignsController.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\ClicksController.cs" />
     <Compile Include="Areas\Administration\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Administration\Controllers\InfoPagesController.cs" />
     <Compile Include="Areas\Administration\Controllers\SiteSettingsController.cs" />
     <Compile Include="Areas\Administration\Models\InputModels\CampaignCreateEditViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\ClickViewModels.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\CategoryViewModels.cs" />
     <Compile Include="Areas\Administration\Models\InputModels\GridOptionsInputModel.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\CampaignViewModels.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\InfoPageViewModels.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ClicksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -518,6 +521,7 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Content\Manager\css\Kendo\images\kendoui.ttf" />
     <Content Include="Content\Manager\css\Kendo\images\kendoui.woff" />
+    <Content Include="Areas\Administration\Views\Clicks\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
@@ -1175,6 +1179,7 @@
   <ItemGroup>
     <Folder Include="Content\Banners\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Clicks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
