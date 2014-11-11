@@ -17,59 +17,44 @@
 
         public static MvcHtmlString FormGroupFor<TModel, TValue>(
             this HtmlHelper<TModel> htmlHelper,
-            Expression<Func<TModel, TValue>> expression,
-            object htmlAttributes = null)
+            Expression<Func<TModel, TValue>> expression)
         {
-            var outerDiv = GenerateOuterDiv();
-            var innerDiv = GenerateInnerDiv();
+            var input = htmlHelper.EditorFor(expression, new { htmlAttributes = new { @class = InputClass } });
+            var generatedGroup = GenerateGroup(htmlHelper, expression, input);
 
-            innerDiv.InnerHtml +=
-                htmlHelper.EditorFor(expression, new { htmlAttributes = new { @class = InputClass } });
-
-            innerDiv.InnerHtml +=
-                htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = ValidationMessageClass });
-
-            outerDiv.InnerHtml +=
-                htmlHelper.LabelFor(expression, htmlAttributes: new { @class = LabelClass });
-
-            outerDiv.InnerHtml += innerDiv.ToString();
-
-            return new MvcHtmlString(outerDiv.ToString());
+            return new MvcHtmlString(generatedGroup.ToString());
         }
 
         public static MvcHtmlString EnumFormGroupFor<TModel, TValue>(
             this HtmlHelper<TModel> htmlHelper,
-            Expression<Func<TModel, TValue>> expression,
-            object htmlAttributes = null)
+            Expression<Func<TModel, TValue>> expression)
         {
-            var outerDiv = GenerateOuterDiv();
-            var innerDiv = GenerateInnerDiv();
+            var input = htmlHelper.EnumDropDownListFor(expression, htmlAttributes: new { @class = InputClass });
+            var generatedGroup = GenerateGroup(htmlHelper, expression, input);
 
-            innerDiv.InnerHtml +=
-                htmlHelper.EnumDropDownListFor(expression, htmlAttributes: new { @class = InputClass });
-
-            innerDiv.InnerHtml +=
-                htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = ValidationMessageClass });
-
-            outerDiv.InnerHtml +=
-                htmlHelper.LabelFor(expression, htmlAttributes: new { @class = LabelClass });
-
-            outerDiv.InnerHtml += innerDiv.ToString();
-
-            return new MvcHtmlString(outerDiv.ToString());
+            return new MvcHtmlString(generatedGroup.ToString());
         }
 
         public static MvcHtmlString DropdownFormGroupFor<TModel, TValue>(
             this HtmlHelper<TModel> htmlHelper,
             Expression<Func<TModel, TValue>> expression,
-            IEnumerable<SelectListItem> collection,
-            object htmlAttributes = null)
+            IEnumerable<SelectListItem> collection)
+        {
+            var input = htmlHelper.DropDownListFor(expression, collection, InitialSelectText, new { @class = InputClass });
+            var generatedGroup = GenerateGroup(htmlHelper, expression, input);
+
+            return new MvcHtmlString(generatedGroup.ToString());
+        }
+
+        private static MvcHtmlString GenerateGroup<TModel, TValue>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TValue>> expression,
+            MvcHtmlString input)
         {
             var outerDiv = GenerateOuterDiv();
             var innerDiv = GenerateInnerDiv();
 
-            innerDiv.InnerHtml +=
-                htmlHelper.DropDownListFor(expression, collection, InitialSelectText, new { @class = InputClass });
+            innerDiv.InnerHtml += input;
 
             innerDiv.InnerHtml +=
                 htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = ValidationMessageClass });
