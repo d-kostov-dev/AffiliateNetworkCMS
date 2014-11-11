@@ -1,13 +1,20 @@
 ﻿namespace AffiliateNetwork.Infrastructure.HtmlHelpers
 {
     using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Web.Mvc;
-using System.Web.Mvc.Html;
+    using System.Collections.Generic;
+    using System.Linq.Expressions;
+    using System.Web.Mvc;
+    using System.Web.Mvc.Html;
 
     public static class FormGroup
     {
+        private const string OuterDivClass = "form-group";
+        private const string InnerDivClass = "col-md-10";
+        private const string InputClass = "form-control";
+        private const string ValidationMessageClass = "text-danger";
+        private const string LabelClass = "control-label col-md-2";
+        private const string InitialSelectText = "-- Select --";
+
         public static MvcHtmlString FormGroupFor<TModel, TValue>(
             this HtmlHelper<TModel> htmlHelper,
             Expression<Func<TModel, TValue>> expression,
@@ -16,14 +23,14 @@ using System.Web.Mvc.Html;
             var outerDiv = GenerateOuterDiv();
             var innerDiv = GenerateInnerDiv();
 
-            innerDiv.InnerHtml += 
-                htmlHelper.EditorFor(expression, new { htmlAttributes = new { @class = "form-control" } });
+            innerDiv.InnerHtml +=
+                htmlHelper.EditorFor(expression, new { htmlAttributes = new { @class = InputClass } });
 
-            innerDiv.InnerHtml += 
-                htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = "text-danger" });
+            innerDiv.InnerHtml +=
+                htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = ValidationMessageClass });
 
-            outerDiv.InnerHtml += 
-                htmlHelper.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" });
+            outerDiv.InnerHtml +=
+                htmlHelper.LabelFor(expression, htmlAttributes: new { @class = LabelClass });
 
             outerDiv.InnerHtml += innerDiv.ToString();
 
@@ -39,13 +46,13 @@ using System.Web.Mvc.Html;
             var innerDiv = GenerateInnerDiv();
 
             innerDiv.InnerHtml +=
-                htmlHelper.EnumDropDownListFor(expression, htmlAttributes: new { @class = "form-control" });
+                htmlHelper.EnumDropDownListFor(expression, htmlAttributes: new { @class = InputClass });
 
             innerDiv.InnerHtml +=
-                htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = "text-danger" });
+                htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = ValidationMessageClass });
 
             outerDiv.InnerHtml +=
-                htmlHelper.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" });
+                htmlHelper.LabelFor(expression, htmlAttributes: new { @class = LabelClass });
 
             outerDiv.InnerHtml += innerDiv.ToString();
 
@@ -62,13 +69,13 @@ using System.Web.Mvc.Html;
             var innerDiv = GenerateInnerDiv();
 
             innerDiv.InnerHtml +=
-                htmlHelper.DropDownListFor(expression, collection, "-- Select --", new { @class = "form-control" });
+                htmlHelper.DropDownListFor(expression, collection, InitialSelectText, new { @class = InputClass });
 
             innerDiv.InnerHtml +=
-                htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = "text-danger" });
+                htmlHelper.ValidationMessageFor(expression, string.Empty, new { @class = ValidationMessageClass });
 
             outerDiv.InnerHtml +=
-                htmlHelper.LabelFor(expression, htmlAttributes: new { @class = "control-label col-md-2" });
+                htmlHelper.LabelFor(expression, htmlAttributes: new { @class = LabelClass });
 
             outerDiv.InnerHtml += innerDiv.ToString();
 
@@ -78,14 +85,14 @@ using System.Web.Mvc.Html;
         private static TagBuilder GenerateOuterDiv()
         {
             var outerDiv = new TagBuilder("div");
-            outerDiv.AddCssClass("form-group");
+            outerDiv.AddCssClass(OuterDivClass);
             return outerDiv;
         }
 
         private static TagBuilder GenerateInnerDiv()
         {
             var innerDiv = new TagBuilder("div");
-            innerDiv.AddCssClass("col-md-10");
+            innerDiv.AddCssClass(InnerDivClass);
             return innerDiv;
         }
     }
