@@ -41,8 +41,9 @@
                      "~/Content/Manager/scripts/bootstrap.js",
                      "~/Content/Manager/scripts/plugins/metisMenu/metisMenu.min.js",
                      "~/Content/Manager/scripts/sb-admin-2.js",
-                     "~/Scripts/Kendo/kendo.web.min.js",
+                     "~/Scripts/Kendo/kendo.all.min.js",
                      "~/Scripts/Kendo/kendo.aspnetmvc.min.js"
+                     //"~/Scripts/Kendo/kendo.dataviz.chart.min.js"
                      ));
 
             BundleTable.EnableOptimizations = true;

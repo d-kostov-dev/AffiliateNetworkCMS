@@ -1,5 +1,5 @@
 ﻿@model AffiliateNetwork.Web.Areas.Administration.Models.ViewModels.ListCampaignsDetailsViewModel
-
+@using Kendo.Mvc.UI;
 <div class="row">
     <div class="col-md-12">
         <h3>@ViewBag.Title</h3>
@@ -75,5 +75,35 @@
                 </div>
             </div>
         </div>
+
+        @(Html.Kendo().Chart()
+            .Name("chart")
+            .Title("Statistics")
+            .Legend(legend => legend
+                .Visible(false)
+            )
+            .ChartArea(chartArea => chartArea
+                .Background("transparent")
+            )
+            .Series(series =>
+            {
+                series.Bar(ViewBag.Clicks as Array).Name("Clicks");
+                series.Bar(ViewBag.Conversions as Array).Name("Conversions");
+            })
+            .CategoryAxis(axis => axis
+                .Categories("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec")
+                .MajorGridLines(lines => lines.Visible(false))
+            )
+            .ValueAxis(axis => axis
+                .Numeric()
+                .Max((int)ViewBag.MaxClicks)
+                .Line(line => line.Visible(false))
+                .MajorGridLines(lines => lines.Visible(true))
+            )
+            .Tooltip(tooltip => tooltip
+                .Visible(true)
+                .Template("#= series.name #: #= value #")
+            )
+        )
     </div>
 </div>

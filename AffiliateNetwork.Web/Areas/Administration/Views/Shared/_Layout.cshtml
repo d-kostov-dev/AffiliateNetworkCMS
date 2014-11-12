@@ -13,6 +13,7 @@
     @Scripts.Render("~/Content/Manager/js")
 
     @RenderSection("styles", required: false)
+    @RenderSection("scripts", required: false)
 </head>
 
 <body>
@@ -82,7 +83,5 @@
             @RenderBody()
         </div>
     </div> <!-- /#wrapper -->
-
-    @RenderSection("scripts", required: false)
 </body>
 </html>

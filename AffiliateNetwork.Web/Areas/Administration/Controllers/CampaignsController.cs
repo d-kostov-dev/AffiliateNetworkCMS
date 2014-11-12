@@ -40,7 +40,36 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var campaign = this.Data.Campaigns.All().Where(x => x.Id == id).Project().To<ListCampaignsDetailsViewModel>().FirstOrDefault();
+            var campaign = 
+                this.Data.Campaigns.All()
+                .Where(x => x.Id == id)
+                .Project().To<ListCampaignsDetailsViewModel>()
+                .FirstOrDefault();
+
+            var clicksByMonth = campaign.Clicks
+                .GroupBy(x => x.CreatedOn.Month)
+                .Select(c => new { Month = c.Key, Count = c.Count() }).ToList();
+
+            var conversionsByMonth = ViewBag.Conversions = campaign.Conversions
+                .GroupBy(x => x.CreatedOn.Month)
+                .Select(c => new { Month = c.Key, Count = c.Count() }).ToList();
+
+            var clicksArray = new int[12];
+            var conversionsArray = new int[12];
+
+            for (int i = 0; i < clicksByMonth.Count; i++)
+            {
+                clicksArray[clicksByMonth[i].Month - 1] = clicksByMonth[i].Count;
+            }
+
+            for (int i = 0; i < conversionsByMonth.Count; i++)
+            {
+                conversionsArray[clicksByMonth[i].Month - 1] = clicksByMonth[i].Count;
+            }
+
+            ViewBag.Clicks = clicksArray;
+            ViewBag.Conversions = conversionsArray;
+            ViewBag.MaxClicks = clicksArray.Max() * 2;
 
             if (campaign == null)
             {
@@ -143,7 +172,36 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Campaign campaign = this.Data.Campaigns.Find(id);
+            var campaign =
+                this.Data.Campaigns.All()
+                .Where(x => x.Id == id)
+                .Project().To<ListCampaignsDetailsViewModel>()
+                .FirstOrDefault();
+
+            var clicksByMonth = campaign.Clicks
+                .GroupBy(x => x.CreatedOn.Month)
+                .Select(c => new { Month = c.Key, Count = c.Count() }).ToList();
+
+            var conversionsByMonth = ViewBag.Conversions = campaign.Conversions
+                .GroupBy(x => x.CreatedOn.Month)
+                .Select(c => new { Month = c.Key, Count = c.Count() }).ToList();
+
+            var clicksArray = new int[12];
+            var conversionsArray = new int[12];
+
+            for (int i = 0; i < clicksByMonth.Count; i++)
+            {
+                clicksArray[clicksByMonth[i].Month - 1] = clicksByMonth[i].Count;
+            }
+
+            for (int i = 0; i < conversionsByMonth.Count; i++)
+            {
+                conversionsArray[clicksByMonth[i].Month - 1] = clicksByMonth[i].Count;
+            }
+
+            ViewBag.Clicks = clicksArray;
+            ViewBag.Conversions = conversionsArray;
+            ViewBag.MaxClicks = clicksArray.Max() * 2;
 
             if (campaign == null)
             {
