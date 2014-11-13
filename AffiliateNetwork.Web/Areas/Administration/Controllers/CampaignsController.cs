@@ -64,12 +64,12 @@
 
             for (int i = 0; i < conversionsByMonth.Count; i++)
             {
-                conversionsArray[clicksByMonth[i].Month - 1] = clicksByMonth[i].Count;
+                conversionsArray[conversionsByMonth[i].Month - 1] = conversionsByMonth[i].Count;
             }
 
             ViewBag.Clicks = clicksArray;
             ViewBag.Conversions = conversionsArray;
-            ViewBag.MaxClicks = clicksArray.Max() * 2;
+            ViewBag.MaxClicks = (int)(clicksArray.Max() * 1.5);
 
             if (campaign == null)
             {
@@ -182,7 +182,7 @@
                 .GroupBy(x => x.CreatedOn.Month)
                 .Select(c => new { Month = c.Key, Count = c.Count() }).ToList();
 
-            var conversionsByMonth = ViewBag.Conversions = campaign.Conversions
+            var conversionsByMonth = campaign.Conversions
                 .GroupBy(x => x.CreatedOn.Month)
                 .Select(c => new { Month = c.Key, Count = c.Count() }).ToList();
 
@@ -196,7 +196,7 @@
 
             for (int i = 0; i < conversionsByMonth.Count; i++)
             {
-                conversionsArray[clicksByMonth[i].Month - 1] = clicksByMonth[i].Count;
+                conversionsArray[conversionsByMonth[i].Month - 1] = conversionsByMonth[i].Count;
             }
 
             ViewBag.Clicks = clicksArray;

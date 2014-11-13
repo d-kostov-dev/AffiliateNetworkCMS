@@ -3,7 +3,6 @@
     using System.Web.Mvc;
 
     using AffiliateNetwork.Contracts;
-    using AffiliateNetwork.Models;
     using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
     using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
 
@@ -28,7 +27,7 @@
 
         public ActionResult Delete(int id)
         {
-            Click click = this.Data.Clicks.Find(id);
+            var click = this.Data.Clicks.Find(id);
             this.Data.Clicks.Delete(click);
             this.Data.SaveChanges();
 

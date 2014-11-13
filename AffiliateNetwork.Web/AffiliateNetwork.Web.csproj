@@ -204,6 +204,7 @@
     <Compile Include="Areas\Administration\Controllers\InfoPagesController.cs" />
     <Compile Include="Areas\Administration\Controllers\SiteSettingsController.cs" />
     <Compile Include="Areas\Administration\Models\InputModels\CampaignCreateEditViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\ConversionViewModels.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\ClickViewModels.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\CategoryViewModels.cs" />
     <Compile Include="Areas\Administration\Models\InputModels\GridOptionsInputModel.cs" />
@@ -523,10 +524,6 @@
     <Content Include="Content\Manager\css\Kendo\images\kendoui.ttf" />
     <Content Include="Content\Manager\css\Kendo\images\kendoui.woff" />
     <Content Include="Areas\Administration\Views\Clicks\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Conversions\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\Conversions\Delete.cshtml" />
-    <Content Include="Areas\Administration\Views\Conversions\Details.cshtml" />
-    <Content Include="Areas\Administration\Views\Conversions\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Conversions\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />

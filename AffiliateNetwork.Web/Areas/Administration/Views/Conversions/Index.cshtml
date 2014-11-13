@@ -1,57 +1,32 @@
-﻿@model IEnumerable<AffiliateNetwork.Models.Conversion>
+﻿@model IEnumerable<AffiliateNetwork.Web.Areas.Administration.Models.ViewModels.ConversionViewModels>
+
+@using Kendo.Mvc.UI;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Conversions List";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-12">
+        <h1>@ViewBag.Title</h1>
+        <hr />
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Affiliate.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Campaign.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeletedOn)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Affiliate.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Campaign.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeletedOn)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+@(Html.Kendo().Grid(Model)
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.AffiliateName);
+            columns.Bound(c => c.CampaignName);
+            columns.Bound(c => c.CreatedOn).Format("{0:dd/mm/yyyy}");
+            columns.Template(x =>
+                Html.ActionLink(
+                "Delete",
+                "Delete",
+                new { id = x.Id },
+                new { onclick = "return confirm('Are you sure you wish to delete this Conversion?');", @class = "btn btn-danger" }));
+        })
+        .Sortable()
+        .Pageable(pager => pager.PageSizes(new int[] { 5, 20, 50, 100 }).ButtonCount(20))
+)
