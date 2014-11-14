@@ -1,0 +1,6 @@
+﻿@model IEnumerable<AffiliateNetwork.Web.Models.PagesFooterViewModel>
+
+@foreach (var item in Model)
+{
+    <a href="/@item.SeoUrl">@item.Title</a>@:&nbsp; &nbsp;
+}

@@ -2,6 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using AffiliateNetwork.Models;
+using AffiliateNetwork.Infrastructure.Mapping;
+using System;
+using AutoMapper;
 
 namespace AffiliateNetwork.Web.Models
 {
@@ -82,5 +86,30 @@ namespace AffiliateNetwork.Web.Models
     {
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+    }
+
+    public class ProfileDetailsViewModel
+    {
+        public string UserName { get; set; }
+
+        public string Email { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string CompanyName { get; set; }
+
+        public string ContactPhone { get; set; }
+
+        public string Address { get; set; }
+
+        public DateTime RegistrationDate { get; set; }
+
+        public int Campaigns { get; set; }
+
+        public decimal Credits { get; set; }
+
+        public string Image { get; set; }
     }
 }

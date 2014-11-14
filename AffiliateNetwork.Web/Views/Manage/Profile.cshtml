@@ -1,0 +1,70 @@
+﻿@model AffiliateNetwork.Web.Models.ProfileDetailsViewModel
+
+@{
+    ViewBag.Title = "My Profile";
+}
+<div class="row">
+    <div class="col-md-8">
+        <div class="bs-component">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">My Profile</h3>
+                </div>
+                <div class="panel-body">
+                    @if (string.IsNullOrEmpty(Model.Image))
+                    {
+                        <img src="~/Content/Site/imgs/default.jpg" class="img-responsive center-block" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/Site/imgs/@Model.Image" class="img-responsive" />
+                    }
+                    <hr />
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            Username: <strong>@Model.UserName</strong>
+                        </li>
+                        <li class="list-group-item">
+                            Email: <strong>@Model.Email</strong>
+                        </li>
+                        <li class="list-group-item">
+                            First Name: <strong>@(Model.FirstName != null ? Model.FirstName : "-")</strong>
+                        </li>
+                        <li class="list-group-item">
+                            Last Name: <strong>@(Model.LastName != null ? Model.LastName : "-")</strong>
+                        </li>
+                        <li class="list-group-item">
+                            Company Name: <strong>@(Model.CompanyName != null ? Model.CompanyName : "-")</strong>
+                        </li>
+                        <li class="list-group-item">
+                            Address: <strong>@(Model.Address != null ? Model.Address : "-")</strong>
+                        </li>
+                        <li class="list-group-item">
+                            Phone Number: <strong>@(Model.ContactPhone != null ? Model.ContactPhone : "-")</strong>
+                        </li>
+                        <li class="list-group-item">
+                            Registered: <strong>@(Model.RegistrationDate)</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <a class="btn btn-primary btn-block" href="/Manage/EditProfile">Edit</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-tasks fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div>Credits</div>
+                        <div class="huge">@Model.Credits</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

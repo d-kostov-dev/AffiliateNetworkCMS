@@ -37,6 +37,27 @@ namespace AffiliateNetwork.Web.Controllers
             }
         }
 
+        public ActionResult Profile()
+        {
+            var currentUser = UserManager.FindById(User.Identity.GetUserId());
+
+            var profile = new ProfileDetailsViewModel()
+            {
+                UserName = currentUser.UserName,
+                Email = currentUser.Email,
+                FirstName = currentUser.FirstName,
+                LastName = currentUser.LastName,
+                CompanyName = currentUser.CompanyName,
+                ContactPhone = currentUser.ContactPhone,
+                Address = currentUser.Address,
+                RegistrationDate = currentUser.CreatedOn,
+                Image = currentUser.Image,
+                Credits = currentUser.Credits
+            };
+
+            return this.View(profile);
+        }
+
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
@@ -58,6 +79,7 @@ namespace AffiliateNetwork.Web.Controllers
                 Logins = await UserManager.GetLoginsAsync(User.Identity.GetUserId()),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(User.Identity.GetUserId())
             };
+
             return View(model);
         }
 

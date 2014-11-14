@@ -25,6 +25,16 @@
             return new MvcHtmlString(generatedGroup.ToString());
         }
 
+        public static MvcHtmlString PassowrdFormGroupFor<TModel, TValue>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TValue>> expression)
+        {
+            var input = htmlHelper.PasswordFor(expression, new { @class = InputClass });
+            var generatedGroup = GenerateGroup(htmlHelper, expression, input);
+
+            return new MvcHtmlString(generatedGroup.ToString());
+        }
+
         public static MvcHtmlString EnumFormGroupFor<TModel, TValue>(
             this HtmlHelper<TModel> htmlHelper,
             Expression<Func<TModel, TValue>> expression)

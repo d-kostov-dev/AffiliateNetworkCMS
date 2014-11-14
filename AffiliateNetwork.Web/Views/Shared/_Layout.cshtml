@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,9 +21,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if(Request.IsAuthenticated)
+                    {
+                        <li><a href="/Administration/Dashboard">Manager Panel</a></li>
+                    }
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -31,10 +33,20 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <hr />
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-muted text-center">Made By <a href="#">Pesho Dev International</a> | Powered By <a href="http://www.asp.net/mvc">ASP.NET MVC</a> </p>
+                </div>
+                <div class="col-md-6">
+                    @Html.Action("GetPages", "Pages")
+                </div>
+            </div>
+        </div>
     </div>
     
     @Scripts.Render("~/bundles/jquery")

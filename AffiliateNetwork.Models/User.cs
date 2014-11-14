@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
@@ -11,6 +12,7 @@
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    
 
     public class User : IdentityUser, IAuditInfo
     {
@@ -74,7 +76,10 @@
         [Index]
         public DateTime? DeletedOn { get; set; }
 
+        [DefaultValue(0.00)]
         public decimal Credits { get; set; }
+
+        public string Image { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

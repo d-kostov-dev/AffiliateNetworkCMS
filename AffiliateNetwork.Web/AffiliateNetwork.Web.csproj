@@ -215,11 +215,14 @@
     <Compile Include="Controllers\ClicksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PageDetailsViewModel.cs" />
+    <Compile Include="Models\PagesFooterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -476,6 +479,7 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site\css\bootstrap.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Site\imgs\default.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site\css\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1040,8 +1044,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
@@ -1178,6 +1180,9 @@
     <Content Include="Scripts\Kendo\kendo.view.min.js.map" />
     <Content Include="Scripts\Kendo\kendo.web.min.js.map" />
     <Content Include="Scripts\Kendo\kendo.window.min.js.map" />
+    <Content Include="Views\Shared\_PagesFooterPartial.cshtml" />
+    <Content Include="Views\Pages\Details.cshtml" />
+    <Content Include="Views\Manage\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Banners\" />
