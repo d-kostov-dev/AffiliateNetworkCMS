@@ -8,19 +8,25 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AffiliateNetwork.Web.Models;
 using AffiliateNetwork.Models;
+using System.IO;
+using AffiliateNetwork.Contracts;
 
 namespace AffiliateNetwork.Web.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
-        public ManageController()
+        private IDataProvider data;
+
+        public ManageController(IDataProvider data)
         {
+            this.data = data;
         }
 
-        public ManageController(ApplicationUserManager userManager)
+        public ManageController(ApplicationUserManager userManager, IDataProvider data)
         {
             UserManager = userManager;
+            this.data = data;
         }
 
         private ApplicationUserManager _userManager;
@@ -37,7 +43,8 @@ namespace AffiliateNetwork.Web.Controllers
             }
         }
 
-        public ActionResult Profile()
+        [Authorize]
+        public ActionResult ProfileDetails()
         {
             var currentUser = UserManager.FindById(User.Identity.GetUserId());
 
@@ -51,11 +58,83 @@ namespace AffiliateNetwork.Web.Controllers
                 ContactPhone = currentUser.ContactPhone,
                 Address = currentUser.Address,
                 RegistrationDate = currentUser.CreatedOn,
-                Image = currentUser.Image,
+                PhotoId = currentUser.PhotoId,
                 Credits = currentUser.Credits
             };
 
             return this.View(profile);
+        }
+
+        [Authorize]
+        public ActionResult EditProfile()
+        {
+            var currentUser = UserManager.FindById(User.Identity.GetUserId());
+
+            var profile = new ProfileEditInputModel()
+            {
+                UserName = currentUser.UserName,
+                Email = currentUser.Email,
+                FirstName = currentUser.FirstName,
+                LastName = currentUser.LastName,
+                CompanyName = currentUser.CompanyName,
+                ContactPhone = currentUser.ContactPhone,
+                Address = currentUser.Address
+            };
+
+            return this.View(profile);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProfile(ProfileEditInputModel profileData)
+        {
+            if (profileData != null && ModelState.IsValid)
+            {
+                var profileToEdit = this.data.Users.Find(User.Identity.GetUserId());
+
+                profileToEdit.UserName = profileData.UserName;
+                profileToEdit.Email = profileData.Email;
+                profileToEdit.FirstName = profileData.FirstName;
+                profileToEdit.LastName = profileData.LastName;
+                profileToEdit.CompanyName = profileData.CompanyName;
+                profileToEdit.ContactPhone = profileData.ContactPhone;
+                profileToEdit.Address = profileData.Address;
+
+                if (profileData.ProfilePhoto != null)
+                {
+                    using (var memory = new MemoryStream())
+                    {
+                        profileData.ProfilePhoto.InputStream.CopyTo(memory);
+                        var content = memory.GetBuffer();
+
+                        profileToEdit.Photo = new ProfilePhoto
+                        {
+                            Content = content,
+                            FileExtension = profileData.ProfilePhoto.FileName.Split(new[] { '.' }).Last(),
+                            CreatedOn = DateTime.Now
+                        };
+                    }
+                }
+
+                this.data.SaveChanges();
+
+                return RedirectToAction("ProfileDetails");
+            }
+
+            return View(profileData);
+        }
+
+        public ActionResult Photo(int id)
+        {
+            var image = this.data.ProfilePhotos.Find(id);
+
+            if (image == null)
+            {
+                throw new HttpException(404, "Image not found");
+            }
+
+            return File(image.Content, "image/" + image.FileExtension);
         }
 
         //
@@ -251,7 +330,7 @@ namespace AffiliateNetwork.Web.Controllers
                 {
                     await SignInAsync(user, isPersistent: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return RedirectToAction("ProfileDetails", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
             AddErrors(result);
             return View(model);

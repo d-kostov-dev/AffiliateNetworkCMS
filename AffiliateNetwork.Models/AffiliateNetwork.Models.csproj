@@ -60,6 +60,7 @@
     <Compile Include="Click.cs" />
     <Compile Include="Conversion.cs" />
     <Compile Include="InfoPage.cs" />
+    <Compile Include="ProfilePhoto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteSetting.cs" />
     <Compile Include="User.cs" />

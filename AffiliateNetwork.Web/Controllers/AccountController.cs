@@ -157,7 +157,7 @@ namespace AffiliateNetwork.Web.Controllers
             {
                 var user = new User 
                 { 
-                    UserName = model.Email, 
+                    UserName = model.UserName, 
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,

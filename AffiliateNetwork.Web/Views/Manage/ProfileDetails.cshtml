@@ -11,13 +11,13 @@
                     <h3 class="panel-title">My Profile</h3>
                 </div>
                 <div class="panel-body">
-                    @if (string.IsNullOrEmpty(Model.Image))
+                    @if (Model.PhotoId != null)
                     {
-                        <img src="~/Content/Site/imgs/default.jpg" class="img-responsive center-block" />
+                        <img src="@Url.Action("Photo", "Manage", new { id = Model.PhotoId })" class="img-responsive center-block" />
                     }
                     else
                     {
-                        <img src="~/Content/Site/imgs/@Model.Image" class="img-responsive" />
+                        <img src="~/Content/Site/imgs/default.jpg" class="img-responsive center-block" />
                     }
                     <hr />
 
@@ -49,7 +49,8 @@
                     </ul>
                 </div>
             </div>
-            <a class="btn btn-primary btn-block" href="/Manage/EditProfile">Edit</a>
+            <a class="btn btn-primary btn-block" href="/Manage/EditProfile">Edit Profile</a>
+            <a class="btn btn-default btn-block" href="/Manage/ChangePassword">Change Password</a>
         </div>
     </div>
     <div class="col-md-4">

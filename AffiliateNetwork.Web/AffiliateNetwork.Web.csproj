@@ -1182,7 +1182,8 @@
     <Content Include="Scripts\Kendo\kendo.window.min.js.map" />
     <Content Include="Views\Shared\_PagesFooterPartial.cshtml" />
     <Content Include="Views\Pages\Details.cshtml" />
-    <Content Include="Views\Manage\Profile.cshtml" />
+    <Content Include="Views\Manage\ProfileDetails.cshtml" />
+    <Content Include="Views\Manage\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Banners\" />

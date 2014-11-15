@@ -59,6 +59,11 @@
             get { return this.GetRepository<Category>(); }
         }
 
+        public IRepository<ProfilePhoto> ProfilePhotos
+        {
+            get { return this.GetRepository<ProfilePhoto>(); }
+        }
+
         public int SaveChanges()
         {
             return this.databaseContext.SaveChanges();

@@ -35,6 +35,8 @@
 
         public virtual IDbSet<Category> Categories { get; set; }
 
+        public virtual IDbSet<ProfilePhoto> ProfilePhotos { get; set; }
+
         public static AffiliateNetworkDbContext Create()
         {
             return new AffiliateNetworkDbContext();
@@ -47,16 +49,6 @@
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            ////modelBuilder.Entity<Click>()
-            ////    .HasRequired(c => c.Affiliate)
-            ////    .WithMany(c => c.Clicks)
-            ////    .WillCascadeOnDelete(false);
-
-            ////modelBuilder.Entity<Click>()
-            ////    .HasRequired(c => c.Campaign)
-            ////    .WithMany(c => c.Clicks)
-            ////    .WillCascadeOnDelete(false);
-
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>(); 
 
             base.OnModelCreating(modelBuilder);

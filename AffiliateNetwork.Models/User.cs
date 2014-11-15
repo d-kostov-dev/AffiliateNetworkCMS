@@ -79,7 +79,9 @@
         [DefaultValue(0.00)]
         public decimal Credits { get; set; }
 
-        public string Image { get; set; }
+        public int? PhotoId { get; set; }
+
+        public virtual ProfilePhoto Photo { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

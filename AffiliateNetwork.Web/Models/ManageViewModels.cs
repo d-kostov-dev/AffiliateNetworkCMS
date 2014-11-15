@@ -6,6 +6,7 @@ using AffiliateNetwork.Models;
 using AffiliateNetwork.Infrastructure.Mapping;
 using System;
 using AutoMapper;
+using System.Web;
 
 namespace AffiliateNetwork.Web.Models
 {
@@ -110,6 +111,25 @@ namespace AffiliateNetwork.Web.Models
 
         public decimal Credits { get; set; }
 
-        public string Image { get; set; }
+        public int? PhotoId { get; set; }
+    }
+
+    public class ProfileEditInputModel
+    {
+        public string UserName { get; set; }
+
+        public string Email { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string CompanyName { get; set; }
+
+        public string ContactPhone { get; set; }
+
+        public string Address { get; set; }
+
+        public HttpPostedFileBase ProfilePhoto { get; set; }
     }
 }

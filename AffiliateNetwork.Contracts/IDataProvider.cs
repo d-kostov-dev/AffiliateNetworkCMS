@@ -20,6 +20,8 @@
 
         IRepository<Category> Categories { get; }
 
+        IRepository<ProfilePhoto> ProfilePhotos { get; }
+
         int SaveChanges();
     }
 }

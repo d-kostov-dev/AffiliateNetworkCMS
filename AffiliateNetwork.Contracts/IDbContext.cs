@@ -21,6 +21,8 @@
 
         IDbSet<Category> Categories { get; set; }
 
+        IDbSet<ProfilePhoto> ProfilePhotos { get; set; }
+
         int SaveChanges();
 
         IDbSet<TEntity> Set<TEntity>() where TEntity : class;

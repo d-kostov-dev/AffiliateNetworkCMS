@@ -1,16 +1,14 @@
-﻿@model AffiliateNetwork.Web.Models.RegisterViewModel
+﻿@model AffiliateNetwork.Web.Models.ProfileEditInputModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Edit Profile";
 }
 
 <h2>@ViewBag.Title.</h2>
 
 <div class="col-md-8 col-md-offset-2">
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("EditProfile", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
-        <h4>Create a new account.</h4>
-        <hr />
         @Html.ValidationSummary("", new { @class = "text-danger" })
 
         @Html.FormGroupFor(m => m.Email)
@@ -20,16 +18,21 @@
         @Html.FormGroupFor(m => m.CompanyName)
         @Html.FormGroupFor(m => m.ContactPhone)
         @Html.FormGroupFor(m => m.Address)
-        @Html.PassowrdFormGroupFor(m => m.Password)
-        @Html.PassowrdFormGroupFor(m => m.ConfirmPassword)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                @Html.SubmitButton("Register")
+                <input type="file" name="ProfilePhoto" id="ProfilePhoto" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.SubmitButton("Edit Profile")
             </div>
         </div>
     }
 </div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
