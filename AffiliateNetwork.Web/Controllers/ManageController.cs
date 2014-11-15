@@ -1,18 +1,20 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using AffiliateNetwork.Web.Models;
-using AffiliateNetwork.Models;
-using System.IO;
-using AffiliateNetwork.Contracts;
-
-namespace AffiliateNetwork.Web.Controllers
+﻿namespace AffiliateNetwork.Web.Controllers
 {
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+
+    using AffiliateNetwork.Contracts;
+    using AffiliateNetwork.Models;
+    using AffiliateNetwork.Web.Models;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+
     [Authorize]
     public class ManageController : Controller
     {
