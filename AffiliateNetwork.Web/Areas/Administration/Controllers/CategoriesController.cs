@@ -5,6 +5,7 @@
     using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
     using AffiliateNetwork.Web.Areas.Administration.Models.InputModels;
     using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
+    using AffiliateNewtork.Infrastructure;
     using PagedList;
     using System;
     using System.Linq;
@@ -12,7 +13,7 @@
     using System.Net;
     using System.Web.Mvc;
 
-
+    [Authorize(Roles = GlobalConstants.AdminRole)]
     public class CategoriesController : AdminBaseController
     {
         public CategoriesController(IDataProvider provider)

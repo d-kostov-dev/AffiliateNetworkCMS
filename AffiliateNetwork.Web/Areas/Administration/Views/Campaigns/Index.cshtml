@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<AffiliateNetwork.Web.Areas.Administration.Models.ViewModels.ListCampaignsViewModel>
 
 @using GridMvc.Html
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "List Campaigns";
@@ -66,15 +67,15 @@
     
     // Buttons
     columns.Add()
-        .RenderValueAs(x => Html.EditButton(x.Id))
         .Encoded(false)
         .Sanitized(false)
+        .RenderValueAs(x => EditButtonHelper(x.Id, x.Owner.Id))
         .SetWidth(50);
 
     columns.Add()
-        .RenderValueAs(x => Html.DeleteButton(x.Id))
         .Encoded(false)
         .Sanitized(false)
+        .RenderValueAs(x => DeleteButtonHelper(x.Id, x.Owner.Id))
         .SetWidth(50);
 
 }).WithPaging(ViewBag.PageSize)
@@ -85,4 +86,22 @@
 
 @section Styles{
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+}
+
+@helper EditButtonHelper(int id, string ownerId)
+{
+    if (User.Identity.GetUserId() == ownerId || 
+        User.IsInRole(AffiliateNewtork.Infrastructure.GlobalConstants.AdminRole))
+	{
+        @Html.EditButton(id);
+	}
+}
+
+@helper DeleteButtonHelper(int id, string ownerId)
+{
+    if (User.Identity.GetUserId() == ownerId ||
+        User.IsInRole(AffiliateNewtork.Infrastructure.GlobalConstants.AdminRole))
+    {
+        @Html.DeleteButton(id);
+    }
 }

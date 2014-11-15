@@ -9,7 +9,9 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
     using AffiliateNetwork.Models;
     using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
     using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
+    using AffiliateNewtork.Infrastructure;
 
+    [Authorize(Roles = GlobalConstants.AdminRole)]
     public class InfoPagesController : AdminBaseController
     {
         public InfoPagesController(IDataProvider provider)

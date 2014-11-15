@@ -21,20 +21,11 @@
                 manager.Create(role);
             }
 
-            if (!databaseContext.Roles.Any(r => r.Name == "Customer"))
+            if (!databaseContext.Roles.Any(r => r.Name == "User"))
             {
                 var store = new RoleStore<IdentityRole>(databaseContext);
                 var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole { Name = "Customer" };
-
-                manager.Create(role);
-            }
-
-            if (!databaseContext.Roles.Any(r => r.Name == "Affiliate"))
-            {
-                var store = new RoleStore<IdentityRole>(databaseContext);
-                var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole { Name = "Affiliate" };
+                var role = new IdentityRole { Name = "User" };
 
                 manager.Create(role);
             }
@@ -49,15 +40,6 @@
                 manager.AddToRole(user.Id, "Administrator");
             }
 
-            if (!databaseContext.Users.Any(u => u.UserName == "customer@abv.bg"))
-            {
-                var store = new UserStore<User>(databaseContext);
-                var manager = new UserManager<User>(store);
-                var user = new User { UserName = "customer@abv.bg", Email = "customer@abv.bg", CompanyName = "T-Shirt Hell", CreatedOn = DateTime.Now };
-
-                manager.Create(user, "123456");
-                manager.AddToRole(user.Id, "Customer");
-            }
 
             if (!databaseContext.Users.Any(u => u.UserName == "user@abv.bg"))
             {
@@ -66,7 +48,7 @@
                 var user = new User { UserName = "user@abv.bg", Email = "user@abv.bg", CreatedOn = DateTime.Now };
 
                 manager.Create(user, "123456");
-                manager.AddToRole(user.Id, "Affiliate");
+                manager.AddToRole(user.Id, "User");
             }
 
             databaseContext.SaveChanges();

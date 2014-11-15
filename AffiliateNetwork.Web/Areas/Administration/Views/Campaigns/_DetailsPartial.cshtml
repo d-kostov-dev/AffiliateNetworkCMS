@@ -1,5 +1,7 @@
 ﻿@model AffiliateNetwork.Web.Areas.Administration.Models.ViewModels.ListCampaignsDetailsViewModel
 @using Kendo.Mvc.UI;
+@using Microsoft.AspNet.Identity
+
 <div class="row">
     <div class="col-md-12">
         <h3>@ViewBag.Title</h3>
@@ -44,7 +46,10 @@
                 </ul>
             </div>
             <div class="panel-footer">
-                @Html.ActionLink("Add Banners", "Add", "Banners", new { Model.Id }, new { @class = "btn btn-primary" })
+                @if (User.Identity.GetUserId() == Model.OwnerId)
+                {
+                  @Html.ActionLink("Add Banners", "Add", "Banners", new { Model.Id }, new { @class = "btn btn-primary" })
+                }
             </div>
         </div>
     </div>

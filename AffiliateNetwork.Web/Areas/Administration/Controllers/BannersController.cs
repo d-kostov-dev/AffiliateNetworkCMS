@@ -31,6 +31,12 @@
             {
                 return this.RedirectToAction("Index", "Campaigns");
             }
+            var campaign = this.Data.Campaigns.Find(id);
+
+            if (campaign.OwnerId != this.CurrentUser.Id)
+            {
+                return this.RedirectToAction("Index", "Campaigns");
+            }
 
             var banner = new Banner() { CampaignId = (int)id };
 

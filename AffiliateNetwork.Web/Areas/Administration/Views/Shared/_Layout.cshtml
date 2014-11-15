@@ -36,7 +36,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
-                            <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <a href="/Account/LogOff"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul> <!-- /.dropdown-user -->
                 </li> <!-- /.dropdown -->
@@ -48,35 +48,36 @@
                         <li>
                             <a href="/"><i class="fa fa-home fa-fw"></i> Site Home</a>
                         </li>
+                        @if (User.IsInRole(AffiliateNewtork.Infrastructure.GlobalConstants.AdminRole))
+                        {
+                            <li>
+                                <a href="/Administration/Categories"><i class="fa fa-sitemap fa-fw"></i> Categories</a>
+                            </li>
 
-                        <li>
-                            <a href="/Administration/Categories"><i class="fa fa-sitemap fa-fw"></i> Categories</a>
-                        </li>
+                            <li>
+                                <a href="/Administration/InfoPages"><i class="fa fa-file fa-fw"></i> Info Pages</a>
+                            </li>
 
-                        <li>
-                            <a href="/Administration/InfoPages"><i class="fa fa-file fa-fw"></i> Info Pages</a>
-                        </li>
+                            <li>
+                                <a href="/Administration/SiteSettings"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                            </li>
 
-                        <li>
-                            <a href="/Administration/SiteSettings"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
+                            <li>
+                                <a href="/Administration/Clicks"><i class="fa fa-bar-chart-o fa-fw"></i> Clicks</a>
+                            </li>
+
+                            <li>
+                                <a href="/Administration/Conversions"><i class="fa fa-bar-chart-o fa-fw"></i> Conversions</a>
+                            </li>
+
+                            <li>
+                                <a href="/Administration/Banners"><i class="fa fa-th fa-fw"></i> Banners</a>
+                            </li>
+                        }
 
                         <li>
                             <a href="/Administration/Campaigns"><i class="fa fa-credit-card fa-fw"></i> Campaigns</a>
                         </li>
-
-                        <li>
-                            <a href="/Administration/Banners"><i class="fa fa-th fa-fw"></i> Banners</a>
-                        </li>
-
-                        <li>
-                            <a href="/Administration/Clicks"><i class="fa fa-bar-chart-o fa-fw"></i> Clicks</a>
-                        </li>
-
-                        <li>
-                            <a href="/Administration/Conversions"><i class="fa fa-bar-chart-o fa-fw"></i> Conversions</a>
-                        </li>
-
                     </ul>
                 </div> <!-- /.sidebar-collapse -->
             </div> <!-- /.navbar-static-side -->

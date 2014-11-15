@@ -102,6 +102,8 @@
         [Display(Name = "Created")]
         public DateTime CreatedOn { get; set; }
 
+        public string OwnerId { get; set; }
+
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Campaign, ListCampaignsDetailsViewModel>()

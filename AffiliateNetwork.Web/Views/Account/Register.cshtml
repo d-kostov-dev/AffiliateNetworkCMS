@@ -11,7 +11,7 @@
         @Html.AntiForgeryToken()
         <h4>Create a new account.</h4>
         <hr />
-        @Html.ValidationSummary("", new { @class = "text-danger" })
+        @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
 
         @Html.FormGroupFor(m => m.Email)
         @Html.FormGroupFor(m => m.UserName)

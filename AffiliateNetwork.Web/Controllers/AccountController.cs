@@ -45,6 +45,11 @@ namespace AffiliateNetwork.Web.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return Redirect("/Administration/Dashboard");
+            }
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -169,6 +174,7 @@ namespace AffiliateNetwork.Web.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, "User");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     return RedirectToAction("Index", "Home");
@@ -391,6 +397,12 @@ namespace AffiliateNetwork.Web.Controllers
 
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
+        }
+
+        public ActionResult LogOff(int? id)
+        {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
         //

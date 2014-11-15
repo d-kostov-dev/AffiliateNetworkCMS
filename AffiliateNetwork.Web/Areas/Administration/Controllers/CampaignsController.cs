@@ -13,6 +13,7 @@
 
     using AutoMapper.QueryableExtensions;
     using Microsoft.AspNet.Identity;
+    using AffiliateNewtork.Infrastructure;
 
     public class CampaignsController : AdminBaseController
     {
@@ -134,6 +135,11 @@
                 return HttpNotFound();
             }
 
+            if (campaign.OwnerId != this.CurrentUser.Id && !User.IsInRole(GlobalConstants.AdminRole))
+            {
+                return RedirectToAction("Index");
+            }
+
             this.SetCategories(campaign.CategoryId);
 
             return View(campaign);
@@ -149,6 +155,11 @@
             }
 
             var campaignToSave = this.Data.Campaigns.Find(campaign.Id);
+
+            if (campaignToSave.OwnerId != this.CurrentUser.Id && !User.IsInRole(GlobalConstants.AdminRole))
+            {
+                return RedirectToAction("Index");
+            }
 
             campaignToSave.Title = campaign.Title;
             campaignToSave.Description = campaign.Description;
@@ -216,6 +227,11 @@
         public ActionResult DeleteConfirmed(int id)
         {
             Campaign campaign = this.Data.Campaigns.Find(id);
+
+            if (campaign.OwnerId != this.CurrentUser.Id && !User.IsInRole(GlobalConstants.AdminRole))
+            {
+                return RedirectToAction("Index");
+            }
 
             this.Data.Campaigns.Delete(campaign);
             this.Data.SaveChanges();

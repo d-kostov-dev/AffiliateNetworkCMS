@@ -49,5 +49,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Models.InputModels
 
         [Display(Name = "Admin Comment")]
         public string AdminComment { get; set; }
+
+        public string OwnerId { get; set; }
     }
 }

@@ -10,9 +10,11 @@ using AffiliateNetwork.Data;
 using AffiliateNetwork.Models;
 using AffiliateNetwork.Contracts;
 using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
+using AffiliateNewtork.Infrastructure;
 
 namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {
+    [Authorize(Roles = GlobalConstants.AdminRole)]
     public class SiteSettingsController : AdminBaseController
     {
         private const int defaultPageSize = 1;
