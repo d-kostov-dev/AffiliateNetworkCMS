@@ -480,6 +480,7 @@
     <Content Include="Content\Site\css\bootstrap.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Site\imgs\default.jpg" />
+    <Content Include="Content\Site\imgs\excuseme.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site\css\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
