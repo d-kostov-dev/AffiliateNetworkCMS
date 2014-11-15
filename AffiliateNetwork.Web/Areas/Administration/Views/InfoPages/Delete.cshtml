@@ -11,12 +11,4 @@
 
 @Html.Partial("_DetailsPartial")
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-actions no-color">
-        @Html.SubmitButton("Delete")
-        @Html.SuccessButton("Back to List", "Index")
-    </div>
-}
+@Html.Partial("_DeleteGroupPartial")

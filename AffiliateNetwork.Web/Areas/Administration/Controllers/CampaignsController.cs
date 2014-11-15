@@ -1,6 +1,5 @@
 ﻿namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
@@ -10,10 +9,9 @@
     using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
     using AffiliateNetwork.Web.Areas.Administration.Models.InputModels;
     using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
+    using AffiliateNewtork.Common;
 
     using AutoMapper.QueryableExtensions;
-    using Microsoft.AspNet.Identity;
-    using AffiliateNewtork.Common;
 
     public class CampaignsController : AdminBaseController
     {
@@ -32,8 +30,9 @@
                 .OrderBy(x => x.Id)
                 .Project().To<ListCampaignsViewModel>();
 
-            return View(campaigns);
+            return this.View(campaigns);
         }
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -74,17 +73,17 @@
 
             if (campaign == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
-            return View(campaign);
+            return this.View(campaign);
         }
 
         public ActionResult Create()
         {
             this.SetCategories();
 
-            return View();
+            return this.View();
         }
 
         [HttpPost]
@@ -94,7 +93,7 @@
             if (!ModelState.IsValid)
             {
                 this.SetCategories();
-                return View(campaign);
+                return this.View(campaign);
             }
 
             var campaignToAdd = new Campaign()
@@ -113,7 +112,7 @@
             this.Data.Campaigns.Add(campaignToAdd);
             this.Data.SaveChanges();
 
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
 
         public ActionResult Edit(int? id)
@@ -132,17 +131,17 @@
 
             if (campaign == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
             if (campaign.OwnerId != this.CurrentUser.Id && !User.IsInRole(GlobalConstants.AdminRole))
             {
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
 
             this.SetCategories(campaign.CategoryId);
 
-            return View(campaign);
+            return this.View(campaign);
         }
 
         [HttpPost]
@@ -151,14 +150,14 @@
         {
             if (!ModelState.IsValid)
             {
-                return View(campaign);
+                return this.View(campaign);
             }
 
             var campaignToSave = this.Data.Campaigns.Find(campaign.Id);
 
             if (campaignToSave.OwnerId != this.CurrentUser.Id && !User.IsInRole(GlobalConstants.AdminRole))
             {
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
 
             campaignToSave.Title = campaign.Title;
@@ -173,7 +172,7 @@
             this.Data.Campaigns.Update(campaignToSave);
             this.Data.SaveChanges();
 
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
 
         public ActionResult Delete(int? id)
@@ -216,10 +215,10 @@
 
             if (campaign == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
-            return View(campaign);
+            return this.View(campaign);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -230,18 +229,18 @@
 
             if (campaign.OwnerId != this.CurrentUser.Id && !User.IsInRole(GlobalConstants.AdminRole))
             {
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
 
             this.Data.Campaigns.Delete(campaign);
             this.Data.SaveChanges();
 
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
 
         public ActionResult AddBanner(int id)
         {
-            return RedirectToAction("Add", "Banners", new { id = id });
+            return this.RedirectToAction("Add", "Banners", new { id = id });
         }
 
         private void SetCategories(int? id = null)

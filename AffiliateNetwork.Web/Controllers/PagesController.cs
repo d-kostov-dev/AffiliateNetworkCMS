@@ -23,7 +23,7 @@
                 .Project().To<PageDetailsViewModel>()
                 .FirstOrDefault();
 
-            return View(page);
+            return this.View(page);
         }
 
         [ChildActionOnly]

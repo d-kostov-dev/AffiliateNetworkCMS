@@ -17,14 +17,6 @@
             </div>
         </div>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-actions no-color">
-                @Html.SubmitButton("Delete")
-                @Html.SuccessButton("Cancel", "Index")
-            </div>
-        }
+        @Html.Partial("_DeleteGroupPartial")
     </div>
 </div>

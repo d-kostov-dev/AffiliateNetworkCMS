@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(AffiliateNetwork.Web.Startup))]
+
 namespace AffiliateNetwork.Web
 {
     public partial class Startup

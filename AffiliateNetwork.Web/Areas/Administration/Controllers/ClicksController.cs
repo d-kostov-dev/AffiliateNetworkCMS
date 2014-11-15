@@ -5,11 +5,10 @@
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
     using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
-
-    using AutoMapper.QueryableExtensions;
-
     using AffiliateNewtork.Common;
 
+    using AutoMapper.QueryableExtensions;
+    
     [Authorize(Roles = GlobalConstants.AdminRole)]
     public class ClicksController : AdminBaseController
     {
@@ -25,7 +24,7 @@
                 .Project()
                 .To<ClicksListViewModels>();
 
-            return View(clicks);
+            return this.View(clicks);
         }
 
         public ActionResult Delete(int id)
@@ -34,7 +33,7 @@
             this.Data.Clicks.Delete(click);
             this.Data.SaveChanges();
 
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace AffiliateNetwork.Web.Models
+﻿namespace AffiliateNetwork.Web.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -18,8 +18,11 @@ namespace AffiliateNetwork.Web.Models
     public class SendCodeViewModel
     {
         public string SelectedProvider { get; set; }
+
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+
         public string ReturnUrl { get; set; }
+
         public bool RememberMe { get; set; }
     }
 
@@ -31,6 +34,7 @@ namespace AffiliateNetwork.Web.Models
         [Required]
         [Display(Name = "Code")]
         public string Code { get; set; }
+
         public string ReturnUrl { get; set; }
 
         [Display(Name = "Remember this browser?")]

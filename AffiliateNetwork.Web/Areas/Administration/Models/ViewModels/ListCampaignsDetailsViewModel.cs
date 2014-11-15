@@ -10,7 +10,7 @@
 
     using AutoMapper;
 
-    public class ListCampaignsViewModel : IMapFrom<Campaign>, IHaveCustomMappings
+    public class ListCampaignsDetailsViewModel : IMapFrom<Campaign>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -29,33 +29,30 @@
 
         public decimal Payout { get; set; }
 
-        [Display(Name = "Owner")]
-        public virtual User Owner { get; set; }
-
-        [Display(Name = "Affiliates")]
-        public int AffiliatesCount { get; set; }
+        [Display(Name = "Company Name")]
+        public string CompanyName { get; set; }
 
         [Display(Name = "Expires")]
         public DateTime ValidTo { get; set; }
 
         [Display(Name = "Clicks")]
-        public int ClicksCount { get; set; }
+        public ICollection<Click> Clicks { get; set; }
 
         [Display(Name = "Conversions")]
-        public int ConversionsCount { get; set; }
+        public ICollection<Conversion> Conversions { get; set; }
 
         public ApprovalStatus ApprovalStatus { get; set; }
 
         [Display(Name = "Created")]
         public DateTime CreatedOn { get; set; }
 
+        public string OwnerId { get; set; }
+
         public void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<Campaign, ListCampaignsViewModel>()
+            configuration.CreateMap<Campaign, ListCampaignsDetailsViewModel>()
                 .ForMember(m => m.CategoryName, opt => opt.MapFrom(u => u.Category.Name.ToString()))
-                .ForMember(m => m.AffiliatesCount, opt => opt.MapFrom(u => u.Affiliates.Count))
-                .ForMember(m => m.ClicksCount, opt => opt.MapFrom(u => u.Clicks.Count))
-                .ForMember(m => m.ConversionsCount, opt => opt.MapFrom(u => u.Conversions.Count));
+                .ForMember(m => m.CompanyName, opt => opt.MapFrom(u => u.Owner.CompanyName));
         }
     }
 }

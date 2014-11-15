@@ -1,19 +1,17 @@
-﻿using AffiliateNetwork.Contracts;
-using AffiliateNetwork.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-using Microsoft.AspNet.Identity;
-
-namespace AffiliateNetwork.Web.Areas.Administration.Controllers.Base
+﻿namespace AffiliateNetwork.Web.Areas.Administration.Controllers.Base
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.Mvc;
+
+    using AffiliateNetwork.Contracts;
+    using AffiliateNetwork.Models;
+
+    using Microsoft.AspNet.Identity;
+
     [Authorize]
     public class AdminBaseController : Controller
     {
-        private const int defaultPageSize = 5;
         private IDictionary<string, string> settings;
         private User currentUser;
 
@@ -29,7 +27,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers.Base
         {
             get
             {
-                if(this.currentUser == null)
+                if (this.currentUser == null)
                 {
                     var currentUserId = User.Identity.GetUserId();
                     this.currentUser = this.Data.Users.Find(currentUserId);
@@ -70,5 +68,4 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers.Base
             return settingsList;
         }
     }
-
 }

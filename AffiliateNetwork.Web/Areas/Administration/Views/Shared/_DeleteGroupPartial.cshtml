@@ -1,0 +1,9 @@
+﻿@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        @Html.SubmitButton("Delete")
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}

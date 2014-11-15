@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using AffiliateNetwork.Data;
-using AffiliateNetwork.Models;
-using AffiliateNetwork.Contracts;
-using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
-using AffiliateNewtork.Common;
-
-namespace AffiliateNetwork.Web.Areas.Administration.Controllers
+﻿namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {
+    using System.Linq;
+    using System.Net;
+    using System.Web.Mvc;
+
+    using AffiliateNetwork.Contracts;
+    using AffiliateNetwork.Models;
+    using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
+    using AffiliateNewtork.Common;
+    
     [Authorize(Roles = GlobalConstants.AdminRole)]
     public class SiteSettingsController : AdminBaseController
     {
-        private const int defaultPageSize = 1;
-
         public SiteSettingsController(IDataProvider provider)
             : base(provider)
         {
@@ -28,12 +21,12 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
         {
             this.ManagePageSizing();
 
-            return View(this.Data.SiteSettings.All().OrderBy(x => x.Id).ToList());
+            return this.View(this.Data.SiteSettings.All().OrderBy(x => x.Id).ToList());
         }
 
         public ActionResult Create()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]
@@ -44,10 +37,10 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
             {
                 this.Data.SiteSettings.Add(siteSetting);
                 this.Data.SaveChanges();
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
 
-            return View(siteSetting);
+            return this.View(siteSetting);
         }
 
         public ActionResult Edit(int? id)
@@ -61,10 +54,10 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
             if (siteSetting == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
-            return View(siteSetting);
+            return this.View(siteSetting);
         }
 
         [HttpPost]
@@ -80,38 +73,10 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
                 this.Data.SaveChanges();
 
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
 
-            return View(siteSetting);
-        }
-
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            SiteSetting siteSetting = this.Data.SiteSettings.Find(id);
-
-            if (siteSetting == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(siteSetting);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            SiteSetting siteSetting = this.Data.SiteSettings.Find(id);
-            this.Data.SiteSettings.Delete(siteSetting);
-            this.Data.SaveChanges();
-
-            return RedirectToAction("Index");
+            return this.View(siteSetting);
         }
     }
 }

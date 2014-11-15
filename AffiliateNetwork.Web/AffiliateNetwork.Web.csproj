@@ -211,11 +211,16 @@
     <Compile Include="Areas\Administration\Models\InputModels\GridOptionsInputModel.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\CampaignViewModels.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\InfoPageViewModels.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\ListCampaignsDetailsViewModel.cs" />
+    <Compile Include="Controllers\AccountController.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ClicksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManageController.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Controllers\PagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -509,7 +514,6 @@
     <Content Include="Areas\Administration\Views\Shared\_GridPager.cshtml" />
     <Content Include="Areas\Administration\Views\InfoPages\_DetailsPartial.cshtml" />
     <Content Include="Areas\Administration\Views\SiteSettings\Create.cshtml" />
-    <Content Include="Areas\Administration\Views\SiteSettings\Delete.cshtml" />
     <Content Include="Areas\Administration\Views\SiteSettings\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\SiteSettings\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_PageHeadingPartial.cshtml" />
@@ -532,6 +536,8 @@
     <Content Include="Areas\Administration\Views\Clicks\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Conversions\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Banners\_BannersListPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_SaveGroupPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_DeleteGroupPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />

@@ -13,7 +13,7 @@
 
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
     }
 }

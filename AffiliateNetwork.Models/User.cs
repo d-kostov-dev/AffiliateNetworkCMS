@@ -13,7 +13,6 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     
-
     public class User : IdentityUser, IAuditInfo
     {
         private ICollection<Campaign> campaigns;

@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace AffiliateNetwork.Web.Areas.Administration
+﻿namespace AffiliateNetwork.Web.Areas.Administration
 {
+    using System.Web.Mvc;
+
     public class AdministrationAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
@@ -17,8 +17,7 @@ namespace AffiliateNetwork.Web.Areas.Administration
             context.MapRoute(
                 "Administration_default",
                 "Administration/{controller}/{action}/{id}",
-                new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional }
-            );
+                new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional });
         }
     }
 }

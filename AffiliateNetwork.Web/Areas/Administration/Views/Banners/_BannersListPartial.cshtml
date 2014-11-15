@@ -1,20 +1,7 @@
 ﻿@model IList<AffiliateNetwork.Web.Areas.Administration.Models.ViewModels.BannersListViewModel>
 
-<h3>Select a banners to promote this campaign.</h3>
-
-
 @foreach (var banner in Model)
 {
-    //var bannerCode = new System.Text.StringBuilder();
-    
-    //bannerCode.Append
-    //    (string.Format("<a href='{0}'>", banner.Campaign.LandingPage + "?affId="+ User.Identity.GetUserId()));
-    
-    //bannerCode.Append(
-    //    string.Format("<img src='{0}' alt='{1}' />", @ViewBag.Settings["BannersUrl"] + banner.Image, banner.Campaign.Title));
-    
-    //bannerCode.Append("</a>");
-   
     <div class="row">
         <img class="img-responsive center-block" src="~/Content/Banners/@banner.BannerImage" alt="@banner.CampaignTitle" />
         <br />

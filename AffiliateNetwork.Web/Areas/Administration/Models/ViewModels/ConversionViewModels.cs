@@ -1,11 +1,13 @@
 ﻿namespace AffiliateNetwork.Web.Areas.Administration.Models.ViewModels
 {
-    using AffiliateNetwork.Infrastructure.Mapping;
-    using AffiliateNetwork.Models;
-    using AutoMapper;
     using System;
     using System.ComponentModel.DataAnnotations;
 
+    using AffiliateNetwork.Infrastructure.Mapping;
+    using AffiliateNetwork.Models;
+
+    using AutoMapper;
+    
     public class ConversionViewModels : IMapFrom<Conversion>, IHaveCustomMappings
     {
         public int Id { get; set; }

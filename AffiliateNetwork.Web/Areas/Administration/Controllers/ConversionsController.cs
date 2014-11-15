@@ -5,9 +5,9 @@
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
     using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
+    using AffiliateNewtork.Common;
 
     using AutoMapper.QueryableExtensions;
-    using AffiliateNewtork.Common;
 
     [Authorize(Roles = GlobalConstants.AdminRole)]
     public class ConversionsController : AdminBaseController
@@ -24,7 +24,7 @@
                 .Project()
                 .To<ConversionViewModels>();
 
-            return View(conversions);
+            return this.View(conversions);
         }
 
         public ActionResult Delete(int id)
@@ -33,7 +33,7 @@
             this.Data.Conversions.Delete(item);
             this.Data.SaveChanges();
 
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
     }
 }

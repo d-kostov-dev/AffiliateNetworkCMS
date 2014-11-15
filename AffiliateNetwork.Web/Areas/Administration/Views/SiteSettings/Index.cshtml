@@ -32,10 +32,4 @@
         .Sanitized(false)
         .SetWidth(50);
 
-    columns.Add()
-        .RenderValueAs(x => Html.DeleteButton(x.Id))
-        .Encoded(false)
-        .Sanitized(false)
-        .SetWidth(50);
-
 }).WithPaging(ViewBag.PageSize)

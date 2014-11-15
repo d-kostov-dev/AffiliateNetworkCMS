@@ -1,17 +1,19 @@
 ﻿namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Linq.Dynamic;
+    using System.Net;
+    using System.Web.Mvc;
+
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Models;
     using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
     using AffiliateNetwork.Web.Areas.Administration.Models.InputModels;
     using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
     using AffiliateNewtork.Common;
+
     using PagedList;
-    using System;
-    using System.Linq;
-    using System.Linq.Dynamic;
-    using System.Net;
-    using System.Web.Mvc;
 
     [Authorize(Roles = GlobalConstants.AdminRole)]
     public class CategoriesController : AdminBaseController
@@ -45,7 +47,7 @@
             // Actual work
             var selectedItems = this.Data.Categories.All();
 
-            if (!String.IsNullOrEmpty(filter.SearchFilter))
+            if (!string.IsNullOrEmpty(filter.SearchFilter))
             {
                 selectedItems = selectedItems
                     .Where(x => x.Name.ToLower().Contains(filter.SearchFilter.ToLower()));
@@ -58,12 +60,12 @@
             int pageSize = filter.PerPage;
             int pageNumber = filter.Page;
 
-            return View(sortedItems.ToPagedList(pageNumber, pageSize));
+            return this.View(sortedItems.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult Create()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]
@@ -74,10 +76,10 @@
             {
                 this.Data.Categories.Add(category);
                 this.Data.SaveChanges();
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
 
-            return View(category);
+            return this.View(category);
         }
 
         public ActionResult Edit(int? id)
@@ -91,10 +93,10 @@
 
             if (category == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
-            return View(category);
+            return this.View(category);
         }
 
         [HttpPost]
@@ -105,10 +107,10 @@
             {
                 this.Data.Categories.Update(category);
                 this.Data.SaveChanges();
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
 
-            return View(category);
+            return this.View(category);
         }
 
         public ActionResult Delete(int? id)
@@ -122,10 +124,10 @@
 
             if (category == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
-            return View(category);
+            return this.View(category);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -137,7 +139,7 @@
             this.Data.Categories.Delete(category);
             this.Data.SaveChanges();
 
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
     }
 }

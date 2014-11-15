@@ -1,14 +1,12 @@
-﻿using AffiliateNetwork.Contracts;
-using AffiliateNetwork.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-
-namespace AffiliateNetwork.Web.Controllers
+﻿namespace AffiliateNetwork.Web.Controllers
 {
+    using System.Web.Mvc;
+
+    using AffiliateNetwork.Contracts;
+    using AffiliateNetwork.Models;
+
+    using Microsoft.AspNet.Identity;
+
     public class BaseController : Controller
     {
         private User currentUser;

@@ -3,15 +3,8 @@
 }
 <h3>Are you sure you want to delete this Campaign?</h3>
 
-<div>
-    @Html.Partial("_DetailsPartial")
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+@Html.Partial("_DetailsPartial")
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+@Html.Partial("_DeleteGroupPartial")
+

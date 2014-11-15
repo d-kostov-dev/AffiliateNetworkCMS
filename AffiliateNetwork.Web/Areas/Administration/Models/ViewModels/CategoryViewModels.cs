@@ -1,12 +1,11 @@
-﻿using AffiliateNetwork.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
-
-namespace AffiliateNetwork.Web.Areas.Administration.Models.ViewModels
+﻿namespace AffiliateNetwork.Web.Areas.Administration.Models.ViewModels
 {
+    using System;
+    using System.Linq;
+    using System.Linq.Expressions;
+
+    using AffiliateNetwork.Models;
+
     public class ListCategoryViewModel
     {
         public static Expression<Func<Category, ListCategoryViewModel>> ViewModel

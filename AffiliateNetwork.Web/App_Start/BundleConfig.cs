@@ -24,14 +24,12 @@
                       "~/Content/Manager/css/bootstrap.css",
                       "~/Content/Manager/css/sb-admin-2.css",
                       "~/Content/Manager/css/metisMenu.css",
-                      "~/Content/Manager/css/font-awesome.css"
-                      ));
+                      "~/Content/Manager/css/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/Content/Manager/css/Kendo/Styles").Include(
                       "~/Content/Manager/css/Kendo/kendo.common.min.css",
                       "~/Content/Manager/css/Kendo/kendo.bootstrap.min.css",
-                      "~/Content/Manager/css/Kendo/kendo.default.min.css"
-                      ));
+                      "~/Content/Manager/css/Kendo/kendo.default.min.css"));
         }
 
         private static void RegisterScriptBundles(BundleCollection bundles)
@@ -52,8 +50,7 @@
                      "~/Content/Manager/scripts/plugins/metisMenu/metisMenu.min.js",
                      "~/Content/Manager/scripts/sb-admin-2.js",
                      "~/Scripts/Kendo/kendo.all.min.js",
-                     "~/Scripts/Kendo/kendo.aspnetmvc.min.js"
-                     ));
+                     "~/Scripts/Kendo/kendo.aspnetmvc.min.js"));
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-namespace AffiliateNetwork.Web.Areas.Administration.Controllers
+﻿namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {
     using System.Linq;
     using System.Net;
@@ -7,10 +6,10 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Models;
-    using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
     using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
+    using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
     using AffiliateNewtork.Common;
-
+    
     [Authorize(Roles = GlobalConstants.AdminRole)]
     public class InfoPagesController : AdminBaseController
     {
@@ -23,7 +22,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
         {
             this.ManagePageSizing();
 
-            return View(this.Data.InfoPages.AllWithDeleted().Select(ListInfoPageViewModel.ViewModel).OrderBy(x => x.Id));
+            return this.View(this.Data.InfoPages.AllWithDeleted().Select(ListInfoPageViewModel.ViewModel).OrderBy(x => x.Id));
         }
 
         public ActionResult Details(int? id)
@@ -37,15 +36,15 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
             if (infoPage == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
-            return View(infoPage);
+            return this.View(infoPage);
         }
 
         public ActionResult Create()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost, ValidateInput(false)]
@@ -57,10 +56,10 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
                 this.Data.InfoPages.Add(infoPage);
                 this.Data.SaveChanges();
 
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
 
-            return View(infoPage);
+            return this.View(infoPage);
         }
 
         public ActionResult Edit(int? id)
@@ -74,10 +73,10 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
             if (infoPage == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
-            return View(infoPage);
+            return this.View(infoPage);
         }
 
         [HttpPost, ValidateInput(false)]
@@ -89,10 +88,10 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
                 this.Data.InfoPages.Update(infoPage);
                 this.Data.SaveChanges();
 
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
 
-            return View(infoPage);
+            return this.View(infoPage);
         }
 
         public ActionResult Delete(int? id)
@@ -106,10 +105,10 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 
             if (infoPage == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
-            return View(infoPage);
+            return this.View(infoPage);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -120,7 +119,7 @@ namespace AffiliateNetwork.Web.Areas.Administration.Controllers
             this.Data.InfoPages.Delete(infoPage);
             this.Data.SaveChanges();
 
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
     }
 }

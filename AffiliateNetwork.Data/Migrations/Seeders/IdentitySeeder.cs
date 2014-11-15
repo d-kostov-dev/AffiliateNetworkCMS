@@ -4,10 +4,10 @@
     using System.Linq;
 
     using AffiliateNetwork.Models;
+    using AffiliateNewtork.Common;
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using AffiliateNewtork.Common;
 
     public class IdentitySeeder
     {
@@ -40,7 +40,6 @@
                 manager.Create(user, "123456");
                 manager.AddToRole(user.Id, GlobalConstants.AdminRole);
             }
-
 
             if (!databaseContext.Users.Any(u => u.UserName == "user@abv.bg"))
             {

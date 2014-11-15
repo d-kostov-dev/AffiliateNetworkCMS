@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using AffiliateNetwork.Common.Enumerations;
-using AffiliateNetwork.Models;
-using AffiliateNetwork.Infrastructure.Mapping;
-
-namespace AffiliateNetwork.Web.Areas.Administration.Models.InputModels
+﻿namespace AffiliateNetwork.Web.Areas.Administration.Models.InputModels
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using AffiliateNetwork.Common.Enumerations;
+    using AffiliateNetwork.Infrastructure.Mapping;
+    using AffiliateNetwork.Models;
+    
     public class CampaignCreateEditViewModel : IMapFrom<Campaign>
     {
         public CampaignCreateEditViewModel()

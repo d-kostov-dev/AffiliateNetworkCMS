@@ -1,36 +1,19 @@
-﻿using AffiliateNetwork.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace AffiliateNetwork.Web.Controllers
+﻿namespace AffiliateNetwork.Web.Controllers
 {
+    using System.Web.Mvc;
+
+    using AffiliateNetwork.Contracts;
+
     public class HomeController : BaseController
     {
         public HomeController(IDataProvider provider)
-            :base(provider)
+            : base(provider)
         {
-
         }
+
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return this.View();
         }
     }
 }
