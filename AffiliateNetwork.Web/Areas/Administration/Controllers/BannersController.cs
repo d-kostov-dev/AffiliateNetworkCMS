@@ -5,10 +5,14 @@
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
+    using System.Text;
 
     using AffiliateNetwork.Contracts;
     using AffiliateNetwork.Models;
     using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
+
+    using AutoMapper.QueryableExtensions;
+    using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
 
     public class BannersController : AdminBaseController
     {
@@ -96,6 +100,31 @@
             this.Data.SaveChanges();
 
             return this.RedirectToAction("Index");
+        }
+
+        public ActionResult GetBannersForCampaign(int id)
+        {
+            var banners = this.Data.Banners.All()
+                .Where(x => x.CampaignId == id)
+                .Project().To<BannersListViewModel>()
+                .ToList();
+
+            foreach (var banner in banners)
+            {
+                var bannerCode = new StringBuilder();
+
+                bannerCode.Append
+                    (string.Format("<a href='{0}'>", banner.CampaignLandingPage + "?affId=" + this.CurrentUser.Id));
+
+                bannerCode.Append(
+                    string.Format("<img src='{0}' alt='{1}' />", @ViewBag.Settings["BannersUrl"] + banner.BannerImage, banner.CampaignTitle));
+
+                bannerCode.Append("</a>");
+
+                banner.BannerCode = bannerCode.ToString();
+            }
+
+            return this.PartialView("_BannersListPartial", banners);
         }
     }
 }

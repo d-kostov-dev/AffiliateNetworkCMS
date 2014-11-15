@@ -91,7 +91,7 @@
 @helper EditButtonHelper(int id, string ownerId)
 {
     if (User.Identity.GetUserId() == ownerId || 
-        User.IsInRole(AffiliateNewtork.Infrastructure.GlobalConstants.AdminRole))
+        User.IsInRole(AffiliateNewtork.Common.GlobalConstants.AdminRole))
 	{
         @Html.EditButton(id);
 	}
@@ -100,7 +100,7 @@
 @helper DeleteButtonHelper(int id, string ownerId)
 {
     if (User.Identity.GetUserId() == ownerId ||
-        User.IsInRole(AffiliateNewtork.Infrastructure.GlobalConstants.AdminRole))
+        User.IsInRole(AffiliateNewtork.Common.GlobalConstants.AdminRole))
     {
         @Html.DeleteButton(id);
     }

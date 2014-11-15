@@ -5,7 +5,7 @@
     using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
     using AffiliateNetwork.Web.Areas.Administration.Models.InputModels;
     using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
-    using AffiliateNewtork.Infrastructure;
+    using AffiliateNewtork.Common;
     using PagedList;
     using System;
     using System.Linq;

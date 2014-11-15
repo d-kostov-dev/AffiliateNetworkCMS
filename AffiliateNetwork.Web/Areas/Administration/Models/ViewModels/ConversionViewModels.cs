@@ -24,9 +24,7 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Conversion, ConversionViewModels>()
-                .ForMember(m => m.AffiliateName, opt => opt.MapFrom(u => u.Affiliate.UserName.ToString()));
-
-            configuration.CreateMap<Conversion, ConversionViewModels>()
+                .ForMember(m => m.AffiliateName, opt => opt.MapFrom(u => u.Affiliate.UserName.ToString()))
                 .ForMember(m => m.CampaignName, opt => opt.MapFrom(u => u.Campaign.Title.ToString()));
         }
     }

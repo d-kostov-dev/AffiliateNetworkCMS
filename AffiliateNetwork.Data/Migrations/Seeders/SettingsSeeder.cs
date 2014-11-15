@@ -22,6 +22,12 @@
                        Value = "10",
                        Description = "Items to show per page in the gird controls."
                     },
+                    new SiteSetting()
+                    {
+                       Name = "BannersUrl",
+                       Value = "http://localhost:11784/Content/Banners/",
+                       Description = "The url to be used for generating the banners code!"
+                    },
                 };
 
                 for (int i = 0; i < pagesList.Count; i++)

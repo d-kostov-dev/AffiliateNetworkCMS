@@ -7,7 +7,8 @@
     using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
 
     using AutoMapper.QueryableExtensions;
-    using AffiliateNewtork.Infrastructure;
+
+    using AffiliateNewtork.Common;
 
     [Authorize(Roles = GlobalConstants.AdminRole)]
     public class ClicksController : AdminBaseController

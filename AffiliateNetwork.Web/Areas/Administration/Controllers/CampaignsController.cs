@@ -13,7 +13,7 @@
 
     using AutoMapper.QueryableExtensions;
     using Microsoft.AspNet.Identity;
-    using AffiliateNewtork.Infrastructure;
+    using AffiliateNewtork.Common;
 
     public class CampaignsController : AdminBaseController
     {

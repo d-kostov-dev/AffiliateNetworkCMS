@@ -1,12 +1,4 @@
-Global variables
 info pages section
-try implementing page sizer in the _Grid.html
-grid.mvc stuff to bundles
-banner deletable by owner or admin
-campaign deletable by owner or admin
-current user in base controller
-fix bundles configuration file
-check if expired campaigns generate credits
 
 http://www.mikesdotnetting.com/article/128/get-the-drop-on-asp-net-mvc-dropdownlists
 
@@ -19,6 +11,5 @@ http://tech.pro/blog/1191/say-no-to-the-repository-pattern-in-your-dal
 http://rob.conery.io/2014/03/04/repositories-and-unitofwork-are-not-a-good-idea/
 
 http://programmers.stackexchange.com/questions/180851/why-shouldnt-i-use-the-repository-pattern-with-entity-framework
-
 
 http://localhost:11784/clicks/registerclick?affid=a2f55816-c048-43ec-9ef1-634dead8b02d&campaignid=1

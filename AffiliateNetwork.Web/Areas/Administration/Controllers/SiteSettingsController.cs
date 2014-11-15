@@ -10,7 +10,7 @@ using AffiliateNetwork.Data;
 using AffiliateNetwork.Models;
 using AffiliateNetwork.Contracts;
 using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
-using AffiliateNewtork.Infrastructure;
+using AffiliateNewtork.Common;
 
 namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {

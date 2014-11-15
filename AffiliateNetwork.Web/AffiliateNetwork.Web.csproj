@@ -204,6 +204,7 @@
     <Compile Include="Areas\Administration\Controllers\InfoPagesController.cs" />
     <Compile Include="Areas\Administration\Controllers\SiteSettingsController.cs" />
     <Compile Include="Areas\Administration\Models\InputModels\CampaignCreateEditViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ViewModels\BannersListViewModel.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\ConversionViewModels.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\ClickViewModels.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\CategoryViewModels.cs" />
@@ -530,6 +531,7 @@
     <Content Include="Content\Manager\css\Kendo\images\kendoui.woff" />
     <Content Include="Areas\Administration\Views\Clicks\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Conversions\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Banners\_BannersListPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />

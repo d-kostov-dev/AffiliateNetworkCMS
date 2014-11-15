@@ -2,15 +2,14 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.Collections.Generic;
 
     using AffiliateNetwork.Common.Enumerations;
     using AffiliateNetwork.Infrastructure.Mapping;
     using AffiliateNetwork.Models;
 
     using AutoMapper;
-    using System.Collections.Generic;
     
-
     public class ListCampaignsViewModel : IMapFrom<Campaign>, IHaveCustomMappings
     {
         public int Id { get; set; }
@@ -53,15 +52,9 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Campaign, ListCampaignsViewModel>()
-                .ForMember(m => m.CategoryName, opt => opt.MapFrom(u => u.Category.Name.ToString()));
-
-            configuration.CreateMap<Campaign, ListCampaignsViewModel>()
-                .ForMember(m => m.AffiliatesCount, opt => opt.MapFrom(u => u.Affiliates.Count));
-
-            configuration.CreateMap<Campaign, ListCampaignsViewModel>()
-                .ForMember(m => m.ClicksCount, opt => opt.MapFrom(u => u.Clicks.Count));
-
-            configuration.CreateMap<Campaign, ListCampaignsViewModel>()
+                .ForMember(m => m.CategoryName, opt => opt.MapFrom(u => u.Category.Name.ToString()))
+                .ForMember(m => m.AffiliatesCount, opt => opt.MapFrom(u => u.Affiliates.Count))
+                .ForMember(m => m.ClicksCount, opt => opt.MapFrom(u => u.Clicks.Count))
                 .ForMember(m => m.ConversionsCount, opt => opt.MapFrom(u => u.Conversions.Count));
         }
     }
@@ -107,9 +100,7 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Campaign, ListCampaignsDetailsViewModel>()
-                .ForMember(m => m.CategoryName, opt => opt.MapFrom(u => u.Category.Name.ToString()));
-
-            configuration.CreateMap<Campaign, ListCampaignsDetailsViewModel>()
+                .ForMember(m => m.CategoryName, opt => opt.MapFrom(u => u.Category.Name.ToString()))
                 .ForMember(m => m.CompanyName, opt => opt.MapFrom(u => u.Owner.CompanyName));
         }
     }

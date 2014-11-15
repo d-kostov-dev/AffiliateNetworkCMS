@@ -75,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Filters\AllowCors.cs" />
-    <Compile Include="GlobalConstants.cs" />
     <Compile Include="HtmlHelpers\Buttons.cs" />
     <Compile Include="HtmlHelpers\FormGroup.cs" />
     <Compile Include="HtmlHelpers\PerPageSelector.cs" />
