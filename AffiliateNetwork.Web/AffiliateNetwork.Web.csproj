@@ -538,6 +538,7 @@
     <Content Include="Areas\Administration\Views\Banners\_BannersListPartial.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_SaveGroupPartial.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_DeleteGroupPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Campaigns\_TrackingCodePartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />

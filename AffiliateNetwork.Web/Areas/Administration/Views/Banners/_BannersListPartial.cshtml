@@ -3,10 +3,12 @@
 @foreach (var banner in Model)
 {
     <div class="row">
-        <img class="img-responsive center-block" src="~/Content/Banners/@banner.BannerImage" alt="@banner.CampaignTitle" />
-        <br />
-        <p>Copy the code below and paste to your site!</p>
-        <textarea rows="4" class="form-control">@banner.BannerCode</textarea>
+        <div class="col-md-8">
+            <img class="img-responsive center-block" src="~/Content/Banners/@banner.BannerImage" alt="@banner.CampaignTitle" />
+            <br />
+            <p>Copy the code below and paste to your site!</p>
+            <textarea rows="4" class="form-control">@banner.BannerCode</textarea>
+            <hr />
+        </div>
     </div>
-    <hr />
 }

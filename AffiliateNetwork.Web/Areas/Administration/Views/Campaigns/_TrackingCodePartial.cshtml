@@ -1,0 +1,16 @@
+﻿@model string
+
+<div class="modal fade" id="trackingCodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Clicks Tracking Code</h4>
+            </div>
+            <div class="modal-body">
+                <p>Place this code in your site. Just before the closing BODY tag.</p>
+                <textarea class="form-control" rows="10">@Model</textarea>
+            </div>
+        </div>
+    </div>
+</div>

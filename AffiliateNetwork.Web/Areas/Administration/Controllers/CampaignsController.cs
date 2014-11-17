@@ -12,6 +12,7 @@
     using AffiliateNewtork.Common;
 
     using AutoMapper.QueryableExtensions;
+    using System.Text;
 
     public class CampaignsController : AdminBaseController
     {
@@ -241,6 +242,14 @@
         public ActionResult AddBanner(int id)
         {
             return this.RedirectToAction("Add", "Banners", new { id = id });
+        }
+
+        public ActionResult TrackingCodeModal(int id)
+        {
+            var trackingCode = new StringBuilder();
+            trackingCode.Append("pesho" + id);
+
+            return this.PartialView("_TrackingCodePartial", trackingCode.ToString());
         }
 
         private void SetCategories(int? id = null)
