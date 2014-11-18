@@ -9,7 +9,8 @@
     using AffiliateNetwork.Web.Areas.Administration.Controllers.Base;
     using AffiliateNetwork.Web.Areas.Administration.Models.ViewModels;
     using AffiliateNewtork.Common;
-    
+    using Html;
+
     [Authorize(Roles = GlobalConstants.AdminRole)]
     public class InfoPagesController : AdminBaseController
     {
@@ -51,6 +52,9 @@
         [ValidateAntiForgeryToken]
         public ActionResult Create(InfoPage infoPage)
         {
+            var sanitizer = new HtmlSanitizer();
+            infoPage.Content = sanitizer.Sanitize(infoPage.Content);
+
             if (ModelState.IsValid)
             {
                 this.Data.InfoPages.Add(infoPage);

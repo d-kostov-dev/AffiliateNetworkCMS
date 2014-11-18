@@ -31,7 +31,7 @@
         public ActionResult GetPages()
         {
             var pages = 
-                this.Data.InfoPages.All()
+                this.Data.InfoPages.All().Where(x => x.DeletedOn == null)
                 .Project().To<PagesFooterViewModel>();
 
             return this.PartialView("_PagesFooterPartial", pages);

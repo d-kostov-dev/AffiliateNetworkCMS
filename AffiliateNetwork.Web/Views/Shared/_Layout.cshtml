@@ -42,7 +42,8 @@
                     <p class="text-muted text-center">Made By <a href="#">Pesho Dev International</a> | Powered By <a href="http://www.asp.net/mvc">ASP.NET MVC</a> </p>
                 </div>
                 <div class="col-md-6">
-                    @Html.ActionLink("Scarabo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Scarabo", "Index", "Home", new { area = "" }, null)
+                    &nbsp;&nbsp;
                     @Html.Action("GetPages", "Pages")
                 </div>
             </div>
