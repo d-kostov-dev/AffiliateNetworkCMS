@@ -28,6 +28,12 @@
                        Value = "http://localhost:11784/Content/Banners/",
                        Description = "The url to be used for generating the banners code!"
                     },
+                    new SiteSetting()
+                    {
+                       Name = "TrakingScriptUrl",
+                       Value = "http://localhost:11784/Content/Tracking/ClickTracking.js",
+                       Description = "Click Tracking main functions js file."
+                    },
                 };
 
                 for (int i = 0; i < pagesList.Count; i++)

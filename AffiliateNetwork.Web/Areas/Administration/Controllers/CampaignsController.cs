@@ -41,7 +41,7 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var campaign = 
+            var campaign =
                 this.Data.Campaigns.All()
                 .Where(x => x.Id == id)
                 .Project().To<ListCampaignsDetailsViewModel>()
@@ -247,7 +247,12 @@
         public ActionResult TrackingCodeModal(int id)
         {
             var trackingCode = new StringBuilder();
-            trackingCode.Append("pesho" + id);
+
+            trackingCode.Append(
+                string.Format("<script src='{0}'></script>", 
+                this.GetSetting("TrakingScriptUrl")));
+
+            trackingCode.Append(string.Format("<script>makeClick({0});</script>", id));
 
             return this.PartialView("_TrackingCodePartial", trackingCode.ToString());
         }
