@@ -485,8 +485,10 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site\css\bootstrap.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Site\imgs\customers.png" />
     <Content Include="Content\Site\imgs\default.jpg" />
     <Content Include="Content\Site\imgs\excuseme.jpg" />
+    <Content Include="Content\Site\imgs\sales.png" />
     <Content Include="Content\Tracking\ClickTracking.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site\css\Site.css" />
