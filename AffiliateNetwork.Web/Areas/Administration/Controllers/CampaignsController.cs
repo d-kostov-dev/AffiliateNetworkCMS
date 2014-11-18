@@ -1,7 +1,10 @@
 ﻿namespace AffiliateNetwork.Web.Areas.Administration.Controllers
 {
+    using System;
     using System.Linq;
     using System.Net;
+    using System.Text;
+    using System.Web.Caching;
     using System.Web.Mvc;
 
     using AffiliateNetwork.Contracts;
@@ -12,7 +15,6 @@
     using AffiliateNewtork.Common;
 
     using AutoMapper.QueryableExtensions;
-    using System.Text;
 
     public class CampaignsController : AdminBaseController
     {
@@ -249,19 +251,32 @@
             var trackingCode = new StringBuilder();
 
             trackingCode.Append(
-                string.Format("<script src='{0}'></script>", 
-                this.GetSetting("TrakingScriptUrl")));
+                string.Format("<script src='{0}'></script>", this.GetSetting("TrakingScriptUrl")));
 
             trackingCode.Append(string.Format("<script>makeClick({0});</script>", id));
 
             return this.PartialView("_TrackingCodePartial", trackingCode.ToString());
         }
 
+        public ActionResult ClicksCount(int id)
+        {
+            return this.Content(this.Data.Campaigns.Find(id).Clicks.Count().ToString());
+        }
+
+        public ActionResult ConversionsCount(int id)
+        {
+            return this.Content(this.Data.Campaigns.Find(id).Conversions.Count().ToString());
+        }
+
         private void SetCategories(int? id = null)
         {
-            var items = new SelectList(this.Data.Categories.All().ToList(), "Id", "Name", id.ToString());
+            if (this.HttpContext.Cache["categoriesCache"] == null)
+            {
+                var items = new SelectList(this.Data.Categories.All().ToList(), "Id", "Name", id.ToString());
+                this.HttpContext.Cache.Add("categoriesCache", items, null, Cache.NoAbsoluteExpiration, new TimeSpan(0, 1, 0), CacheItemPriority.Normal, null);
+            }
 
-            ViewBag.CategoryCollection = items;
+            ViewBag.CategoryCollection = this.HttpContext.Cache["categoriesCache"];
         }
     }
 }

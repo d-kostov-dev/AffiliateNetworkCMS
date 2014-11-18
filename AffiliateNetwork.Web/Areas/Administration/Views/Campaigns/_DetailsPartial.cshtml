@@ -1,4 +1,5 @@
 ﻿@model AffiliateNetwork.Web.Areas.Administration.Models.ViewModels.ListCampaignsDetailsViewModel
+
 @using Kendo.Mvc.UI;
 @using Microsoft.AspNet.Identity
 
@@ -49,6 +50,7 @@
                 @if (User.Identity.GetUserId() == Model.OwnerId)
                 {
                     @Html.ActionLink("Add Banners", "Add", "Banners", new { Model.Id }, new { @class = "btn btn-primary" })
+
                     <button class="btn btn-primary" data-toggle="modal" data-target="#trackingCodeModal">
                         Get Tracking Code
                     </button>
@@ -64,10 +66,17 @@
                         <i class="fa fa-tasks fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">@Model.Clicks.Count()</div>
+                        <div class="huge" id="clicksCount">@Model.Clicks.Count()</div>
                         <div>Clicks</div>
                     </div>
                 </div>
+                @Ajax.ActionLink("Refresh", "ClicksCount", new { id = Model.Id },
+                new AjaxOptions
+                {
+                    UpdateTargetId = "clicksCount",
+                    HttpMethod = "GET",
+                    InsertionMode = InsertionMode.Replace,
+                }, new { @class = "btn btn-default btn-xs" })
             </div>
         </div>
         <div class="panel panel-primary">
@@ -77,10 +86,17 @@
                         <i class="fa fa-shopping-cart fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">@Model.Conversions.Count()</div>
+                        <div class="huge" id="conversionsCount">@Model.Conversions.Count()</div>
                         <div>Conversions</div>
                     </div>
                 </div>
+                @Ajax.ActionLink("Refresh", "ConversionsCount", new { id = Model.Id },
+                new AjaxOptions
+                {
+                    UpdateTargetId = "conversionsCount",
+                    HttpMethod = "GET",
+                    InsertionMode = InsertionMode.Replace,
+                }, new { @class = "btn btn-default btn-xs" })
             </div>
         </div>
 
@@ -118,4 +134,5 @@
 
 
 @Html.Action("GetBannersForCampaign", "Banners", new { id = Model.Id })
+
 @Html.Action("TrackingCodeModal", "Campaigns", new { id = Model.Id })
